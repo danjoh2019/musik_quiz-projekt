@@ -1,13 +1,29 @@
 const BASE_URL = "https://api.sr.se/api/v2";
 
 async function getAllSongs() {
-    const response = await fetch(`${BASE_URL}/playlists/getplaylistbychannelid?id=164&startdatetime=2018-09-01&format=json&size=600`)
+
+    // TEST DATUM
+    console.log("Today:")
+    const today = new Date()
+    const todayString = today.toISOString().slice(0, 10)
+
+    const testYear = new Date(today)
+    const testYearSubtract = testYear.setFullYear(testYear.getFullYear() - 1)
+    const yearTest = new Date(testYearSubtract).toISOString().slice(0, 10)
+
+    console.log(todayString)
+    console.log(yearTest)
+    console.log("--------------")
+    // TEST DATUM
+
+    const response = await fetch(`${BASE_URL}/playlists/getplaylistbychannelid?id=164&startdatetime=${todayString}&format=json&size=600`)
 
     if (!response.ok) {
         // Fixa bättre felhantering
         throw new Error("Error message")
     }
 
+    
     const json = await response.json()
 
     return removeDuplicates(json.song)

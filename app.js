@@ -1,4 +1,4 @@
-import { getAllSongs, getQuiz } from "./components/javascript.js"
+import { getAllSongs, getQuiz, getTopFiveFromYear } from "./components/javascript.js"
 
 const app = {
     components: {
@@ -29,6 +29,7 @@ const app = {
     async created() {
         this.quizArray = await getQuiz()
 
+        getTopFiveFromYear(2020)
     }
 }
 Vue.createApp(app).mount("#app")

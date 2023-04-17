@@ -1,6 +1,6 @@
 const BASE_URL = "https://api.sr.se/api/v2";
 
-async function getAllSongs(urlString) {
+async function getJson(urlString) {
 
     const response = await fetch(`${BASE_URL}${urlString}`)
 
@@ -11,15 +11,15 @@ async function getAllSongs(urlString) {
 
     const json = await response.json()
 
-    return json.song
+    return json
 }
 
 async function getQuiz(genre) {
     const timeSpan = generateTimespan(6)
     const urlString = generateUrl(genre, timeSpan)
-    const songs = await getAllSongs(urlString)
+    const songs = await getJson(urlString)
 
-    return removeDuplicates(songs)
+    return removeDuplicates(songs.song)
 }
 
 function generateUrl(genre, date) {
@@ -59,41 +59,36 @@ function removeDuplicates(songs) {
     return set
 }
 
+function countOccurances(songs) {
+    const songCount = {}
 
-
-
-
+    for (const array of songs) {
+        for (const song of array.song) {
+            if (songCount[song.artist]) {
+                songCount[song.artist]++
+            } else {
+                songCount[song.artist] = 1
+            }
+        }
+    }
+    return songCount    
+}
 
 async function getAllSongsFromYear(id, year) {
-
-    // TEST DATUM
-    console.log("Today:")
     const today = new Date()
-    const todayString = today.toISOString().slice(0, 10)
+    const yesterday = new Date(today)
+    yesterday.setDate(today.getDate() - 1)
 
-    const testYear = new Date(today)
-    const testYearSubtract = testYear.setFullYear(testYear.getFullYear() - 1)
-    const yearTest = new Date(testYearSubtract).toISOString().slice(0, 10)
+    const fromDate = new Date(yesterday.setFullYear(year))
+    const toDate = new Date(today.setFullYear(year))
 
-    console.log(todayString)
-    console.log(yearTest)
-    console.log("--------------")
-    // TEST DATUM
-
-    const startDate = new Date(year, 1, 1).toISOString.slice(0, 10)
-    const endDate = new Date(year, 12, 31).toISOString.slice(0, 10)
-
-    const songs = new Array()
-
-    for (let channelId of channelIds) {
-        songs.push(getAllSongs(`/playlists/getplaylistbychannelid?id=${id}&startdatetime=${startDate}&enddatetime=${endDate}&format=json&size=600`))
-    }
-
-    return songs
-
+    const fromDateString = fromDate.toISOString().slice(0, 10)
+    const toDateString = toDate.toISOString().slice(0, 10)
+    
+    return await getJson(`/playlists/getplaylistbychannelid?id=${id}&startdatetime=${yesterday}&enddatetime=${today}&format=json&size=600`)
 }
     
-async function getTop5FromYear(year) {
+async function countSongs(year) {
     const allChannels = await getAllChannelIds()
     const allSongs = []
 
@@ -101,14 +96,26 @@ async function getTop5FromYear(year) {
         allSongs.push(await getAllSongsFromYear(id, year))
     }
 
-    console.log(allSongs)
+    const result = countOccurances(allSongs)
+
+    console.log(getTopSongs(result))
+}
+
+function getTopSongs(input) {
+    const songArray = []
+
+    for (const name in input) {
+        songArray.push({ name: name, count: input[name]})
+    }
+
+    songArray.sort((o1, o2) => o2.count - o1.count)
+    return songArray.slice(0, 5)
 }
 
 
-
 async function getAllChannelIds() {
-    const endpoint = `${BASE_URL}/channels?format=json&size=500`;
-    const response = await fetchJson(endpoint);
+    const endpoint = `/channels?format=json&size=500`;
+    const response = await getJson(endpoint);
     const result = [];
     for (const channel of response.channels) {
         result.push(channel.id);
@@ -126,4 +133,4 @@ async function getPlaylist(id, startDate, endDate) {
     return response.song;
 }
 
-export { getAllSongs, getQuiz }
+export { getJson as getAllSongs, getQuiz, countSongs as getTopFiveFromYear }

@@ -21,6 +21,7 @@
 
     <div id="app">
         <div class="header"></div>
+    
         <div class="content">
             <input type="button" id="getNewSongs" value="Get 4 random" @click="getFourRandomSongs">
             <div id="quiz" v-for="song of fourSongs">
@@ -28,6 +29,12 @@
                 <span class="description">Låttitel: </span> {{ song.title }}
             </div>
         </div>
-        <div class="footer"></div>
+        <div class="footer">
+            <div class="gameSelect">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
     </div>
 </body>

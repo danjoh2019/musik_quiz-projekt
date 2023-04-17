@@ -13,9 +13,18 @@ async function getAllSongs(urlString) {
 
     // testutskrift
     console.log(json.song)
-    
+
     return json.song
 }
+
+
+
+
+
+
+
+
+
 
 async function getAllSongsFromYear(id, year) {
 

@@ -1,4 +1,4 @@
-import { getAllSongs, getTop5FromYear } from "./components/javascript.js"
+import { getAllSongs, getQuiz } from "./components/javascript.js"
 
 const app = {
     components: {
@@ -26,11 +26,9 @@ const app = {
             this.fourSongs = random.slice(0, 4)
         }
     },
-    created() {
-        // this.getSongs()
-        // getTop5FromYear(2018)
-        
-        getAllSongs("/playlists/getplaylistbychannelid?id=164&startdatetime=2018-09-01&format=json&size=600")
+    async created() {
+        this.quizArray = await getQuiz()
+
     }
 }
 Vue.createApp(app).mount("#app")

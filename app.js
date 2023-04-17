@@ -1,4 +1,4 @@
-import { getAllSongs } from "./components/javascript.js"
+import { getAllSongs, getTop5FromYear } from "./components/javascript.js"
 
 const app = {
     components: {
@@ -27,7 +27,9 @@ const app = {
         }
     },
     created() {
-        this.getSongs()
+        // this.getSongs()
+        // getTop5FromYear(2018)
+        getAllSongs("/playlists/getplaylistbychannelid?id=164&startdatetime=2018-09-01&format=json&size=600")
     }
 }
 Vue.createApp(app).mount("#app")

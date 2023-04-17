@@ -1,6 +1,23 @@
 const BASE_URL = "https://api.sr.se/api/v2";
 
-async function getAllSongs() {
+async function getAllSongs(urlString) {
+
+    const response = await fetch(`${BASE_URL}${urlString}`)
+
+    if (!response.ok) {
+        // Fixa bättre felhantering
+        throw new Error("Error message")
+    }
+
+    const json = await response.json()
+
+    // testutskrift
+    console.log(json.song)
+    
+    return json.song
+}
+
+async function getAllSongsFromYear(id, year) {
 
     // TEST DATUM
     console.log("Today:")
@@ -16,17 +33,28 @@ async function getAllSongs() {
     console.log("--------------")
     // TEST DATUM
 
-    const response = await fetch(`${BASE_URL}/playlists/getplaylistbychannelid?id=164&startdatetime=${todayString}&format=json&size=600`)
+    const startDate = new Date(year, 1, 1).toISOString.slice(0, 10)
+    const endDate = new Date(year, 12, 31).toISOString.slice(0, 10)
 
-    if (!response.ok) {
-        // Fixa bättre felhantering
-        throw new Error("Error message")
+    const songs = new Array()
+
+    for (let channelId of channelIds) {
+        songs.push(getAllSongs(`/playlists/getplaylistbychannelid?id=${id}&startdatetime=${startDate}&enddatetime=${endDate}&format=json&size=600`))
     }
 
-    
-    const json = await response.json()
+    return songs
 
-    return removeDuplicates(json.song)
+}
+    
+async function getTop5FromYear(year) {
+    const allChannels = await getAllChannelIds()
+    const allSongs = []
+
+    for (let id of allChannels) {
+        allSongs.push(await getAllSongsFromYear(id, year))
+    }
+
+    console.log(allSongs)
 }
 
 function removeDuplicates(songs) {
@@ -51,4 +79,24 @@ function removeDuplicates(songs) {
     return set
 }
 
-export { getAllSongs }
+async function getAllChannelIds() {
+    const endpoint = `${BASE_URL}/channels?format=json&size=500`;
+    const response = await fetchJson(endpoint);
+    const result = [];
+    for (const channel of response.channels) {
+        result.push(channel.id);
+    }
+    return result;
+}
+
+async function getPlaylist(id, startDate, endDate) {
+    if (!Number.isInteger(id)) {
+        throw new Error(`${id} is not a valid channel id`);
+    }
+
+    const endpoint = `${BASE_URL}/playlists/getplaylistbychannelid?id=${id}&startdatetime=${startDate}&enddatetime=${endDate}&format=json&size=5000`;
+    const response = await fetchJson(endpoint);
+    return response.song;
+}
+
+export { getAllSongs, getTop5FromYear }

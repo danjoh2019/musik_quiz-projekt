@@ -11,15 +11,53 @@ async function getAllSongs(urlString) {
 
     const json = await response.json()
 
-    // testutskrift
-    console.log(json.song)
-
     return json.song
 }
 
+async function getQuiz(genre) {
+    const timeSpan = generateTimespan(6)
+    const urlString = generateUrl(genre, timeSpan)
+    const songs = await getAllSongs(urlString)
 
+    return removeDuplicates(songs)
+}
 
+function generateUrl(genre, date) {
+    return `/playlists/getplaylistbychannelid?id=164${date}&format=json&size=600`
+}
 
+function generateTimespan(months) {
+        const today = new Date()
+        const todayString = today.toISOString().slice(0, 10)
+
+        const startMonth = new Date(today)
+        const startMonthSubtract = startMonth.setMonth(startMonth.getMonth() - months)
+        const startString = new Date(startMonthSubtract).toISOString().slice(0, 10)
+    
+        return `&startdatetime=${startString}&enddatetime${todayString}`
+}
+
+function removeDuplicates(songs) {
+    const array = new Array()
+
+    for (let song of songs) {
+        const songObj = {
+            title: song.title,
+            artist: song.artist
+        }
+        array.push(songObj)
+    }
+
+    // Detta går kanske att lösa bättre med ett Set.
+
+    const set = array.filter((value, index, self) =>
+        index === self.findIndex((t) => (
+            t.title === value.title && t.artist === value.artist
+        ))
+    )
+
+    return set
+}
 
 
 
@@ -66,27 +104,7 @@ async function getTop5FromYear(year) {
     console.log(allSongs)
 }
 
-function removeDuplicates(songs) {
-    const array = new Array()
 
-    for (let song of songs) {
-        const songObj = {
-            title: song.title,
-            artist: song.artist
-        }
-        array.push(songObj)
-    }
-
-    // Detta går kanske att lösa bättre med ett Set.
-
-    const set = array.filter((value, index, self) =>
-        index === self.findIndex((t) => (
-            t.title === value.title && t.artist === value.artist
-        ))
-    )
-
-    return set
-}
 
 async function getAllChannelIds() {
     const endpoint = `${BASE_URL}/channels?format=json&size=500`;
@@ -108,4 +126,4 @@ async function getPlaylist(id, startDate, endDate) {
     return response.song;
 }
 
-export { getAllSongs, getTop5FromYear }
+export { getAllSongs, getQuiz }

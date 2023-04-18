@@ -3,9 +3,9 @@ import { getTopFiveFromYear } from "./javascript.js"
 export default {
     data() {
         return {
-            TenYearsAgo: [],
-            FiveYearsAgo: String,
-            Today: String
+            TenYearsAgo: {},
+            FiveYearsAgo: {},
+            Today: []
         }
     },
     async created() {

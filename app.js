@@ -1,5 +1,5 @@
 import { getAllSongs, getQuiz } from "./components/javascript.js"
-import TopFive from "./components/topfive.js"
+import TopFive from "./components/topFive.js"
 import categoryButton from "./components/categoryButton.js"
 
 const app = {

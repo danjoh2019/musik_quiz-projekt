@@ -84,7 +84,7 @@ async function getAllSongsFromYear(id, year) {
 
     const fromDateString = fromDate.toISOString().slice(0, 10)
     const toDateString = toDate.toISOString().slice(0, 10)
-    
+
     return await getJson(`/playlists/getplaylistbychannelid?id=${id}&startdatetime=${yesterday}&enddatetime=${today}&format=json&size=600`)
 }
     
@@ -98,7 +98,8 @@ async function countSongs(year) {
 
     const result = countOccurances(allSongs)
 
-    console.log(getTopSongs(result))
+    return getTopSongs(result)
+    // console.log(getTopSongs(result))
 }
 
 function getTopSongs(input) {

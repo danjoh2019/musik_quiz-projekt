@@ -15,11 +15,13 @@ export default {
     },
     template:
         `<div class="historyfive">
-        <ul>
+        Mest spelade låtarna i dag...
+        <ul><span>För tio år sedan:</span>
         <li v-for="song of TenYearsAgo">{{ song.name }}</li>
-        </ul><ul>
+        </ul><ul><span>För fem år sedan:</span>
         <li v-for="song of FiveYearsAgo">{{ song.name }}</li>
-        </ul><ul>
+        </ul><ul><span>Senaste dygnet:</span>
         <li v-for="song of Today">{{ song.name }}</li>
+        </ul>
         </div>`
 }

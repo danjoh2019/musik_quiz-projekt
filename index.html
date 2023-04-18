@@ -20,20 +20,21 @@
     <!-- Vilken låt är populärast i dag och för fem, tio och femton år sedan?  -->
 
     <div id="app">
-        <div class="header"></div>
-    
-        <div class="content">
-            <input type="button" id="getNewSongs" value="Get 4 random" @click="getFourRandomSongs">
-            <div id="quiz" v-for="song of fourSongs">
-                <span class="description">Artist: </span>{{ song.artist }}
-                <span class="description">Låttitel: </span> {{ song.title }}
+        <div class="wrapper">
+            <div class="header">
+                HEADER
             </div>
-        </div>
-        <div class="footer">
-            <div class="gameSelect">
-                <div></div>
-                <div></div>
-                <div></div>
+
+            <div class="content">
+                <input type="button" id="getNewSongs" value="Get 4 random" @click="getFourRandomSongs">
+                <div id="quiz" v-for="song of fourSongs">
+                    <span class="description">Artist: </span>{{ song.artist }}
+                    <span class="description">Låttitel: </span> {{ song.title }}
+                </div>
+                <top-five></top-five>
+            </div>
+            <div class="footer">
+                FOOTER
             </div>
         </div>
     </div>

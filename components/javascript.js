@@ -21,7 +21,7 @@ async function getQuiz(genre) {
 
     return removeDuplicates(songs.song)
 }
-
+//HÄR ÄR NÅGOT KONSTIGT
 function generateUrl(genre, date) {
     return `/playlists/getplaylistbychannelid?id=164${date}&format=json&size=600`
 }

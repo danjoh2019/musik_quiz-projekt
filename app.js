@@ -1,4 +1,5 @@
 import { getAllSongs, getQuiz, getTopFiveFromYear } from "./components/javascript.js"
+import categoryButton from "./components/categoryButton.js"
 
 const app = {
     components: {
@@ -30,6 +31,14 @@ const app = {
         this.quizArray = await getQuiz()
 
         getTopFiveFromYear(2020)
-    }
+    },
+   /*  components: {
+        catergoryButton: categoryButton
+    } */
+    
 }
-Vue.createApp(app).mount("#app")
+const vueApp = Vue.createApp(app)
+
+vueApp.component('categoryButton', categoryButton)
+
+vueApp.mount("#app")

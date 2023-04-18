@@ -21,7 +21,7 @@ async function getQuiz(genre) {
 
     return removeDuplicates(songs.song)
 }
-
+//HÄR ÄR NÅGOT KONSTIGT
 function generateUrl(genre, date) {
     return `/playlists/getplaylistbychannelid?id=164${date}&format=json&size=600`
 }
@@ -64,14 +64,16 @@ function countOccurances(songs) {
 
     for (const array of songs) {
         for (const song of array.song) {
-            if (songCount[song.artist]) {
-                songCount[song.artist]++
+            const key = `${song.title} by ${song.artist}`;
+            if (songCount[key]) {
+                songCount[key]++
             } else {
-                songCount[song.artist] = 1
+                songCount[key] = 1
             }
         }
     }
-    return songCount    
+    return songCount
+       
 }
 
 async function getAllSongsFromYear(id, year) {
@@ -106,6 +108,7 @@ function getTopSongs(input) {
     const songArray = []
 
     for (const name in input) {
+        
         songArray.push({ name: name, count: input[name]})
     }
 

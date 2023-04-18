@@ -1,5 +1,6 @@
 import { getAllSongs, getQuiz } from "./components/javascript.js"
 import TopFive from "./components/topfive.js"
+import categoryButton from "./components/categoryButton.js"
 
 const app = {
     components: {
@@ -32,4 +33,8 @@ const app = {
         
     }
 }
-Vue.createApp(app).mount("#app")
+const vueApp = Vue.createApp(app)
+
+vueApp.component('categoryButton', categoryButton)
+
+vueApp.mount("#app")

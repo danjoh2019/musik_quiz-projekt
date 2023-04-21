@@ -53,3 +53,44 @@ export default {
         </div>
     </div>
 </template>
+
+<style scoped>
+#getNewSongs {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: normal;
+    padding: .5rem .5rem;
+    width: 12rem;
+    background-color: white;
+    border: .1rem solid black;
+    border-radius: .2rem;
+    color: grey;
+    font-size: 1rem;
+    box-shadow: inset 2px 2px 3px #aaaaaa99, inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    margin-bottom: 2rem;
+}
+
+#getNewSongs:hover {
+    color: black;
+    background-color: hsl(181, 29%, 90%);
+    transform: scale(1.02);
+    font-weight: bold;
+}
+
+#getNewSongs:active {
+    font-weight: normal;
+    transform: scale(1);
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+    background-color: white;
+}
+
+#quiz {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+}
+
+#quiz .description {
+    font-weight: bold;
+    color: crimson;
+}
+
+</style>

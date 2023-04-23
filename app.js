@@ -26,6 +26,12 @@ const app = {
         getFourRandomSongs() {
             const random = this.quizArray.sort(() => 0.5 - Math.random())
             this.fourSongs = random.slice(0, 4)
+        },
+
+        //Ändra id till pop, hämta 4 artister och en pop låt
+        getFourPopArtists() {
+            const random  = this.quizArray.sort(() => 0.5 - Math.random())
+            this.fourSongs = random.slice(0, 4)
         }
     },
     async created() {

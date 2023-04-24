@@ -13,7 +13,7 @@
 </template>
   
 <script>
-import { getQuizQuestions } from '../data/Quiz';
+import { getQuizQuestions } from '../data/getQuiz';
 export default {
     name: "QuizView",
 
@@ -36,6 +36,7 @@ export default {
             catch (err) {
                 console.log("error");
             }
+            
             this.loading = false
         },
     },

@@ -1,27 +1,30 @@
 <script setup>
-import TopLists from './components/TopLists.vue';
-import Quiz from './components/Quiz.vue';
+/* import TopLists from './components/TopLists.vue';
+import Quiz from './components/Quiz.vue'; */
+/* import CategoryView from './views/CategoryView.vue'; */
+import { RouterView } from 'vue-router'
+import NavPage from './components/NavPage.vue'
+
 </script>
 
 <template>
-  <header>
-  </header>
-
   <main>
     <div class="wrapper">
       <div class="header">
-        HEADER
+        <NavPage/>
+        <RouterView/>
+<!--         HEADER
       </div>
 
       <div class="content">
+       
         <Quiz></Quiz>
         <TopLists></TopLists>
 
       </div>
       <div class="footer">
-              
-              <category-button button-text="pop" id="163"></category-button>
-              FOOTER
+        
+              FOOTER -->
           </div>
     </div>
 

@@ -5,7 +5,7 @@ import { RouterLink } from 'vue-router'
 <template>
   <div>
     <div class="nav">
-    <RouterLink to="/">Home</RouterLink> 
+    <RouterLink to="/">Home</RouterLink> <br>
      <RouterLink to="/category"> Categories</RouterLink> 
     </div>
   </div>
@@ -17,6 +17,9 @@ body {
   
 }
 .nav {
-  padding: 2rem;
+  list-style-type: none;
+  display: block;
+  margin: 2rem;
+  padding: 1rem;
 }
 </style>

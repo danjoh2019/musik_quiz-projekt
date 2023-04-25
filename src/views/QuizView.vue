@@ -54,5 +54,9 @@ export default {
     background: white;
     text-transform: none;
     font-family: Montserrat, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+h1 {
+    text-transform: capitalize;
 }
 </style>

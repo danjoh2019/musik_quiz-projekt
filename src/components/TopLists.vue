@@ -1,5 +1,6 @@
 <script>
 import { getTopFiveFromYear } from "../toplists/topfive.js"
+import { subtractYears } from "../utils/misc.js"
 
 export default {
     data() {
@@ -10,12 +11,18 @@ export default {
         }
     },
     async created() {
-        const data = [getTopFiveFromYear(2013),  getTopFiveFromYear(2018), getTopFiveFromYear(2023)]
-        const values = await Promise.all(data)
+        // Denna if-sats fungerar inte. Sparas inte data i arrayerna när vi byter vy?
+        // Eller är den felskriven?
+        // Funkar det att spara arrayerna i sessionstorage?
+        if (!this.tenYearsAgo.length > 0 && !this.fiveYearsAgo.length > 0 && !this.today.length > 0) {
+        
+            const data = [getTopFiveFromYear(subtractYears(10)),  getTopFiveFromYear(subtractYears(5)), getTopFiveFromYear(subtractYears(0))]
+            const values = await Promise.all(data)
 
-        this.tenYearsAgo = values[0]
-        this.fiveYearsAgo = values[1]
-        this.today = values[2]
+            this.tenYearsAgo = values[0]
+            this.fiveYearsAgo = values[1]
+            this.today = values[2]
+        }
     }
 }
 </script>

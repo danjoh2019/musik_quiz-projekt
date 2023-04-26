@@ -13,4 +13,12 @@ function generateTimespan(months) {
     return `&startdatetime=${startString}&enddatetime${todayString}`
 }
 
-export { generateUrl, generateTimespan }
+function subtractYears(years) {
+    const today = new Date()
+    const newYear = today.setFullYear(today.getFullYear() - years)
+    const resultYear = new Date(newYear).toISOString().slice(0, 4)
+
+    return resultYear
+}
+
+export { generateUrl, generateTimespan, subtractYears }

@@ -1,4 +1,3 @@
-<!-- eslint-disable no-unused-vars -->
 
 <template>
     <div>
@@ -9,9 +8,10 @@
             <div class="background">
                 <div class="content-category">
                     <div class="container-category-buttons">
-                        <button v-for="category in category" :key="category.id" :value="category.category" :id="category.id"
-                            @click="selectCategory(category.id, category.category)" class="category-button">
-                            {{ category.category }}
+                        <button v-for="category in categories" :key="category.id" :value="category.genre" :id="category.id"
+                            @click="selectCategory(category.id, category.genre)
+                                " class="category-button">
+                            {{ category.genre }}
                         </button>
                     </div>
                 </div>
@@ -19,46 +19,17 @@
         </div>
     </div>
 </template>
-
-<script>
-
-export default {
-    name: 'CategoryView',
-    props: {
-        category: {
-            type: Array,
-            default: () => [
-                { id: 2697, category: 'pop' },
-                { id: 5523, category: 'country' },
-                { id: 2680, category: 'soul' },
-                { id: 1603, category: 'klassiskt' },
-                { id: 3135, category: 'dansband' },
-                { id: 4433, category: 'visor' }
-            ]
-        },
-    },
-    data() {
-        return {
-            selectedCategoryId: 1190,
-            selectedCategoryString: 'Genre',
-            // songs: [],
-            startDate: "2022-09-23",
-            endDate: "2023-03-23",
-            show: true
-        }
-    },
-    methods: {
-        selectCategory(id, categoryString) {
-            this.selectedCategoryId = id
-            this.selectedCategoryString = categoryString
-
-            /* this.songs = this.getSongs(id) */
-            this.$router.push({ name: 'quiz', params: { id: this.selectedCategoryId }, query: { genre: this.selectedCategoryString } });
-        },
-    },
+  
+<script setup>
+import { useRouter } from 'vue-router'
+import categories from '../data/categories.json'
+const router = useRouter()
+function selectCategory(id, categoryString) {
+    router.push({ name: 'quiz', params: { id: id }, query: { genre: categoryString } })
 }
 </script>
 <style scoped>
+
 .song-container {
     color: white;
 }
@@ -82,12 +53,13 @@ export default {
     border-radius: 20% / 20%;
     margin: 0.5rem;
     border: none;
-    background-color: #ffddd2;
-    font-family: Adventuro, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: #e29578;
+    background-color: lightblue;
+    font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
     font-size: 1.4rem;
     letter-spacing: 0.3rem;
     text-transform: uppercase;
+    cursor: pointer; 
 }
 
 button {
@@ -96,12 +68,8 @@ button {
     align-items: center;
 }
 
-.categoryButton::after {
-    background-color: #e29578;
-}
 
-.categoryButton:active {
-    background-color: #e29578;
+.categoryButton:hover {
+    background-color:grey;
     color: white;
-}
-</style>
+}</style>

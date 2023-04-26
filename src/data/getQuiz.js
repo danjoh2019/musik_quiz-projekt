@@ -21,8 +21,8 @@ function removeDuplicates(songs) {
     return set
   }
 
-async function getGenre(id, startDate, endDate) {
-    const endpoint = `/playlists/getplaylistbyprogramid?id=${id}&startdatetime=${startDate}&enddatetime=${endDate}&format=json&size=5000`
+async function getGenre(id, dateString) {
+    const endpoint = `/playlists/getplaylistbyprogramid?id=${id}${dateString}&format=json`
     const response = await getJson(endpoint)
     if (response === null) {
       console.log('No result')
@@ -30,20 +30,13 @@ async function getGenre(id, startDate, endDate) {
     return response.song
   }
 
-  async function getQuizQuestions(id, startDate, endDate) {
-    
-    let response = await getGenre(id, startDate, endDate)
+  async function getQuizQuestions(id, dateString) {
+
+    let response = await getGenre(id, dateString)
     const quizList = removeDuplicates(response)
-    
-    return getFour(quizList)
-  }
-  
-  function getFour(quizList) {
-    
-    const random = quizList.sort(() => 0.5 - Math.random())
-    quizList = random.slice(0, 4)
     
     return quizList
   }
 
-  export { getQuizQuestions, getFour }
+
+  export { getQuizQuestions }

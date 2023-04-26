@@ -18,6 +18,7 @@ function countOccurances(songs) {
 
 async function getAllSongsFromYear(id, year) {
     const today = new Date()
+
     const yesterday = new Date(today)
     yesterday.setDate(today.getDate() - 1)
 
@@ -26,6 +27,7 @@ async function getAllSongsFromYear(id, year) {
 
     const fromDateString = fromDate.toISOString().slice(0, 10)
     const toDateString = toDate.toISOString().slice(0, 10)
+
 
     return await getJson(`/playlists/getplaylistbychannelid?id=${id}&startdatetime=${fromDateString}&enddatetime=${toDateString}&format=json&size=600`)
 }

@@ -4,13 +4,14 @@ function generateUrl(genre, date) {
 
 function generateTimespan(months) {
     const today = new Date()
-    const todayString = today.toISOString().slice(0, 10)
-
+    const yesterday = new Date(today)
+    yesterday.setDate(today.getDate() - 1)
+    const todayString = new Date(yesterday).toISOString().slice(0, 10)
     const startMonth = new Date(today)
     const startMonthSubtract = startMonth.setMonth(startMonth.getMonth() - months)
     const startString = new Date(startMonthSubtract).toISOString().slice(0, 10)
 
-    return `&startdatetime=${startString}&enddatetime${todayString}`
+    return `&startdatetime=${startString}&enddatetime=${todayString}`
 }
 
 function subtractYears(years) {
@@ -21,4 +22,14 @@ function subtractYears(years) {
     return resultYear
 }
 
-export { generateUrl, generateTimespan, subtractYears }
+
+  
+  function getFour(quizList) {
+    
+    const random = quizList.sort(() => 0.5 - Math.random())
+    quizList = random.slice(0, 4)
+    
+    return quizList
+  }
+
+export { generateUrl, generateTimespan, subtractYears, getFour}

@@ -1,62 +1,120 @@
+
 <template>
     <div>
-        <h1>{{ category }}</h1>
+        <h1>{{ genre }}</h1>
         <div class="songs">
             <div v-if="loading">Loading...</div>
             <div v-if="!loading">
-                <div v-for="song in songs" :key="song">
-                    <p>{{ "Artist: " + song.artist + " " + "Title: " + song.title }}</p>
+                <div class="question-container">
+                    <div v-for="question of question" :key="question.title">
+                        {{ question.title }}
+                    </div>
                 </div>
+
+                <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
+                    @click="isClicked(song.artist)">
+                    <div class="options-container">
+                        <p>{{ song.artist }}</p>
+                    </div>
+                </div>
+
             </div>
         </div>
+
     </div>
 </template>
   
 <script>
-import { getQuizQuestions } from '../data/getQuiz';
+//Denna sida kan nog brytas ut i mindre kompinenter egentligen, kolla på det
+import { getQuizQuestions } from '../data/getQuiz.js'
+import { generateTimespan, getFour } from '../utils/misc.js'
+
+import categories from '../data/categories.json'
+
 export default {
-    name: "QuizView",
+    name: 'QuizView',
 
     data() {
         return {
             songs: [],
-            startDate: "2022-09-23",
-            endDate: "2023-03-23",
             loading: true,
-            category: null,
+            genre: null,
+            alternatives: [],
+            question: [],
+            category: [],
+            today: null
         }
     },
+
     methods: {
-        async getSongs(id) {
-            this.loading = true // onödig?
+
+        async getAllSongs(id, dateString) {
             try {
-                this.songs = await getQuizQuestions(id, this.startDate, this.endDate);
-
+                this.songs = await getQuizQuestions(id, dateString)
+            } catch (err) {
+                console.log('error')
             }
-            catch (err) {
-                console.log("error");
-            }
-            
             this.loading = false
+            this.displayQuestions(this.songs)
         },
-    },
-    async mounted() {
-        this.category = this.$route.query.genre
-        this.getSongs(this.$route.params.id)
 
+        async displayQuestions(songs) {
+            this.alternatives = await getFour(songs)
+            this.question.unshift(this.alternatives[0])
+            this.alternatives.sort(() => 0.5 - Math.random())
+        },
+
+        //compare player choice and correct answer to see if it's a match
+        //When an alternative is clicked, generate four new songs from the songlist
+
+        isClicked(song) {
+            console.log('Right Answer: ' + this.question[0].artist)
+            console.log('Player Choice: ' + song)
+            if (song === this.question[0].artist) {
+                console.log('YES')
+            }
+            if (this.question.length === 1) {
+                this.question.pop()
+            }
+            this.displayQuestions(this.songs)
+        }
     },
+    //We get the name of the genre through our route (we send it as a query from CategoryView)
+    // Find the matching object from the categories import (which is a json-file)
+    //From the json file we get: id, genre (name), timspan (months) We generate a timespan string with generateTimeSpan
+    //which gives us an url that sets enddate to yesterday and startdate x months back
+    //This is an issue though if we want to get data from specific dates or for example "sommarplågor" 
+    //Call method getSong to gett all Song from that genre and timeperiod
+    async mounted() {
+
+        this.genre = this.$route.query.genre
+        this.category = categories.find(el => el.genre === this.genre)
+
+        const dateString = generateTimespan(this.category.timespan)
+        this.getAllSongs(this.category.id, dateString)
+    }
 }
 </script>
   
-<style >
+<style>
 .songs {
     display: flex;
-    background: white;
+}
+
+.question-container,
+.options-container {
+    padding: 1rem;
+    font-size: 1.5rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    background: lightblue;
     text-transform: none;
-    font-family: Montserrat, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
+
 h1 {
+    color: lightblue;
     text-transform: capitalize;
 }
 </style>

@@ -3,6 +3,7 @@ import { getTopFiveFromYear } from "../toplists/topfive.js"
 import { subtractYears } from "../utils/misc.js"
 
 export default {
+
     data() {
         return {
             tenYearsAgo: [],

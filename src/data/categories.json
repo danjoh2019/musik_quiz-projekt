@@ -1,0 +1,80 @@
+[
+    {
+      "id": 2697,
+      "genre": "pop",
+      "startDate": "2022-09-23",
+      "endDate": "2023-03-23"
+    },
+    {
+      "id": 5516,
+      "genre": "country",
+      "startDate": "2022-09-23",
+      "endDate": "2023-03-23"
+    },
+    {
+      "id": 2680,
+      "genre": "soul",
+      "startDate": "2022-09-23",
+      "endDate": "2023-03-23"
+    },
+    {
+      "id": 1603,
+      "genre": "klassiskt",
+      "startDate": "2022-09-23",
+      "endDate": "2023-03-23"
+    },
+    {
+      "id": 3135,
+      "genre": "dansband",
+      "startDate": "2022-09-23",
+      "endDate": "2023-03-23"
+    },
+    {
+      "id": 4433,
+      "genre": "visor",
+      "startDate": "2022-09-23",
+      "endDate": "2023-03-23"
+    },
+    {
+      "id": 4961,
+      "genre": "old classics",
+      "startDate": "2022-09-23",
+      "endDate": "2023-03-23"
+    },
+    {
+      "id": 4432,
+      "genre": "elektroniskt",
+      "startDate": "2022-11-01",
+      "endDate": "2023-03-23"
+    },
+    {
+      "id": 4431,
+      "genre": "jazz",
+      "startDate": "2022-11-01",
+      "endDate": "2023-01-01"
+    },
+    {
+      "id": 4433,
+      "genre": "folk music",
+      "startDate": "2022-11-01",
+      "endDate": "2023-01-01"
+    },
+    {
+      "id": 2576,
+      "genre": "hiphop",
+      "startDate": "2019-01-01",
+      "endDate": "2023-01-21"
+    },
+    {
+      "id": 3260,
+      "genre": "60s/70s",
+      "startDate": "2022-01-01",
+      "endDate": "2022-12-31"
+    },
+    {
+      "id": 5089,
+      "genre": "rock",
+      "startDate": "2017-01-01",
+      "endDate": "2022-12-31"
+    }
+  ]

@@ -27,26 +27,23 @@ async function getGenre(id, startDate, endDate) {
     if (response === null) {
       console.log('No result')
     }
-    return removeDuplicates(response.song)
+    return response.song
+  }
+
+  async function getQuizQuestions(id, startDate, endDate) {
+    
+    let response = await getGenre(id, startDate, endDate)
+    const quizList = removeDuplicates(response)
+    
+    return getFour(quizList)
+  }
+  
+  function getFour(quizList) {
+    
+    const random = quizList.sort(() => 0.5 - Math.random())
+    quizList = random.slice(0, 4)
+    
+    return quizList
   }
 
   export { getQuizQuestions, getFour }
-
-
-
-async function getQuizQuestions(id, startDate, endDate) {
-
-  let quizList = await getGenre(id, startDate, endDate)
-  /* console.log(this.genre) */
-  
-  return getFour(quizList)
-
-}
-
-function getFour(quizList) {
-
-  const random = quizList.sort(() => 0.5 - Math.random())
-  quizList = random.slice(0, 4)
-
-  return quizList
-}

@@ -13,7 +13,7 @@ import TopLists from '../components/TopLists.vue';
     
           <div class="content">
            
-            <TopLists></TopLists>
+            <TopLists />
     
           </div>
           <div class="footer">

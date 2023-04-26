@@ -2,13 +2,13 @@
     <div>
         <h1>{{ category }}</h1>
         <div class="songs">
-            <div v-if="this.songs != null">
+            <div v-if="loading">Loading...</div>
+            <div v-if="!loading">
                 <div v-for="song in songs" :key="song">
                     <p>{{ "Artist: " + song.artist + " " + "Title: " + song.title }}</p>
                 </div>
             </div>
         </div>
-        <div v-if="loading">Loading...</div>
     </div>
 </template>
   
@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         async getSongs(id) {
-            this.loading = true
+            this.loading = true // onödig?
             try {
                 this.songs = await getQuizQuestions(id, this.startDate, this.endDate);
 

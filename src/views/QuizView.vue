@@ -17,7 +17,13 @@
                         <p>{{ song.artist }}</p>
                     </div>
                 </div>
-
+                <div id="guesses">
+                    {{ correct }} / {{ total }}
+                </div>
+            </div>
+            <div v-if="finished" id="result">
+                Wohoo! You got:
+                {{ correct }} songs right
             </div>
         </div>
 
@@ -42,7 +48,10 @@ export default {
             alternatives: [],
             question: [],
             category: [],
-            today: null
+            today: null,
+            correct: 0,
+            total: 0,
+            finished: false
         }
     },
 
@@ -72,11 +81,20 @@ export default {
             console.log('Player Choice: ' + song)
             if (song === this.question[0].artist) {
                 console.log('YES')
+                this.correct++
             }
+
             if (this.question.length === 1) {
                 this.question.pop()
             }
             this.displayQuestions(this.songs)
+
+            this.total++
+
+            if (this.total === 10) {
+                this.loading = true
+                this.finished = true
+            }
         }
     },
     //We get the name of the genre through our route (we send it as a query from CategoryView)
@@ -101,7 +119,17 @@ export default {
     display: flex;
 }
 
-.question-container,
+.question-container {
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem;
+    border-radius: 1rem;
+    background: hotpink;
+    text-transform: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .options-container {
     padding: 1rem;
     font-size: 1.5rem;
@@ -110,11 +138,18 @@ export default {
     background: lightblue;
     text-transform: none;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
 }
 
 h1 {
     color: lightblue;
     text-transform: capitalize;
+}
+
+#guesses {
+    font-size: 2rem;
+}
+
+#result {
+    font-size: 3rem;
 }
 </style>

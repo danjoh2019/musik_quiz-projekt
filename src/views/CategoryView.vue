@@ -41,11 +41,10 @@ export default {
         return {
             selectedCategoryId: 1190,
             selectedCategoryString: 'Genre',
-            songs: [],
+            // songs: [],
             startDate: "2022-09-23",
             endDate: "2023-03-23",
             show: true
-
         }
     },
     methods: {
@@ -55,8 +54,6 @@ export default {
 
             /* this.songs = this.getSongs(id) */
             this.$router.push({ name: 'quiz', params: { id: this.selectedCategoryId }, query: { genre: this.selectedCategoryString } });
-
-
         },
     },
 }

@@ -14,9 +14,7 @@ export default {
             fiveYearsAgo: [],
             today: []
         }
-    },
-
-    
+    },   
    
     async created() {
 

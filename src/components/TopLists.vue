@@ -2,6 +2,10 @@
 import { getTopFiveFromYear } from "../toplists/topfive.js"
 import { subtractYears } from "../utils/misc.js"
 
+const STORAGE_TENYEARS = 'storage-tenYearsAgo';
+const STORAGE_FIVEYEARS = 'storage-fiveYearsAgo';
+const STORAGE_TODAY = 'storage-today';
+
 export default {
 
     data() {
@@ -11,7 +15,17 @@ export default {
             today: []
         }
     },
+
+    
+   
     async created() {
+
+        //getting from local storage
+        //Ändra med or || att data hämtas om den inte finns i local storage
+        //this.tenYearsAgo = JSON.parse(localStorage.getItem(STORAGE_TENYEARS))
+        //this.fiveYearsAgo = JSON.parse(localStorage.getItem(STORAGE_FIVEYEARS))
+        //this.today = JSON.parse(localStorage.getItem(STORAGE_TODAY))
+
         // Denna if-sats fungerar inte. Sparas inte data i arrayerna när vi byter vy?
         // Eller är den felskriven?
         // Funkar det att spara arrayerna i sessionstorage?
@@ -23,6 +37,11 @@ export default {
             this.tenYearsAgo = values[0]
             this.fiveYearsAgo = values[1]
             this.today = values[2]
+
+            //setting to local storage
+            localStorage.setItem(STORAGE_TENYEARS, JSON.stringify(this.tenYearsAgo));
+            localStorage.setItem(STORAGE_FIVEYEARS, JSON.stringify(this.fiveYearsAgo));
+            localStorage.setItem(STORAGE_TODAY, JSON.stringify(this.today));
         }
     }
 }

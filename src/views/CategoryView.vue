@@ -34,6 +34,10 @@ function selectCategory(id, categoryString) {
     color: white;
 }
 
+.background {
+    align-items: center;
+}
+
 .container-category-buttons,
 .content-category {
     display: flex;
@@ -47,7 +51,7 @@ function selectCategory(id, categoryString) {
     flex-basis: auto;
     max-width: 100%;
     width: 10rem;
-    height: 10rem;
+    height: 6rem;
     padding: 3rem;
     /* border-radius: 1rem; */
     border-radius: 20% / 20%;
@@ -68,8 +72,36 @@ button {
     align-items: center;
 }
 
-
-.categoryButton:hover {
+.category-button:hover {
     background-color:grey;
     color: white;
-}</style>
+}
+
+@media screen and (min-width: 560px) {
+
+    .container-category-buttons,
+    .content-category {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    .category-button {
+        width: 14rem;
+        height: 10rem;
+    }
+}
+
+@media screen and (min-width: 750px) {
+
+.container-category-buttons,
+.content-category {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.category-button {
+    width: 14rem; 
+}
+}
+
+</style>

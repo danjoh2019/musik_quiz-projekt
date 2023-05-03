@@ -46,8 +46,8 @@ export default {
 </script>
 
 <template>
+    Mest spelade låtarna i dag...
     <div class="historyfive">
-        Mest spelade låtarna i dag...
         <ul><span>För tio år sedan:</span>
             <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
         </ul>
@@ -62,13 +62,15 @@ export default {
 
 <style scoped>
 .historyfive {
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     justify-content: center;
-    gap: 2rem
+    gap: 1rem;
+    margin: 1rem;
 }
 
-.historyfive span {
+.historyfive ul span {
     font-weight: bold;
     color: blueviolet;
 }
@@ -78,5 +80,16 @@ export default {
     list-style-type: none;
     margin: 0;
     padding: .2rem;
+}
+
+@media screen and (min-width: 888px) {
+  .historyfive {
+    width: 40rem;
+    margin: 2rem;
+  }
+
+  .historyfive ul {
+    padding: .5rem;
+  }
 }
 </style>

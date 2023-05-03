@@ -5,7 +5,7 @@ function countOccurances(songs) {
 
     for (const array of songs) {
         for (const song of array.song) {
-            const key = `${song.title} by ${song.artist}`;
+            const key = `${song.title} - ${song.artist}`;
             if (songCount[key]) {
                 songCount[key]++
             } else {
@@ -28,7 +28,6 @@ async function getAllSongsFromYear(id, year) {
     const fromDateString = fromDate.toISOString().slice(0, 10)
     const toDateString = toDate.toISOString().slice(0, 10)
 
-
     return await getJson(`/playlists/getplaylistbychannelid?id=${id}&startdatetime=${fromDateString}&enddatetime=${toDateString}&format=json&size=600`)
 }
     
@@ -43,7 +42,6 @@ async function getTopFiveFromYear(year) {
     const result = countOccurances(allSongs)
 
     return getTopSongs(result)
-    // console.log(getTopSongs(result))
 }
 
 function getTopSongs(input) {

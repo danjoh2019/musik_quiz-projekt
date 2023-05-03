@@ -17,14 +17,23 @@
                         <p>{{ song.artist }}</p>
                     </div>
                 </div>
-                <div id="guesses">
-                    {{ correct }} / {{ total }}
+                <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
+                <div id="scorecount">
+                    <p>
+                        {{ guesses[0] }} / {{ guesses[1] }}
+                    </p>
+                    <div id="progress">
+                        <div class="score correct"></div>
+                        <div class="score wrong"></div>
+                        <div class="score total"></div>
+                    </div>
                 </div>
             </div>
             <div v-if="finished" id="result">
                 Wohoo! You got:
-                {{ correct }} songs right
+                {{ correctAnswer }} songs right
             </div>
+            <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
         </div>
 
     </div>
@@ -36,6 +45,21 @@ import { getQuizQuestions } from '../data/getQuiz.js'
 import { generateTimespan, getFour } from '../utils/misc.js'
 
 import categories from '../data/categories.json'
+
+// ---------------- SCORE COUNTER FIRST DRAFT
+
+function updateResults(res) {
+  let results = res
+  let correct = results[0]
+  let wrong = results[1]
+  let total = results[2]
+
+  document.querySelector('.correct').style.width = correct * 10 + '%'
+  document.querySelector('.wrong').style.width = wrong * 10 + '%'
+  document.querySelector('.total').style.width = total * 10 + '%'
+}
+
+// ---------------- SCORE COUNTER FIRST DRAFT
 
 export default {
     name: 'QuizView',
@@ -49,8 +73,10 @@ export default {
             question: [],
             category: [],
             today: null,
-            correct: 0,
-            total: 0,
+            guesses: [0, 0, 10],
+            correctAnswer: 0,
+            wrongAnswer: 0,
+            totalGuesses: 0,
             finished: false
         }
     },
@@ -81,20 +107,26 @@ export default {
             console.log('Player Choice: ' + song)
             if (song === this.question[0].artist) {
                 console.log('YES')
-                this.correct++
+                this.correctAnswer++
+                this.guesses[0]++
             }
+
+            this.guesses[1]++
 
             if (this.question.length === 1) {
                 this.question.pop()
             }
             this.displayQuestions(this.songs)
 
-            this.total++
+            this.totalGuesses++
+            this.guesses[2]--
 
-            if (this.total === 10) {
+            if (this.totalGuesses === 10) {
                 this.loading = true
                 this.finished = true
             }
+
+            updateResults(this.guesses)
         }
     },
     //We get the name of the genre through our route (we send it as a query from CategoryView)
@@ -144,12 +176,56 @@ h1 {
     color: lightblue;
     text-transform: capitalize;
 }
-
-#guesses {
-    font-size: 2rem;
-}
+/* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
 
 #result {
     font-size: 3rem;
 }
+
+#scorecount {
+    width: 45rem;
+    border: .015rem solid black;
+    border-radius: .5rem;
+    padding: .2rem;
+}
+
+#scorecount p {
+    font-size: larger;
+    text-align: center;
+}
+
+#progress {
+    width: 25rem;
+    border: .2rem solid black;
+    border-radius: .5rem;
+    display: flex;
+    flex-flow: row no-wrap;
+}
+
+.score {
+    height: 100%;
+    width: 33%;
+    padding: 20px;
+    color: white;
+    border-right: 1px white solid;
+    transition: 1s width;
+}
+.correct {
+    border-radius: .2rem;
+    background-color: rgb(19, 209, 19);
+}
+.wrong {
+    border-radius: .2rem;
+    background-color: rgb(253, 51, 51);
+}
+.total {
+    border-radius: .2rem;
+    background-color: #ffffff;
+    opacity: 0.8;
+    background-image:  linear-gradient(135deg, #dedee3 25%, transparent 25%), linear-gradient(225deg, #dedee3 25%, transparent 25%), linear-gradient(45deg, #dedee3 25%, transparent 25%), linear-gradient(315deg, #dedee3 25%, #ffffff 25%);
+    background-position:  7px 0, 7px 0, 0 0, 0 0;
+    background-size: 7px 7px;
+    background-repeat: repeat;
+}
+/* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
 </style>

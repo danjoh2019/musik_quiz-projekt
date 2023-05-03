@@ -48,7 +48,7 @@ function selectCategory(id, categoryString) {
     max-width: 100%;
     width: 10rem;
     height: 10rem;
-    padding: 3rem;
+    padding: 1rem;
     /* border-radius: 1rem; */
     border-radius: 20% / 20%;
     margin: 0.5rem;
@@ -56,10 +56,11 @@ function selectCategory(id, categoryString) {
     background-color: lightblue;
     font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: white;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     letter-spacing: 0.3rem;
     text-transform: uppercase;
     cursor: pointer; 
+    word-break: break-all;
 }
 
 button {

@@ -31,7 +31,7 @@
 </template>
   
 <script>
-//Denna sida kan nog brytas ut i mindre kompinenter egentligen, kolla på det
+
 import { getQuizQuestions } from '../data/getQuiz.js'
 import { generateTimespan, getFour } from '../utils/misc.js'
 
@@ -65,18 +65,32 @@ export default {
             }
             this.loading = false
             this.displayQuestions(this.songs)
+            console.log(this.songs.length)
         },
 
-        async displayQuestions(songs) {
-            this.alternatives = await getFour(songs)
+        displayQuestions(songs) {
+            this.alternatives = getFour(songs)
+
             this.question.unshift(this.alternatives[0])
             this.alternatives.sort(() => 0.5 - Math.random())
         },
 
-        //compare player choice and correct answer to see if it's a match
-        //When an alternative is clicked, generate four new songs from the songlist
-
+        /**
+         * Documentation isClicked(song)
+         * Remove already displayed questions and alternatives
+         * compare player choice and correct answer to see if it's a match
+         * When an alternative is clicked, generatw four new song fromsonglist
+         * */
         isClicked(song) {
+
+            this.songs.forEach((song) => {
+                for (const element of this.alternatives) {
+                    if (song.title === element.title) {
+                        this.songs.splice(0, 4);
+                    }
+                }
+            })
+            //Remove console.log when done with displaying score
             console.log('Right Answer: ' + this.question[0].artist)
             console.log('Player Choice: ' + song)
             if (song === this.question[0].artist) {
@@ -97,14 +111,16 @@ export default {
             }
         }
     },
-    //We get the name of the genre through our route (we send it as a query from CategoryView)
-    // Find the matching object from the categories import (which is a json-file)
-    //From the json file we get: id, genre (name), timspan (months) We generate a timespan string with generateTimeSpan
-    //which gives us an url that sets enddate to yesterday and startdate x months back
-    //This is an issue though if we want to get data from specific dates or for example "sommarplågor" 
-    //Call method getSong to gett all Song from that genre and timeperiod
-    async mounted() {
 
+    /**
+     * We get the name of the genre through our route (we send it as a query from CategoryView)
+     * Find the matching object from the categories import (which is a json-file)
+     * From the json file we get: id, genre (name), timspan (months) We generate a timespan string with generateTimeSpan
+     * which gives us a url that sets enddate to yesterday and startdate x months back
+     * Call method getSong to gett all Song from that genre and timeperiod
+     * */
+
+    mounted() {
         this.genre = this.$route.query.genre
         this.category = categories.find(el => el.genre === this.genre)
 

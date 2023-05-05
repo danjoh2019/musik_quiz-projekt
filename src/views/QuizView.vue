@@ -91,6 +91,7 @@ export default {
             }
             this.loading = false
             this.displayQuestions(this.songs)
+            console.log(this.songs.length)
         },
 
         async displayQuestions(songs) {

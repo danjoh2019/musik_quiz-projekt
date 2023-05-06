@@ -19,14 +19,10 @@ export default {
     async created() {
 
         //getting from local storage
-        //Ändra med or || att data hämtas om den inte finns i local storage
-        //this.tenYearsAgo = JSON.parse(localStorage.getItem(STORAGE_TENYEARS))
-        //this.fiveYearsAgo = JSON.parse(localStorage.getItem(STORAGE_FIVEYEARS))
-        //this.today = JSON.parse(localStorage.getItem(STORAGE_TODAY))
-
-        // Denna if-sats fungerar inte. Sparas inte data i arrayerna när vi byter vy?
-        // Eller är den felskriven?
-        // Funkar det att spara arrayerna i sessionstorage?
+        this.tenYearsAgo = JSON.parse(localStorage.getItem(STORAGE_TENYEARS) ?? JSON.stringify(this.tenYearsAgo))
+        this.fiveYearsAgo = JSON.parse(localStorage.getItem(STORAGE_FIVEYEARS) ?? JSON.stringify(this.fiveYearsAgo))
+        this.today = JSON.parse(localStorage.getItem(STORAGE_TODAY) ?? JSON.stringify(this.today))
+        
         if (!this.tenYearsAgo.length > 0 && !this.fiveYearsAgo.length > 0 && !this.today.length > 0) {
         
             const data = [getTopFiveFromYear(subtractYears(10)),  getTopFiveFromYear(subtractYears(5)), getTopFiveFromYear(subtractYears(0))]

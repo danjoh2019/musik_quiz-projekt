@@ -18,10 +18,10 @@ export default {
    
     async created() {
 
-        //getting from local storage
-        this.tenYearsAgo = JSON.parse(localStorage.getItem(STORAGE_TENYEARS) ?? JSON.stringify(this.tenYearsAgo))
-        this.fiveYearsAgo = JSON.parse(localStorage.getItem(STORAGE_FIVEYEARS) ?? JSON.stringify(this.fiveYearsAgo))
-        this.today = JSON.parse(localStorage.getItem(STORAGE_TODAY) ?? JSON.stringify(this.today))
+        //getting from sessionStorage
+        this.tenYearsAgo = JSON.parse(sessionStorage.getItem(STORAGE_TENYEARS) ?? JSON.stringify(this.tenYearsAgo))
+        this.fiveYearsAgo = JSON.parse(sessionStorage.getItem(STORAGE_FIVEYEARS) ?? JSON.stringify(this.fiveYearsAgo))
+        this.today = JSON.parse(sessionStorage.getItem(STORAGE_TODAY) ?? JSON.stringify(this.today))
         
         if (!this.tenYearsAgo.length > 0 && !this.fiveYearsAgo.length > 0 && !this.today.length > 0) {
         
@@ -32,10 +32,10 @@ export default {
             this.fiveYearsAgo = values[1]
             this.today = values[2]
 
-            //setting to local storage
-            localStorage.setItem(STORAGE_TENYEARS, JSON.stringify(this.tenYearsAgo));
-            localStorage.setItem(STORAGE_FIVEYEARS, JSON.stringify(this.fiveYearsAgo));
-            localStorage.setItem(STORAGE_TODAY, JSON.stringify(this.today));
+            //setting to sessionStorage
+            sessionStorage.setItem(STORAGE_TENYEARS, JSON.stringify(this.tenYearsAgo));
+            sessionStorage.setItem(STORAGE_FIVEYEARS, JSON.stringify(this.fiveYearsAgo));
+            sessionStorage.setItem(STORAGE_TODAY, JSON.stringify(this.today));
         }
     }
 }

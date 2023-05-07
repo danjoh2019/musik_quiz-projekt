@@ -109,6 +109,14 @@ export default {
          * */
         isClicked(song) {
 
+            const optionsContainer = document.querySelector('.options-container');
+
+            if (optionsContainer && optionsContainer.classList.contains("options-container")) {
+                console.log(optionsContainer)
+            } else {
+                 console.log("Something went wrong")
+            }
+
             this.songs.forEach((song) => {
                 for (const element of this.alternatives) {
                     if (song.title === element.title) {
@@ -122,26 +130,38 @@ export default {
             if (song === this.question[0].artist) {
                 console.log('YES')
                 this.correctAnswer++
-                this.guesses[0]++
-            }
+                this.guesses[0]++   
 
-            this.guesses[1]++
+                optionsContainer.classList.replace('options-container' ,'correct-container')
+
+                
+            } else{
+                optionsContainer.classList.replace('options-container' ,'incorrect-container')
+                this.guesses[1]++
+            }
 
             if (this.question.length === 1) {
-                this.question.pop()
-            }
-            this.displayQuestions(this.songs)
+                 this.question.pop();
+                }
 
-            this.totalGuesses++
-            this.guesses[2]--
+            setTimeout(function () {
+                optionsContainer.classList.remove('correct-container', 'incorrect-container');
+                optionsContainer.classList.add('options-container');
 
-            if (this.totalGuesses === 10) {
-                this.loading = true
-                this.finished = true
-            }
+                this.displayQuestions(this.songs);
+            }.bind(this), 300);
 
-            updateResults(this.guesses)
+            this.totalGuesses++;
+            this.guesses[2]--;
+
+        if (this.totalGuesses === 10) {
+         this.loading = true;
+            this.finished = true;
         }
+
+        updateResults(this.guesses);
+    }
+    
     },
 
     /**
@@ -158,6 +178,8 @@ export default {
 
         const dateString = generateTimespan(this.category.timespan)
         this.getAllSongs(this.category.id, dateString)
+
+        document.activeElement.blur()
     }
 }
 </script>
@@ -186,6 +208,30 @@ export default {
     background: lightblue;
     text-transform: none;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.correct-container {
+    background:green;
+    padding: 1rem;
+    font-size: 1.5rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    text-transform: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.incorrect-container {
+    background:red;
+    padding: 1rem;
+    font-size: 1.5rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    text-transform: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.options-container:hover{
+    background:blue;
 }
 
 h1 {

@@ -207,7 +207,7 @@ export default {
 }
 
 .correct-container {
-    background: green;
+    background: rgb(60, 209, 60);
     padding: 1rem;
     font-size: 1.5rem;
     margin: 1rem;
@@ -217,7 +217,7 @@ export default {
 }
 
 .incorrect-container {
-    background: red;
+    background: rgb(214, 54, 54);
     padding: 1rem;
     font-size: 1.5rem;
     margin: 1rem;

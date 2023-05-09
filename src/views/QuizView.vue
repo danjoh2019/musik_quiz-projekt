@@ -151,7 +151,7 @@ export default {
                 optionsContainer.classList.add('options-container');
 
                 this.displayQuestions(this.songs);
-            }.bind(this), 300);
+            }.bind(this), 400);
 
             this.totalGuesses++;
             this.guesses[2]--;

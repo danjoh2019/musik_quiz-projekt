@@ -49,14 +49,14 @@ import categories from '../data/categories.json'
 // ---------------- SCORE COUNTER FIRST DRAFT
 
 function updateResults(res) {
-  let results = res
-  let correct = results[0]
-  let wrong = results[1]
-  let total = results[2]
+    let results = res
+    let correct = results[0]
+    let wrong = results[1]
+    let total = results[2]
 
-  document.querySelector('.correct').style.width = correct * 10 + '%'
-  document.querySelector('.wrong').style.width = wrong * 10 + '%'
-  document.querySelector('.total').style.width = total * 10 + '%'
+    document.querySelector('.correct').style.width = correct * 10 + '%'
+    document.querySelector('.wrong').style.width = wrong * 10 + '%'
+    document.querySelector('.total').style.width = total * 10 + '%'
 }
 
 // ---------------- SCORE COUNTER FIRST DRAFT
@@ -111,7 +111,7 @@ export default {
 
             const optionsContainer = event.target.closest('.options-container');
 
-            
+
 
             this.songs.forEach((song) => {
                 for (const element of this.alternatives) {
@@ -126,19 +126,19 @@ export default {
             if (song === this.question[0].artist) {
                 console.log('YES')
                 this.correctAnswer++
-                this.guesses[0]++   
+                this.guesses[0]++
 
-                optionsContainer.classList.replace('options-container' ,'correct-container')
+                optionsContainer.classList.replace('options-container', 'correct-container')
 
-                
-            } else{
-                optionsContainer.classList.replace('options-container' ,'incorrect-container')
+
+            } else {
+                optionsContainer.classList.replace('options-container', 'incorrect-container')
                 this.guesses[1]++
             }
 
             if (this.question.length === 1) {
-                 this.question.pop();
-                }
+                this.question.pop();
+            }
 
             setTimeout(function () {
                 optionsContainer.classList.remove('correct-container', 'incorrect-container');
@@ -150,14 +150,14 @@ export default {
             this.totalGuesses++;
             this.guesses[2]--;
 
-        if (this.totalGuesses === 10) {
-         this.loading = true;
-            this.finished = true;
+            if (this.totalGuesses === 10) {
+                this.loading = true;
+                this.finished = true;
+            }
+
+            updateResults(this.guesses);
         }
 
-        updateResults(this.guesses);
-    }
-    
     },
 
     /**
@@ -207,7 +207,7 @@ export default {
 }
 
 .correct-container {
-    background:green;
+    background: green;
     padding: 1rem;
     font-size: 1.5rem;
     margin: 1rem;
@@ -217,7 +217,7 @@ export default {
 }
 
 .incorrect-container {
-    background:red;
+    background: red;
     padding: 1rem;
     font-size: 1.5rem;
     margin: 1rem;
@@ -226,14 +226,15 @@ export default {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.options-container:hover{
-    background:blue;
+.options-container:hover {
+    background: rgb(86, 172, 200);
 }
 
 h1 {
     color: lightblue;
     text-transform: capitalize;
 }
+
 /* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
 
 #result {
@@ -268,22 +269,25 @@ h1 {
     border-right: 1px white solid;
     transition: 1s width;
 }
+
 .correct {
     border-radius: .2rem;
     background-color: rgb(19, 209, 19);
 }
+
 .wrong {
     border-radius: .2rem;
     background-color: rgb(253, 51, 51);
 }
+
 .total {
     border-radius: .2rem;
     background-color: #ffffff;
     opacity: 0.8;
-    background-image:  linear-gradient(135deg, #dedee3 25%, transparent 25%), linear-gradient(225deg, #dedee3 25%, transparent 25%), linear-gradient(45deg, #dedee3 25%, transparent 25%), linear-gradient(315deg, #dedee3 25%, #ffffff 25%);
-    background-position:  7px 0, 7px 0, 0 0, 0 0;
+    background-image: linear-gradient(135deg, #dedee3 25%, transparent 25%), linear-gradient(225deg, #dedee3 25%, transparent 25%), linear-gradient(45deg, #dedee3 25%, transparent 25%), linear-gradient(315deg, #dedee3 25%, #ffffff 25%);
+    background-position: 7px 0, 7px 0, 0 0, 0 0;
     background-size: 7px 7px;
     background-repeat: repeat;
 }
-/* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
-</style>
+
+/* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */</style>

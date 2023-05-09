@@ -1,6 +1,6 @@
 
 <template>
-    <div>
+    <div class="quiz-container">
         <h1>{{ genre }}</h1>
         <div class="songs">
             <div v-if="loading">Loading...</div>
@@ -10,13 +10,15 @@
                         {{ question.title }}
                     </div>
                 </div>
-
+                
+                <div class="options">
                 <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
                     @click="isClicked(song.artist, $event)">
                     <div class="options-container">
                         <p>{{ song.artist }}</p>
                     </div>
                 </div>
+            </div>
                 <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
                 <div id="scorecount">
                     <p>
@@ -183,6 +185,13 @@ export default {
 <style>
 .songs {
     display: flex;
+    width:fit-content;
+}
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .question-container {
@@ -242,7 +251,7 @@ h1 {
 }
 
 #scorecount {
-    width: 45rem;
+    width: 27rem;
     border: .015rem solid black;
     border-radius: .5rem;
     padding: .2rem;
@@ -251,6 +260,7 @@ h1 {
 #scorecount p {
     font-size: larger;
     text-align: center;
+    align-items: center;
 }
 
 #progress {
@@ -289,5 +299,15 @@ h1 {
     background-size: 7px 7px;
     background-repeat: repeat;
 }
+/* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
 
-/* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */</style>
+@media screen and (min-width: 800px) {
+    .options {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        
+    }
+}
+</style>
+

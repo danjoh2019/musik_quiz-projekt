@@ -217,7 +217,7 @@ export default {
 }
 
 .incorrect-container {
-    background: rgb(214, 54, 54);
+    background: rgb(206, 34, 34);
     padding: 1rem;
     font-size: 1.5rem;
     margin: 1rem;

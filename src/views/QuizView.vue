@@ -12,7 +12,7 @@
                 </div>
 
                 <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
-                    @click="isClicked(song.artist)">
+                    @click="isClicked(song.artist, $event)">
                     <div class="options-container">
                         <p>{{ song.artist }}</p>
                     </div>
@@ -107,15 +107,11 @@ export default {
          * compare player choice and correct answer to see if it's a match
          * When an alternative is clicked, generatw four new song fromsonglist
          * */
-        isClicked(song) {
+        isClicked(song, event) {
 
-            const optionsContainer = document.querySelector('.options-container');
+            const optionsContainer = event.target.closest('.options-container');
 
-            if (optionsContainer && optionsContainer.classList.contains("options-container")) {
-                console.log(optionsContainer)
-            } else {
-                 console.log("Something went wrong")
-            }
+            
 
             this.songs.forEach((song) => {
                 for (const element of this.alternatives) {

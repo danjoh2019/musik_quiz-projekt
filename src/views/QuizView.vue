@@ -48,6 +48,7 @@ import { generateTimespan, getFour } from '../utils/misc.js'
 
 import categories from '../data/categories.json'
 
+
 // ---------------- SCORE COUNTER FIRST DRAFT
 
 function updateResults(res) {
@@ -108,8 +109,9 @@ export default {
          * Remove already displayed questions and alternatives
          * compare player choice and correct answer to see if it's a match
          * When an alternative is clicked, generatw four new song fromsonglist
+         * @param artist the artist linked to the option that is clicked
          * */
-        isClicked(song, event) {
+        isClicked(artist, event) {
 
             const optionsContainer = event.target.closest('.options-container');
 
@@ -124,12 +126,11 @@ export default {
             })
             //Remove console.log when done with displaying score
             console.log('Right Answer: ' + this.question[0].artist)
-            console.log('Player Choice: ' + song)
-            if (song === this.question[0].artist) {
+            console.log('Player Choice: ' + artist)
+            if (artist === this.question[0].artist) {
                 console.log('YES')
                 this.correctAnswer++
                 this.guesses[0]++
-
                 optionsContainer.classList.replace('options-container', 'correct-container')
 
 
@@ -145,7 +146,6 @@ export default {
             setTimeout(function () {
                 optionsContainer.classList.remove('correct-container', 'incorrect-container');
                 optionsContainer.classList.add('options-container');
-
                 this.displayQuestions(this.songs);
             }.bind(this), 400);
 
@@ -177,7 +177,7 @@ export default {
         const dateString = generateTimespan(this.category.timespan)
         this.getAllSongs(this.category.id, dateString)
 
-        document.activeElement.blur()
+        /* document.activeElement.blur() */
     }
 }
 </script>

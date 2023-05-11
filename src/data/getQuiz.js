@@ -16,11 +16,12 @@ function removeDuplicates(songs) {
 
   const set = array.filter(
     (value, index, self) =>
-      index === self.findIndex((t) => t.title === value.title && t.artist === value.artist || value.artist == "Ej Angiven" || value.artist == "Various Artists")
+      index === self.findIndex((t) => t.title === value.title && t.artist === value.artist 
+      || value.artist === "Ej Angiven" || value.artist === "Various Artists" || value.title === "original sound")
   )
   //Test for checking if a list contains "Various Artists" remove later
   const findNotFound = set.find((value) =>
-    (value.artist === "Various Artists"))
+    (value.title === "unknown"))
 
   console.log(findNotFound)
   return set

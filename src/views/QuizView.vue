@@ -10,23 +10,23 @@
                         {{ question.title }}
                     </div>
                 </div>
-                
+
                 <div class="options">
-                <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
-                    @click="isClicked(song.artist, $event)">
-                    <div class="options-container">
-                        <p>{{ song.artist }}</p>
+                    <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
+                        @click="isClicked(song.artist, $event)">
+                        <div class="options-container">
+                            <p>{{ song.artist }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
                 <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
                 <div id="scorecount">
                     <p>
-                        {{ guesses[0] }} / {{ guesses[1] }}
+                        {{ totalGuesses }} / 10
                     </p>
                     <div id="progress">
-                        <div class="score correct"></div>
-                        <div class="score wrong"></div>
+                        <div class="score correct"> {{ guesses[0] }}</div>
+                        <div class="score wrong">{{ guesses[1] }} </div>
                         <div class="score total"></div>
                     </div>
                 </div>
@@ -53,12 +53,24 @@ import categories from '../data/categories.json'
 
 function updateResults(res) {
     let results = res
+    console.log(res)
     let correct = results[0]
+    console.log(correct)
     let wrong = results[1]
+    console.log(wrong)
     let total = results[2]
+    if (correct >= 1) {
+        document.querySelector('.correct').style.display = "block"
+        document.querySelector('.correct').style.width = correct * 10 + '%'
 
-    document.querySelector('.correct').style.width = correct * 10 + '%'
-    document.querySelector('.wrong').style.width = wrong * 10 + '%'
+    } 
+    if (wrong >= 1) {
+        document.querySelector('.wrong').style.display = "block"
+        document.querySelector('.wrong').style.width = wrong * 10 + '%'
+    }
+
+
+
     document.querySelector('.total').style.width = total * 10 + '%'
 }
 
@@ -173,7 +185,6 @@ export default {
     mounted() {
         this.genre = this.$route.query.genre
         this.category = categories.find(el => el.genre === this.genre)
-
         const dateString = generateTimespan(this.category.timespan)
         this.getAllSongs(this.category.id, dateString)
 
@@ -185,7 +196,7 @@ export default {
 <style>
 .songs {
     display: flex;
-    width:fit-content;
+    width: fit-content;
 }
 
 .quiz-container {
@@ -271,6 +282,7 @@ h1 {
     flex-flow: row no-wrap;
 }
 
+
 .score {
     height: 100%;
     width: 33%;
@@ -281,11 +293,13 @@ h1 {
 }
 
 .correct {
+    display: none;
     border-radius: .2rem;
     background-color: rgb(19, 209, 19);
 }
 
 .wrong {
+    display: none;
     border-radius: .2rem;
     background-color: rgb(253, 51, 51);
 }
@@ -299,6 +313,7 @@ h1 {
     background-size: 7px 7px;
     background-repeat: repeat;
 }
+
 /* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
 
 @media screen and (min-width: 800px) {
@@ -306,7 +321,7 @@ h1 {
         display: grid;
         grid-template-columns: auto auto;
         grid-template-rows: auto auto;
-        
+
     }
 }
 </style>

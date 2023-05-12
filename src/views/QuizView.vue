@@ -5,20 +5,22 @@
         <div class="songs">
             <div v-if="loading">Loading...</div>
             <div v-if="!loading">
-                <div class="question-container">
-                    <div v-for="question of question" :key="question.title">
-                        {{ question.title }}
-                    </div>
-                </div>
-
-                <div class="options">
-                    <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
-                        @click="isClicked(song.artist, $event)">
-                        <div class="options-container">
-                            <p>{{ song.artist }}</p>
+                <div v-if="!this.showScore">
+                    <div class="question-container">
+                        <div v-for="question of question" :key="question.title">
+                            {{ question.title }}
                         </div>
                     </div>
-                </div>
+
+                    <div class="options">
+                        <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
+                            @click="isClicked(song.artist, $event)">
+                            <div class="options-container">
+                                <p>{{ song.artist }}</p>
+                            </div>
+                        </div>
+                    </div>
+                
                 <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
                 <div id="scorecount">
                     <p>
@@ -31,9 +33,12 @@
                     </div>
                 </div>
             </div>
-            <div v-if="finished" id="result">
-                Wohoo! You got:
-                {{ correctAnswer }} songs right
+            </div>
+            <div v-if="showScore">
+                <div v-if="finished" id="result">
+                    Wohoo! You got:
+                    {{ correctAnswer }} songs right
+                </div>
             </div>
             <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
         </div>
@@ -89,7 +94,8 @@ export default {
             correctAnswer: 0,
             wrongAnswer: 0,
             totalGuesses: 0,
-            finished: false
+            finished: false,
+            showScore: false
         }
     },
 
@@ -114,7 +120,7 @@ export default {
          * Then shuffles alternatives so that correct answer isnät always thr first option
          * @param songs the full list of songs in the choosen category
          * **/
-        
+
         displayQuestions(songs) {
             this.alternatives = getFour(songs)
             this.question.unshift(this.alternatives[0])
@@ -125,7 +131,7 @@ export default {
          * isClicked(artist, event)
          * Remove already displayed questions and alternatives
          * compare player choice and correct answer to see if it's a match
-         * When an alternative is clicked, generatw four new song fromsonglist
+         * When an alternative is clicked, generate four new song from songlist
          * @param artist the artist linked to the option that is clicked
          * */
 
@@ -166,9 +172,9 @@ export default {
             this.guesses[2]--;
 
             if (this.totalGuesses === 10) {
-                this.loading = true;
+                /* this.loading = true;  */
+                this.showScore = true;
                 this.finished = true;
-                this.$router.push("/result")
             }
             updateResults(this.guesses);
         }

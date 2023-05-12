@@ -53,12 +53,10 @@ import categories from '../data/categories.json'
 
 function updateResults(res) {
     let results = res
-    console.log(res)
     let correct = results[0]
-    console.log(correct)
     let wrong = results[1]
-    console.log(wrong)
     let total = results[2]
+
     if (correct >= 1) {
         document.querySelector('.correct').style.display = "block"
         document.querySelector('.correct').style.width = correct * 10 + '%'
@@ -68,8 +66,6 @@ function updateResults(res) {
         document.querySelector('.wrong').style.display = "block"
         document.querySelector('.wrong').style.width = wrong * 10 + '%'
     }
-
-
 
     document.querySelector('.total').style.width = total * 10 + '%'
 }

@@ -61,13 +61,14 @@ function updateResults(res) {
         document.querySelector('.correct').style.display = "block"
         document.querySelector('.correct').style.width = correct * 10 + '%'
 
-    } 
+    }
     if (wrong >= 1) {
         document.querySelector('.wrong').style.display = "block"
         document.querySelector('.wrong').style.width = wrong * 10 + '%'
     }
 
     document.querySelector('.total').style.width = total * 10 + '%'
+
 }
 
 // ---------------- SCORE COUNTER FIRST DRAFT
@@ -122,9 +123,6 @@ export default {
         isClicked(artist, event) {
 
             const optionsContainer = event.target.closest('.options-container');
-
-
-
             this.songs.forEach((song) => {
                 for (const element of this.alternatives) {
                     if (song.title === element.title) {
@@ -132,9 +130,7 @@ export default {
                     }
                 }
             })
-            //Remove console.log when done with displaying score
-            console.log('Right Answer: ' + this.question[0].artist)
-            console.log('Player Choice: ' + artist)
+
             if (artist === this.question[0].artist) {
                 console.log('YES')
                 this.correctAnswer++
@@ -163,8 +159,8 @@ export default {
             if (this.totalGuesses === 10) {
                 this.loading = true;
                 this.finished = true;
+                this.$router.push("/result")
             }
-
             updateResults(this.guesses);
         }
 

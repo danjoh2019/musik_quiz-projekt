@@ -3,6 +3,7 @@ import QuizView from '../views/QuizView.vue'
 import CategoryView from '../views/CategoryView.vue'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
+import ScoreView from '../views/ScoreView.vue'
 
 
 const router = createRouter({
@@ -28,6 +29,11 @@ const router = createRouter({
             path: '/about',
             name: 'about',
             component: AboutView
+        },
+        {
+            path: '/result',
+            name: 'result',
+            component: ScoreView,
         }
     ]
 })

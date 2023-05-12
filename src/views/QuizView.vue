@@ -20,24 +20,23 @@
                             </div>
                         </div>
                     </div>
-                
-                <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
-                <div id="scorecount">
-                    <p>
-                        {{ totalGuesses }} / 10
-                    </p>
-                    <div id="progress">
-                        <div class="score correct"> {{ guesses[0] }}</div>
-                        <div class="score wrong">{{ guesses[1] }} </div>
-                        <div class="score total"></div>
+
+                    <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
+                    <div id="scorecount">
+                        <p>
+                            {{ totalGuesses }} / 10
+                        </p>
+                        <div id="progress">
+                            <div class="score correct"> {{ guesses[0] }}</div>
+                            <div class="score wrong">{{ guesses[1] }} </div>
+                            <div class="score total"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
             <div v-if="showScore">
                 <div v-if="finished" id="result">
-                    Wohoo! You got:
-                    {{ correctAnswer }} songs right
+                    You got {{ correctAnswer }} / 10 songs right!
                 </div>
             </div>
             <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
@@ -200,19 +199,25 @@ export default {
 }
 </script>
   
-<style>
+<style scoped>
+* {
+    border: 1px solid lightpink;
+}
 .songs {
-    display: flex;
-    width: fit-content;
+  /*  display: flex;*/
+  
 }
 
 .quiz-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  /*  display: grid;
+    gap: 1.5rem;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(2fr, 2fr);*/
+    
 }
 
 .question-container {
+    
     padding: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
@@ -324,6 +329,7 @@ h1 {
 /* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
 
 @media screen and (min-width: 800px) {
+
     .options {
         display: grid;
         grid-template-columns: auto auto;

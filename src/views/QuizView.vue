@@ -106,23 +106,32 @@ export default {
             console.log(this.songs.length)
         },
 
+        /**
+         * displayQuestions(songs)
+         * Called when mounted and everytime player clicks on option
+         * Calls method getForur to generate 4 new songs to alternatives list
+         * takes song [0] and adds it to question list (This gives us the song title in the questionbox)
+         * Then shuffles alternatives so that correct answer isnät always thr first option
+         * @param songs the full list of songs in the choosen category
+         * **/
+        
         displayQuestions(songs) {
             this.alternatives = getFour(songs)
-
             this.question.unshift(this.alternatives[0])
             this.alternatives.sort(() => 0.5 - Math.random())
         },
 
         /**
-         * Documentation isClicked(song)
+         * isClicked(artist, event)
          * Remove already displayed questions and alternatives
          * compare player choice and correct answer to see if it's a match
          * When an alternative is clicked, generatw four new song fromsonglist
          * @param artist the artist linked to the option that is clicked
          * */
+
         isClicked(artist, event) {
 
-            const optionsContainer = event.target.closest('.options-container');
+            const optionsContainer = event.target.closest('.options-container')
             this.songs.forEach((song) => {
                 for (const element of this.alternatives) {
                     if (song.title === element.title) {

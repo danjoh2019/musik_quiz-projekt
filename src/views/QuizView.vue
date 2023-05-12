@@ -253,6 +253,7 @@ padding-top: 6rem;
     margin: 1rem;
     border-radius: 1rem;
     text-transform: none;
+    text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -263,6 +264,7 @@ padding-top: 6rem;
     margin: 1rem;
     border-radius: 1rem;
     text-transform: none;
+    text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 

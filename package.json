@@ -20,6 +20,7 @@
     "eslint": "^8.34.0",
     "eslint-plugin-vue": "^9.9.0",
     "jsdom": "^21.1.0",
+    "netlify-cli": "^15.0.2",
     "vite": "^4.1.4",
     "vitest": "^0.29.1"
   }

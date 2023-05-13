@@ -1,0 +1,32 @@
+
+version: 2.1
+orbs:
+  node: circleci/node@4.7
+workflows:
+  test-and-deploy:
+    jobs:
+      - node/test:
+          version: '18.15'
+          pkg-manager: npm
+      - build-and-deploy:
+          requires:
+             - node/test
+          filters:
+            branches:
+              only:
+                - main
+
+jobs:
+  build-and-deploy:
+    executor:
+      name: node/default
+      tag: '18.15'
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Deploy Netlify
+          command: npx netlify deploy --prod --dir=build

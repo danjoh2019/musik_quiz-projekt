@@ -10,8 +10,8 @@ workflows:
       #     pkg-manager: npm
       #     run-command: 'test:unit'
       - build-and-deploy:
-          requires:
-             - node/test
+          # requires:
+          #    - node/test
           filters:
             branches:
               only:

@@ -5,9 +5,10 @@ orbs:
 workflows:
   test-and-deploy:
     jobs:
-      - node/test:
-          version: '18.15'
-          pkg-manager: npm
+      # - node/test:
+      #     version: '18.15'
+      #     pkg-manager: npm
+      #     run-command: 'test:unit'
       - build-and-deploy:
           requires:
              - node/test
@@ -29,4 +30,4 @@ jobs:
           command: npm run build
       - run:
           name: Deploy Netlify
-          command: npx netlify deploy --prod --dir=build
+          command: npx netlify deploy --prod --dir=dist

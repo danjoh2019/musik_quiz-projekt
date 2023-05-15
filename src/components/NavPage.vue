@@ -13,15 +13,27 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
-body {
-  color: white;
-  
-}
-.nav {
+.nav,
+.nav:link  {
   display: flex;
   list-style-type: none;
-  margin: .5rem;
+  position:sticky;
+  width: 100%;
   padding: 1rem;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  background: rgba(235, 87, 87, 0.33);
+  color: blue;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  text-decoration: none;
+
+}
+a {
+  text-decoration: none;
+  color:  #303BA1;
+  font-weight: bold;
+}
+a:hover{
+  color: rgba(235, 66, 66, 0.9);
 }
 </style>

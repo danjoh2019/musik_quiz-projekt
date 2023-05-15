@@ -4,6 +4,7 @@
         <div class="container-category">
             <div class="header-category">
                 <h2>Categories</h2>
+                <div class="header-img"><img src="../assets/img/dancing.jpg" alt="illustration of people dancing"></div>
             </div>
             <div class="content-category">
                 <div class="container-category-buttons">
@@ -116,8 +117,7 @@ button {
 
     button[value="pop"],
     button[value="folkmusik"],
-    button[value="60s/70s"]
-     {
+    button[value="60s/70s"] {
 
         background: rgba(253, 145, 145, 0.7);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
@@ -133,19 +133,27 @@ button {
 
     }
 
-    button[value="elektroniskt"] ,
-    button[value="soul/r&b"]
-    {
+    button[value="elektroniskt"],
+    button[value="soul/r&b"] {
         background: linear-gradient(180deg, rgba(235, 66, 66, 0.9) 0%, rgba(204, 3, 39, 0.9) 100%);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
         border-radius: 10px;
     }
 
-    button[value="dansband"] ,
+    button[value="dansband"],
     button[value="klassiskt"] {
         background: linear-gradient(180deg, rgba(254, 164, 24, 0.9) 0%, rgba(255, 153, 33, 0.9) 100%);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
         border-radius: 10px;
+    }
+  
+
+    .header-img img{
+        width: 100rem;
+        position:fixed;
+        left: -5rem;
+        top: -2rem;
+        z-index: -2;
     }
 }
 </style>

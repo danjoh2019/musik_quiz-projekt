@@ -13,7 +13,7 @@ import { RouterLink } from 'vue-router'
 
 
         <RouterLink to="/">Start</RouterLink>
-        <RouterLink to="/category"> Kategorier</RouterLink>
+        <RouterLink to="/category"> Quiz</RouterLink>
         <RouterLink to="/About"> Om Oss</RouterLink>
 
 

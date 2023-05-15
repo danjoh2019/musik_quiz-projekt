@@ -11,7 +11,7 @@ import { RouterLink } from 'vue-router'
         <div class="hamburger-bottom"></div>
       </div>
 
-   
+
         <RouterLink to="/">Start</RouterLink>
         <RouterLink to="/category"> Kategorier</RouterLink>
         <RouterLink to="/About"> Om Oss</RouterLink>
@@ -31,9 +31,9 @@ body {
 .nav {
   display: flex;
   list-style-type: none;
+  justify-content: center;
   width: 100%;
   padding: 1rem;
-  justify-content: space-evenly;
   background: rgba(235, 87, 87, 0.33);
   font-family: "Montserrat", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-transform: uppercase;
@@ -49,12 +49,18 @@ a {
   text-decoration: none;
   color: #303BA1;
   font-size: .8rem;
+  margin: .9rem;
+  
 
 }
 
 a:hover {
   color: rgba(235, 66, 66, 0.9);
 }
+
+/*.nav a:last-child{
+  margin-left: auto;
+}*/
 
 @media screen and (min-width: 560px) {
 
@@ -109,8 +115,6 @@ a:hover {
   li a:hover:not(.active) {
     background-color: #111;
   }*/
-  .links:last-child{
-    border-right: none;
-  }
+
 }
 </style>

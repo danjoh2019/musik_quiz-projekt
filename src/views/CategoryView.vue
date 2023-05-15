@@ -237,28 +237,31 @@ button {
     .header-img img {
         z-index: -2;
         margin: 0rem;
-        margin-bottom: -6rem;
+        margin-bottom: -14rem;
+        top: -7rem;
+        left:-30rem;
     }
 
     @media screen and (min-width: 1025px) {
+        
         .header-img img {
-            width: 120%;
+            width: 150%;
             z-index: -2;
             margin: 0rem;
             margin-bottom: -12rem;
             top: -6rem;
         }
 
-        /*.category-button {
-        max-width: 18rem;
-        width: auto;
-        max-height: 13rem;
-        height: auto;
-    }*/
         .container-category-buttons {
             padding-top: 1rem;
-            margin-top: 1rem;
+            gap: 1.5rem;
+            
         }
+        .category-button{
+            font-size:1.2rem;
+            font-family: 'Adventuro', Montserrat;
+        }
+     
     }
 
 }</style>

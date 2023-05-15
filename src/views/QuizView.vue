@@ -2,42 +2,43 @@
 <template>
     <div class="quiz-container">
         <h1>{{ genre }}</h1>
-        <div class="songs">
-            <div v-if="loading">Loading...</div>
-            <div v-if="!loading">
-                <div v-if="!this.showScore">
-                    <div class="question-container">
-                        <div v-for="question of question" :key="question.title">
-                            {{ question.title }}
+        <div v-if="loading">Loading...</div>
+        <div v-if="!loading">
+            <div v-if="!this.showScore">
+                <div class="songs">
+                    <div id="scorecount">
+                        <p>
+                            {{ totalGuesses }} / 10
+                        </p>
+                        <div id="progress">
+                            <div class="score correct"> {{ guesses[0] }}</div>
+                            <div class="score wrong">{{ guesses[1] }} </div>
+                            <div class="score total"></div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="options">
-                        <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
-                            @click="isClicked(song.artist, $event)">
-                            <div class="options-container">
-                                <p>{{ song.artist }}</p>
-                            </div>
-                        </div>
+
+                <div class="question-container">
+                    <div v-for="question of question" :key="question.title" class="question">
+                        <p>{{ question.title }}</p>
                     </div>
-                
-                <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
-                <div id="scorecount">
-                    <p>
-                        {{ totalGuesses }} / 10
-                    </p>
-                    <div id="progress">
-                        <div class="score correct"> {{ guesses[0] }}</div>
-                        <div class="score wrong">{{ guesses[1] }} </div>
-                        <div class="score total"></div>
+                </div>
+
+                <div class="options">
+                    <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
+                        @click="isClicked(song.artist, $event)">
+                        <div class="options-container">
+                            <p>{{ song.artist }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
+            <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
+
             <div v-if="showScore">
                 <div v-if="finished" id="result">
-                    Wohoo! You got:
-                    {{ correctAnswer }} songs right
+                    You got {{ correctAnswer }} / 10 songs right!
                 </div>
             </div>
             <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
@@ -200,30 +201,38 @@ export default {
 }
 </script>
   
-<style>
+<style scoped>
+
+
 .songs {
-    display: flex;
-    width: fit-content;
+    /*  display: flex;*/
+
 }
 
 .quiz-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /*  display: grid;
+    gap: 1.5rem;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(2fr, 2fr);*/
 }
 
 .question-container {
     padding: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
+    height: 20rem;
     margin: 1rem;
     border-radius: 1rem;
     background: hotpink;
-    text-transform: none;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.question{
+text-align: center;
+padding-top: 6rem;
 }
 
 .options-container {
+    text-align: center;
     padding: 1rem;
     font-size: 1.5rem;
     margin: 1rem;
@@ -240,6 +249,7 @@ export default {
     margin: 1rem;
     border-radius: 1rem;
     text-transform: none;
+    text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -250,6 +260,7 @@ export default {
     margin: 1rem;
     border-radius: 1rem;
     text-transform: none;
+    text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -259,7 +270,8 @@ export default {
 
 h1 {
     color: lightblue;
-    text-transform: capitalize;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 /* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
@@ -268,12 +280,7 @@ h1 {
     font-size: 3rem;
 }
 
-#scorecount {
-    width: 27rem;
-    border: .015rem solid black;
-    border-radius: .5rem;
-    padding: .2rem;
-}
+#scorecount {}
 
 #scorecount p {
     font-size: larger;
@@ -282,18 +289,12 @@ h1 {
 }
 
 #progress {
-    width: 25rem;
-    border: .2rem solid black;
-    border-radius: .5rem;
     display: flex;
     flex-flow: row no-wrap;
 }
 
-
 .score {
-    height: 100%;
     width: 33%;
-    padding: 20px;
     color: white;
     border-right: 1px white solid;
     transition: 1s width;
@@ -324,6 +325,7 @@ h1 {
 /* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
 
 @media screen and (min-width: 800px) {
+
     .options {
         display: grid;
         grid-template-columns: auto auto;

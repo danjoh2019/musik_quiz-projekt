@@ -18,9 +18,10 @@ body {
   
 }
 .nav {
+  display: flex;
   list-style-type: none;
-  display: block;
-  margin: 2rem;
+  margin: .5rem;
   padding: 1rem;
+  justify-content: space-between;
 }
 </style>

@@ -8,7 +8,7 @@ import TopLists from '../components/TopLists.vue';
         <div class="wrapper">
           <div class="header">
           
-            HEADER
+            MUSIKQUIZ
           </div>
     
           <div class="content">
@@ -18,7 +18,7 @@ import TopLists from '../components/TopLists.vue';
           </div>
           <div class="footer">
             
-                  FOOTER
+                  2023
               </div>
         </div>
     

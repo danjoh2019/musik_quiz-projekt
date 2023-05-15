@@ -42,15 +42,15 @@ export default {
 </script>
 
 <template>
-    Mest spelade låtarna i dag...
+    De mest spelade låtarna...
     <div class="historyfive">
-        <ul><span>För tio år sedan:</span>
+        <ul><span>i dag för tio år sedan:</span>
             <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
         </ul>
-        <ul><span>För fem år sedan:</span>
+        <ul><span>i dag för fem år sedan:</span>
             <li v-for="song of fiveYearsAgo" :key="song.name">{{ song.name }}</li>
         </ul>
-        <ul><span>Senaste dygnet:</span>
+        <ul><span>det senaste dygnet:</span>
             <li v-for="song of today" :key="song.name">{{ song.name }}</li>
         </ul>
     </div>
@@ -68,14 +68,15 @@ export default {
 
 .historyfive ul span {
     font-weight: bold;
-    color: blueviolet;
+    color: rgb(99, 34, 160);
 }
 
 .historyfive ul {
-    border: .1rem solid black;
+    background-color: lightblue;
+    border-radius: 1rem;
     list-style-type: none;
     margin: 0;
-    padding: .2rem;
+    padding: 1rem;
 }
 
 @media screen and (min-width: 888px) {

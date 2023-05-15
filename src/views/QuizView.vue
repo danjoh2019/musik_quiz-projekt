@@ -2,7 +2,11 @@
 <template>
     <div class="quiz-container">
         <h1>{{ genre }}</h1>
-        <div v-if="loading">Loading...</div>
+        <div v-if="loading">
+            <div class="center-body">
+                <div class="loader-circle-7"></div>
+            </div>
+        </div>
         <div v-if="!loading">
             <div v-if="!this.showScore">
                 <div class="songs">
@@ -50,7 +54,7 @@
 <script>
 
 import { getQuizQuestions } from '../data/getQuiz.js'
-import { generateTimespan, getFour } from '../utils/misc.js'
+import { generateTimespan, getFour, shuffleArray } from '../utils/misc.js'
 
 import categories from '../data/categories.json'
 
@@ -110,7 +114,6 @@ export default {
             }
             this.loading = false
             this.displayQuestions(this.songs)
-            console.log(this.songs.length)
         },
 
         /**
@@ -125,7 +128,7 @@ export default {
         displayQuestions(songs) {
             this.alternatives = getFour(songs)
             this.question.unshift(this.alternatives[0])
-            this.alternatives.sort(() => 0.5 - Math.random())
+            shuffleArray(this.alternatives)
         },
 
         /**
@@ -148,7 +151,6 @@ export default {
             })
 
             if (artist === this.question[0].artist) {
-                console.log('YES')
                 this.correctAnswer++
                 this.guesses[0]++
                 optionsContainer.classList.replace('options-container', 'correct-container')
@@ -202,6 +204,57 @@ export default {
 </script>
   
 <style scoped>
+.center-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+body {
+    background-color: #202628;
+}
+.loader-circle-7 {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    display: inline-block;
+}
+.loader-circle-7:before,
+.loader-circle-7:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-width: 4px;
+    border-style: solid;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    border-color: #bbb;
+    top: 0;
+    left: 0;
+}
+.loader-circle-7:before {
+    animation: loader-circle-7-scale 1s linear 0s infinite;
+}
+.loader-circle-7:after {
+    opacity: 0;
+    animation: loader-circle-7-scale 1s linear 0.5s infinite;
+}
+@keyframes loader-circle-7-scale {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(0.7);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
 .songs {
     /*  display: flex;*/
 
@@ -212,32 +265,32 @@ export default {
     gap: 1.5rem;
     grid-template-columns: auto;
     grid-template-rows: repeat(2fr, 2fr);*/
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .question-container {
     padding: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     height: 8rem;
     margin: 1rem;
     border-radius: 1rem;
     background: hotpink;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .question {
+    padding-top: 1.1rem;
     text-align: center;
 }
 
 .options-container {
     text-align: center;
-    padding: 1rem;
-    font-size: 1.5rem;
-    margin: 1rem;
+    padding: .8rem;
+    font-size: 1.2rem;
+    margin: .8rem;
     border-radius: 1rem;
     background: lightblue;
     text-transform: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .correct-container {
@@ -248,7 +301,6 @@ export default {
     border-radius: 1rem;
     text-transform: none;
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .incorrect-container {
@@ -259,7 +311,6 @@ export default {
     border-radius: 1rem;
     text-transform: none;
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .options-container:hover {
@@ -289,6 +340,10 @@ h1 {
 #progress {
     display: flex;
     flex-flow: row no-wrap;
+    text-align: center;
+    border: .1rem solid lightblue;
+    border-radius: .5rem;
+    overflow: hidden;
 }
 
 .score {
@@ -300,21 +355,21 @@ h1 {
 
 .correct {
     display: none;
-    border-radius: .2rem;
-    background-color: rgb(19, 209, 19);
+    border-radius: .1rem;
+    background-color: rgb(70, 231, 70);
 }
 
 .wrong {
     display: none;
-    border-radius: .2rem;
-    background-color: rgb(253, 51, 51);
+    border-radius: .1rem;
+    background-color: rgb(253, 72, 72);
 }
 
 .total {
-    border-radius: .2rem;
+    border-radius: .5rem;
     background-color: #ffffff;
     opacity: 0.8;
-    background-image: linear-gradient(135deg, #dedee3 25%, transparent 25%), linear-gradient(225deg, #dedee3 25%, transparent 25%), linear-gradient(45deg, #dedee3 25%, transparent 25%), linear-gradient(315deg, #dedee3 25%, #ffffff 25%);
+    background-color: white;
     background-position: 7px 0, 7px 0, 0 0, 0 0;
     background-size: 7px 7px;
     background-repeat: repeat;
@@ -332,6 +387,7 @@ h1 {
     }
 
     .question-container {
+        font-size: 1.5rem;
         height: 20rem;
     }
 
@@ -340,6 +396,7 @@ h1 {
     }
 
     .options-container {
+        font-size: 1.5rem;
         padding: 1rem;
         font-size: 1.5rem;
     }

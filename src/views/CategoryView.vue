@@ -35,19 +35,18 @@ function selectCategory(id, categoryString) {
 }
 
 .container-category-buttons {
+    margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    justify-content: space-around;
-
 }
 
 .category-button {
     flex-grow: 1;
     flex-basis: auto;
-    max-width: 8rem;
+    max-width: 5rem;
     width: auto;
-    max-height: 6rem;
+    max-height: 5rem;
     height: auto;
     padding: 5rem;
     border-radius: 1rem;
@@ -70,6 +69,8 @@ button[value="hiphop"] {
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
     border-radius: 10px;
 }
+
+
 
 button[value="dansband"],
 button[value="60s/70s"] {
@@ -104,8 +105,8 @@ button {
 
 }
 
-.header-img img {
 
+.header-img img {
     width: 150rem;
     position: fixed;
     opacity: 20%;
@@ -126,8 +127,8 @@ button {
     }
 
     .category-button {
-        width: 18rem;
-        height: 13rem;
+        max-width: 15rem;
+        max-height: 10rem;
         font-size: 1rem;
         background: linear-gradient(180deg, #4E70D3 0%, #2431A4 100%);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
@@ -136,6 +137,13 @@ button {
         font-weight: bold;
         color: white;
     }
+    button:hover{
+        position:relative;
+        bottom: -.2rem;
+        right: -.2rem;
+        color: white;
+       
+    };
 
     button[value="pop"],
     button[value="folkmusik"],
@@ -146,6 +154,8 @@ button {
         border-radius: 10px;
 
     }
+
+
 
     button[value="elektroniskt"] {
 
@@ -169,18 +179,25 @@ button {
         border-radius: 10px;
     }
 
+    .header-category {
+        overflow: hidden;
+    }
 
     .header-img img {
-        overflow: hidden;
-        width: 85rem;
+        position: relative;
+        opacity: 100%;
+        width: 90%;
+        left: -2rem;
+        margin-bottom: -2rem;
         z-index: -2;
     }
+
 }
 
 @media screen and (min-width: 750px) {
     .category-button {
-        width: 18rem;
-        height: 13rem;
+        max-width: 18rem;
+        max-height: 13rem;
     }
 
     .header-img img {
@@ -188,5 +205,7 @@ button {
         margin: 0rem;
         margin-bottom: -3rem;
     }
+
+
 }
 </style>

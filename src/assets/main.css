@@ -1,7 +1,8 @@
 @import './base.css';
 
+/* ändra kod här eller grid eller felx, just nu fungerar det snyggt på telefonen */
 .wrapper {
-  display: grid;
+  display: flex;
   grid-template-rows: 1fr 3fr 1fr;
   grid-template-areas: "header" "content" "footer";
   row-gap: 2rem;

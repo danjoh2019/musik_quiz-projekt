@@ -202,13 +202,10 @@ export default {
 </script>
   
 <style scoped>
-* {
-    border: 1px solid lightpink;
-}
+
 
 .songs {
     /*  display: flex;*/
-
 
 }
 
@@ -217,7 +214,6 @@ export default {
     gap: 1.5rem;
     grid-template-columns: auto;
     grid-template-rows: repeat(2fr, 2fr);*/
-
 }
 
 .question-container {

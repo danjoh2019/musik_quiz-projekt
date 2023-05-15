@@ -1,8 +1,13 @@
 @import './base.css';
 
+@font-face {
+  font-family: "Montserrat";
+  src:url(./fonts/Montserrat/Montserrat-Medium.ttf)
+}
+
 .wrapper {
   display: grid;
-  grid-template-rows: 1fr ;
+  grid-template-rows: 1fr;
   grid-template-areas: "header" "content" "footer";
   row-gap: 2rem;
 }

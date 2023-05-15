@@ -216,7 +216,7 @@ export default {
 
 .question-container {
     padding: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     height: 8rem;
     margin: 1rem;
@@ -226,14 +226,15 @@ export default {
 }
 
 .question {
+    padding-top: 1.1rem;
     text-align: center;
 }
 
 .options-container {
     text-align: center;
-    padding: 1rem;
-    font-size: 1.5rem;
-    margin: 1rem;
+    padding: .8rem;
+    font-size: 1.2rem;
+    margin: .8rem;
     border-radius: 1rem;
     background: lightblue;
     text-transform: none;
@@ -332,6 +333,7 @@ h1 {
     }
 
     .question-container {
+        font-size: 1.5rem;
         height: 20rem;
     }
 
@@ -340,6 +342,7 @@ h1 {
     }
 
     .options-container {
+        font-size: 1.5rem;
         padding: 1rem;
         font-size: 1.5rem;
     }

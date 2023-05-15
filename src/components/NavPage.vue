@@ -10,17 +10,14 @@ import { RouterLink } from 'vue-router'
         <div class="hamburger-middle"></div>
         <div class="hamburger-bottom"></div>
       </div>
-  
-     
-            <RouterLink to="/">Home</RouterLink>
-          
-     
-            <RouterLink to="/category"> Categories</RouterLink>
-        
-            <RouterLink to="/About"> About </RouterLink>
-          
-            
-  
+
+   
+        <RouterLink to="/">Start</RouterLink>
+        <RouterLink to="/category"> Kategorier</RouterLink>
+        <RouterLink to="/About"> Om Oss</RouterLink>
+
+
+
     </div>
   </div>
 </template>
@@ -82,7 +79,7 @@ a:hover {
   }
 
 
-/*
+  /*
 
   ul {
     list-style-type: none;
@@ -112,4 +109,8 @@ a:hover {
   li a:hover:not(.active) {
     background-color: #111;
   }*/
-}</style>
+  .links:last-child{
+    border-right: none;
+  }
+}
+</style>

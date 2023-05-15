@@ -1,8 +1,22 @@
 @import './base.css';
 
+@font-face {
+  font-family: "Montserrat";
+  src:url(./fonts/Montserrat/Montserrat-Medium.ttf);
+  font-weight: normal;
+
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src:url(./fonts/Montserrat/Montserrat-Bold.ttf);
+  font-weight: bold;
+
+}
+
 .wrapper {
   display: grid;
-  grid-template-rows: 1fr ;
+  grid-template-rows: 1fr;
   grid-template-areas: "header" "content" "footer";
   row-gap: 2rem;
 }

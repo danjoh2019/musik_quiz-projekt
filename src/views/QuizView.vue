@@ -202,8 +202,6 @@ export default {
 </script>
   
 <style scoped>
-
-
 .songs {
     /*  display: flex;*/
 
@@ -220,15 +218,15 @@ export default {
     padding: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
-    height: 20rem;
+    height: 8rem;
     margin: 1rem;
     border-radius: 1rem;
     background: hotpink;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.question{
-text-align: center;
-padding-top: 6rem;
+
+.question {
+    text-align: center;
 }
 
 .options-container {
@@ -255,9 +253,9 @@ padding-top: 6rem;
 
 .incorrect-container {
     background: rgb(206, 34, 34);
-    padding: 1rem;
+    padding: .5rem;
     font-size: 1.5rem;
-    margin: 1rem;
+    margin: .5rem;
     border-radius: 1rem;
     text-transform: none;
     text-align: center;
@@ -331,6 +329,19 @@ h1 {
         grid-template-columns: auto auto;
         grid-template-rows: auto auto;
 
+    }
+
+    .question-container {
+        height: 20rem;
+    }
+
+    .question {
+        padding-top: 6rem;
+    }
+
+    .options-container {
+        padding: 1rem;
+        font-size: 1.5rem;
     }
 }
 </style>

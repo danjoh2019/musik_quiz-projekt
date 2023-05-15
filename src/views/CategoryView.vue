@@ -9,9 +9,8 @@
                 <div class="content-category">
                     <div class="container-category-buttons">
                         <button v-for="category in categories" :key="category.id" :value="category.genre" :id="category.id"
-                            @click="selectCategory(category.id, category.genre)
-                                " class="category-button">
-                            {{ category.genre }}
+                            @click="selectCategory(category.id, category.genre)" class="category-button">
+                            <p>{{ category.genre }}</p>
                         </button>
                     </div>
                 </div>
@@ -50,21 +49,26 @@ function selectCategory(id, categoryString) {
     flex-grow: 1;
     flex-basis: auto;
     max-width: 100%;
-    width: 10rem;
+    width: 8rem;
     height: 6rem;
-    padding: 3rem;
-    /* border-radius: 1rem; */
-    border-radius: 20% / 20%;
+    padding: 5rem;
+    border-radius: 1rem; 
     margin: 0.5rem;
     border: none;
     background-color: lightblue;
-    font-family:  Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: white;
-    font-size: 1.2rem;
+    font-family:  Montserrat, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    font-size: .8rem;
     letter-spacing: 0.3rem;
     text-transform: uppercase;
     cursor: pointer; 
-    word-break: break-all;
+
+}
+.category-button p {
+    padding: 2rem;
+    color: white;
+    
+   
 }
 
 button {
@@ -102,6 +106,7 @@ button {
 
 .category-button {
     width: 14rem; 
+   
 }
 }
 

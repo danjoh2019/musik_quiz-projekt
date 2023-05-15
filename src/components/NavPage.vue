@@ -10,11 +10,17 @@ import { RouterLink } from 'vue-router'
         <div class="hamburger-middle"></div>
         <div class="hamburger-bottom"></div>
       </div>
-      <ul>
-        <li><a class="activ" href="#news"><RouterLink to="/">Home</RouterLink></a></li>
-        <li><a href="#category"><RouterLink to="/category"> Categories</RouterLink></a></li>
-        <li style="float:right"><a href="#about"><RouterLink to="/About"> About </RouterLink></a></li>
-      </ul>
+  
+     
+            <RouterLink to="/">Home</RouterLink>
+          
+     
+            <RouterLink to="/category"> Categories</RouterLink>
+        
+            <RouterLink to="/About"> About </RouterLink>
+          
+            
+  
     </div>
   </div>
 </template>
@@ -25,7 +31,7 @@ body {
 
 }
 
-/* .nav {
+.nav {
   display: flex;
   list-style-type: none;
   width: 100%;
@@ -42,18 +48,20 @@ body {
 }
 
 a {
-  display:flex;
+  display: flex;
   text-decoration: none;
   color: #303BA1;
   font-size: .8rem;
-  
+
 }
 
 a:hover {
   color: rgba(235, 66, 66, 0.9);
 }
+
 @media screen and (min-width: 560px) {
-/*
+
+  /*
   .hamburger-top,
   .hamburger-middle,
   .hamburger-bottom {
@@ -68,39 +76,40 @@ a:hover {
     margin-bottom: 0rem;
 
   }
-  a{
+
+  a {
     font-weight: bold;
   }
 
 
+/*
 
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
+  li {
+    float: left;
+    border-right: 1px solid #bbb;
+  }
 
-li {
-  float: left;
-  border-right:1px solid #bbb;
-}
+  li:last-child {
+    border-right: none;
+  }
 
-li:last-child {
-  border-right: none;
-}
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #111;
-}
-</style>
+  li a:hover:not(.active) {
+    background-color: #111;
+  }*/
+}</style>

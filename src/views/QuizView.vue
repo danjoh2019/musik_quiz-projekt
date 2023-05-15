@@ -50,7 +50,7 @@
 <script>
 
 import { getQuizQuestions } from '../data/getQuiz.js'
-import { generateTimespan, getFour } from '../utils/misc.js'
+import { generateTimespan, getFour, shuffleArray } from '../utils/misc.js'
 
 import categories from '../data/categories.json'
 
@@ -110,7 +110,6 @@ export default {
             }
             this.loading = false
             this.displayQuestions(this.songs)
-            console.log(this.songs.length)
         },
 
         /**
@@ -125,7 +124,7 @@ export default {
         displayQuestions(songs) {
             this.alternatives = getFour(songs)
             this.question.unshift(this.alternatives[0])
-            this.alternatives.sort(() => 0.5 - Math.random())
+            shuffleArray(this.alternatives)
         },
 
         /**
@@ -148,7 +147,6 @@ export default {
             })
 
             if (artist === this.question[0].artist) {
-                console.log('YES')
                 this.correctAnswer++
                 this.guesses[0]++
                 optionsContainer.classList.replace('options-container', 'correct-container')

@@ -12,7 +12,7 @@
                 <div class="songs">
                     <div id="scorecount">
                         <p>
-                            {{ totalGuesses }} / 10
+                            {{ guesses[0] }} rätt av 10
                         </p>
                         <div id="progress">
                             <div class="score correct"> {{ guesses[0] }}</div>
@@ -269,34 +269,35 @@ body {
 }
 
 .question-container {
-    padding: 1rem;
+    display: flex;
     font-size: 1.2rem;
     font-weight: bold;
-    height: 8rem;
+    height: 5rem;
     margin: 1rem;
     border-radius: 1rem;
     background: hotpink;
-}
-
-.question {
-    padding-top: 1.1rem;
-    text-align: center;
+    padding: 0 2rem 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .options-container {
-    text-align: center;
-    padding: .8rem;
-    font-size: 1.2rem;
+    display: flex;
+    font-size: 1.1rem;
     margin: .8rem;
     border-radius: 1rem;
     background: lightblue;
     text-transform: none;
+    height: 4rem;
+    padding: 0 2rem 0;
+    align-items: center;
+    justify-content: center;
 }
 
 .correct-container {
-    background: rgb(60, 209, 60);
+    background: rgb(70, 231, 70);
     padding: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 1rem;
     border-radius: 1rem;
     text-transform: none;
@@ -304,9 +305,9 @@ body {
 }
 
 .incorrect-container {
-    background: rgb(206, 34, 34);
+    background: rgb(253, 72, 72);
     padding: .5rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: .5rem;
     border-radius: 1rem;
     text-transform: none;
@@ -341,6 +342,7 @@ h1 {
     display: flex;
     flex-flow: row no-wrap;
     text-align: center;
+    height: 1rem;
     border: .1rem solid lightblue;
     border-radius: .5rem;
     overflow: hidden;
@@ -348,6 +350,7 @@ h1 {
 
 .score {
     width: 33%;
+    font-size: 0px;
     color: white;
     border-right: 1px white solid;
     transition: 1s width;
@@ -355,13 +358,13 @@ h1 {
 
 .correct {
     display: none;
-    border-radius: .1rem;
+    /* border-radius: .1rem; */
     background-color: rgb(70, 231, 70);
 }
 
 .wrong {
     display: none;
-    border-radius: .1rem;
+    /* border-radius: .1rem; */
     background-color: rgb(253, 72, 72);
 }
 
@@ -392,13 +395,22 @@ h1 {
     }
 
     .question {
-        padding-top: 6rem;
+        /* padding-top: 6rem; */
     }
 
     .options-container {
         font-size: 1.5rem;
-        padding: 1rem;
-        font-size: 1.5rem;
+        height: 7rem;
+    }
+
+    .incorrect-container {
+        font-size: 1.6rem;
+        height: 7rem;
+    }
+
+    .correct-container {
+        font-size: 1.6rem;
+        height: 7rem;
     }
 }
 </style>

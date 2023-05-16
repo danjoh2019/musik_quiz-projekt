@@ -27,47 +27,45 @@ function selectCategory(id, categoryString) {
 <style scoped>
 /* ---------------- FOR SMALLEST SCREEN --------------*/
 .container-category {
-    font-family: 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-transform: uppercase;
     text-align: center;
+    
+    display: grid;
+    grid-template-rows: 8rem 1fr;
+
 }
-.header-category {
-    overflow: hidden;
-}
+
 .header-img img {
-    width: 390%;
+    width: 100%;
+    transform: scale(3.5);
     position: fixed;
-    z-index: -2;
-    left: -80rem;
-    top: 4rem;
-
+    z-index: -1;
+    right: 16rem;
+    top: 15rem;
+    
 }
-
 
 .container-category-buttons {
     display: grid;
-    grid-template-columns: 50% 50%;
-    align-items: center;
-    margin-top: 15rem;
-    background: linear-gradient(180deg, #fcf9f901 0%, #e8f4fae3 20%, #fffffff0 100%);
-    width: 100%;
-    padding: 2rem;
-    border-radius: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9ef 15%, #fffffff0 100%);
+
 }
 
 .category-button {
-
+    width: 10rem;
     padding: 3rem;
-    border-radius: 1rem;
-    margin: 1rem;
+    border-radius: 1.5rem;
+    margin: .5rem;
     border: none;
     font-family: 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 1rem;
-    font-weight: normal;
-    letter-spacing: 0.1rem;
-    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+    font-size: .8rem;
+    font-weight: bold;
+    letter-spacing: 0.14rem;
+    box-shadow: 3px 3px 8px rgba(57, 56, 56, 0.5);
     text-transform: uppercase;
-    color: white;
+    color: rgb(248, 248, 250);
 }
 
 button {
@@ -82,7 +80,7 @@ button {
 button[value="elektroniskt"],
 button[value="pop"],
 button[value="hiphop"] {
-    background: linear-gradient(180deg, #f8c8c8f6 0%, #FFADAD 100%);
+    background: linear-gradient(180deg, #f8c8c8 0%, #FFADAD 100%);
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
 
 }
@@ -92,7 +90,7 @@ button[value="dansband"],
 button[value="60/70-tal"],
 button[value="country"] {
 
-    background: linear-gradient(180deg, #4e6fd3ed 0%, #2431A4 100%);
+    background: linear-gradient(180deg, #4e6fd3 0%, #2431A4 100%);
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
 
 }
@@ -100,7 +98,7 @@ button[value="country"] {
 
 button[value="folkmusik"],
 button[value="soul/r&b"] {
-    background: linear-gradient(180deg, #eb4242f3 0%, #CC0327 100%);
+    background: linear-gradient(180deg, #eb4242 0%, #CC0327 100%);
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
 
 
@@ -108,7 +106,7 @@ button[value="soul/r&b"] {
 
 button[value="jazz"],
 button[value="klassiskt"] {
-    background: linear-gradient(180deg, #fea618ec 0%, #FF9921 100%);
+    background: linear-gradient(180deg, #fea618 0%, #FF9921 100%);
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
 
 
@@ -123,23 +121,20 @@ button[value="klassiskt"] {
 @media screen and (min-width: 576px) {
 
     .header-img img {
-        width: 300%;
-        position: fixed;
-        opacity: 110%;
-        z-index: -2;
-        left: -92rem;
-        top: 2rem;
-
+       
+        transform: scale(2);
+        right: 20rem;
+        top: 13rem;
     }
+
     .container-category-buttons {
         display: grid;
-        grid-template-columns: 33% 33% 33%;
-        justify-items: stretch;
-
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
     }
 
     .category-button {
-
+        width: 12rem;
         flex-grow: 1;
         padding: 4rem;
         border-radius: 1rem;
@@ -153,14 +148,18 @@ button[value="klassiskt"] {
     button[value="hiphop"] {
         background: linear-gradient(180deg, #F8C8C8 0%, #FFADAD 100%);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+        
 
     }
 
     button[value="jazz"]:hover,
     button[value="pop"]:hover,
     button[value="hiphop"]:hover {
-        background: linear-gradient(180deg, #f8c8c87f 0%, rgba(255, 173, 173, 0.886) 100%);
+        background: linear-gradient(180deg, #f8c8c8 0%,  #ffacac 50%,rgb(250, 131, 131) 100%);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+        border-inline:1px solid  #f8c8c8 ;
+      
+
     }
 
     button[value="folkmusik"],
@@ -175,7 +174,8 @@ button[value="klassiskt"] {
     button[value="folkmusik"]:hover,
     button[value="60/70-tal"]:hover,
     button[value="country"]:hover {
-        background: linear-gradient(180deg, #4e6fd38b 0%, rgba(36, 49, 164, 0.927) 100%);
+        background: linear-gradient(180deg, #6187f8 0%, rgb(39, 53, 176) 100%);
+        border-inline:1px solid #6187f8;
 
     }
 
@@ -187,19 +187,21 @@ button[value="klassiskt"] {
 
     button[value="dansband"]:hover,
     button[value="soul/r&b"]:hover {
-        background: linear-gradient(180deg, #eb424256 0%, #cc0328de 100%);
+        background: linear-gradient(180deg, #f45151 0%, #a0011e 100%);
+        border-inline:1px solid #f45151;
     }
 
     button[value="elektroniskt"],
     button[value="klassiskt"] {
-        background: linear-gradient(180deg, #FEA418 0%, #FF9921 100%);
+        background: linear-gradient(180deg, #FEA418 0%, #ff9721df 100%);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-
+        
     }
 
     button[value="elektroniskt"]:hover,
     button[value="klassiskt"]:hover {
-        background: linear-gradient(180deg, #fea61875 0%, #FF9921 100%);
+        background: linear-gradient(180deg, #f8bc5a 0%, #f98705 100%);
+        border-inline:1px solid#f8bc5a;
     }
 
     /* --------------- BUTTONS BIGGER SCREEN END -------------*/
@@ -211,33 +213,24 @@ button[value="klassiskt"] {
 @media screen and (min-width: 768px) {
     .container-category {
         display: grid;
-        grid-template-rows: 20% 70% 10%;
+        grid-template-rows: 30% 70% 10%;
         align-items: center;
         text-transform: uppercase;
         text-align: center;
+        overflow: hidden;
 
 
     }
 
     .header-img img {
-        max-width: 130%;
-        position: fixed;
-        opacity: 100%;
-        z-index: -2;
-        left: -8rem;
+        transform: scale(1.5);
+        position: relative;
+        right: 0rem;
         top: 5rem;
 
-    }
-
-    .container-category-buttons {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        justify-items: stretch;
-        gap: 1rem;
-        padding: 2rem;
-        z-index: 2;
 
     }
+
 
     .category-button {
         flex-grow: 1;
@@ -259,23 +252,24 @@ button[value="klassiskt"] {
     }
 
     .header-img img {
-        top: 0rem;
+        transform: scale(.95);
+        top: 2rem;
         max-width: 100%;
-        position: relative;
-        opacity: 100%;
-        z-index: -2;
-        left: 0rem;
+
     }
 
     .container-category-buttons {
-        margin-top: 1rem;
-        background: linear-gradient(180deg, #fcf9f9dc 0%, #fcf9f9e3 20%, #ffffff9e 100%);
-        grid-template-columns: 20% 20% 20% 20%;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: stretch;
+        gap: 1rem;
+        padding: 2rem;
+        background: linear-gradient(180deg, #fcf9f9 0%, #fcf9f9e3 20%, #ffffff9e 100%);
 
     }
+
     .category-button {
-        font-size: 1.1rem;
+        font-size: 1rem;
         letter-spacing: .3rem;
         text-shadow: #060b39;
 

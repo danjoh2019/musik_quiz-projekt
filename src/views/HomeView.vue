@@ -32,3 +32,4 @@ import TopLists from '../components/TopLists.vue';
   font-size: 30px;
 }
 </style>
+

@@ -61,7 +61,7 @@ function selectCategory(id, categoryString) {
     border: none;
     font-family: 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: .8rem;
-    font-weight: bold;
+    font-weight: normal;
     letter-spacing: 0.14rem;
     box-shadow: 3px 3px 8px rgba(57, 56, 56, 0.5);
     text-transform: uppercase;

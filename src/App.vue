@@ -8,14 +8,34 @@ import FooterPage from './components/FooterPage.vue'
   <main>
     <div class="wrapper">
       <div class="header">
-        <NavPage />
+        <div class="nav-header">
+          <NavPage />
+        </div>
         <RouterView />
+
       </div>
+
       <div class="main"></div>
       <div class="footer">
         <FooterPage />
       </div>
-    </div>
 
+    </div>
   </main>
 </template>
+<style scoped>
+.nav-header {
+  display: none;
+}
+
+
+@media screen and (min-width: 768px) {
+  .footer {
+    display: none;
+  }
+
+  .nav-header {
+    display: contents;
+  }
+}
+</style>

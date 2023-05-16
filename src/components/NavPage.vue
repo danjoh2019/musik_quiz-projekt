@@ -65,7 +65,7 @@ import { RouterLink } from 'vue-router'
   justify-content: center;
   width: 100%;
   padding: 1rem;
-  background: #fbc8c8f9;
+  background: #ffc5d4;
   font-family: "Montserrat", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-transform: uppercase;
   text-decoration: none;

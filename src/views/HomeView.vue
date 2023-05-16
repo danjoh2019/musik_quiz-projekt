@@ -7,7 +7,7 @@ import TopLists from '../components/TopLists.vue';
   <main>
     <div class="wrapper">
       <div class="header"> 
-        <div class="header-logo"><img src="../assets/img/logo-color.png" width="200" height="66" alt="musicquiz logo"></div>
+        <div class="header-logo"><img src="../assets/img/logo-color.jpg" width="200" height="66" alt="musicquiz logo"></div>
 
       </div>
 

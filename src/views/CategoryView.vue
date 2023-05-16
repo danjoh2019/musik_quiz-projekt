@@ -23,39 +23,26 @@ function selectCategory(id, categoryString) {
 }
 </script>
 <style scoped>
-
-.header-img img {
-    position: relative;
-    width: 150%;
-    z-index: -2;
-    margin: 0rem;
-    margin-bottom: -4rem;
-    top: -10rem;
-    left: -7rem;
-    
-}
-.header-img{
-    overflow: hidden;
-}
-
-
-.container-category{
-    display: grid;
-    grid-template-rows:repeat(2, 1fr);
+/* ---------------- FOR SMALLEST SCREEN --------------*/
+.container-category {
+    display: flex;
     align-items: center;
     font-family: 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-transform: uppercase;
     text-align: center;
+
 }
-.container-category-buttons{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 .category-button {
     flex-shrink: 1;
-    max-width: 5rem;
-    max-height: 5rem;
+    width: 15rem;
+    max-height: 10rem;
+    height: auto;
     padding: 4rem;
     border-radius: 1rem;
     margin: 0.5rem;
@@ -70,6 +57,7 @@ function selectCategory(id, categoryString) {
 
 
 }
+
 button[value="pop"],
 button[value="elektroniskt"],
 button[value="hiphop"] {
@@ -101,12 +89,68 @@ button[value="jazz"] {
 
 
 }
-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.header-img img {
+    width: 170rem;
+    position: fixed;
+    opacity: 50%;
+    z-index: -2;
+    left: -87rem;
+    top: -1rem;
+}
+
+/* ---------------- FOR SMALL SCREEN --------------*/
+
+@media screen and (min-width: 576px) {
+    /* Kod för "small" hamnar här */
+}
+/* ---------------- MEDIUM --------------*/
+
+@media screen and (min-width: 768px) {
+    /* Kod för "medium" hamnar här */
+}
+/* ---------------- LARGE --------------*/
+
+@media screen and (min-width: 992px) {
+    .container-category-buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        width: 100%;
+    
+    }
+}
+/* ---------------- X-LARGE --------------*/
+
+@media screen and (min-width: 1200px) {
+    .header-img img {
+        position: relative;
+        width: 150%;
+        z-index: -2;
+        margin: 0rem;
+        margin-bottom: -4rem;
+        top: -10rem;
+        left: -7rem;
+    
+    }
+    
+    .header-img {
+        overflow: hidden;
+    }
+    
+    
+    .container-category {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+       
+        text-transform: uppercase;
+        text-align: center;
+    
+    }
+   
 
 }
+
 /*
 .container-category {
     align-items: center;
@@ -361,7 +405,4 @@ button {
 
     }
 
-}*/
-
-
-</style>
+}*/</style>

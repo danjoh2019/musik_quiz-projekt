@@ -26,24 +26,23 @@ function selectCategory(id, categoryString) {
 </script>
 <style scoped>
 /* ---------------- FOR SMALLEST SCREEN --------------*/
-
-.header-category {
-    overflow: hidden;
-}
-
 .container-category {
-
     font-family: 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-transform: uppercase;
     text-align: center;
 }
-
-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.header-category {
+    overflow: hidden;
+}
+.header-img img {
+    width: 390%;
+    position: fixed;
+    z-index: -2;
+    left: -80rem;
+    top: 4rem;
 
 }
+
 
 .container-category-buttons {
     display: grid;
@@ -64,11 +63,18 @@ button {
     border: none;
     font-family: 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: normal;
     letter-spacing: 0.1rem;
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
     text-transform: uppercase;
     color: white;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 /* -------- BUTTONS ----------*/
@@ -110,18 +116,21 @@ button[value="klassiskt"] {
 
 /* -------- BUTTONS END----------*/
 
-.header-img img {
-    width: 390%;
-    position: fixed;
-    z-index: -2;
-    left: -80rem;
-    top: 4rem;
 
-}
 
 /* ---------------- FOR SMALL SCREEN --------------*/
 
 @media screen and (min-width: 576px) {
+
+    .header-img img {
+        width: 300%;
+        position: fixed;
+        opacity: 110%;
+        z-index: -2;
+        left: -92rem;
+        top: 2rem;
+
+    }
     .container-category-buttons {
         display: grid;
         grid-template-columns: 33% 33% 33%;
@@ -195,15 +204,6 @@ button[value="klassiskt"] {
 
     /* --------------- BUTTONS BIGGER SCREEN END -------------*/
 
-    .header-img img {
-        width: 300%;
-        position: fixed;
-        opacity: 110%;
-        z-index: -2;
-        left: -92rem;
-        top: 2rem;
-
-    }
 }
 
 /* ---------------- MEDIUM --------------*/
@@ -254,6 +254,10 @@ button[value="klassiskt"] {
 
 @media screen and (min-width: 992px) {
 
+    .container-category {
+        grid-template-rows: 30% 70%;
+    }
+
     .header-img img {
         top: 0rem;
         max-width: 100%;
@@ -263,13 +267,6 @@ button[value="klassiskt"] {
         left: 0rem;
     }
 
-    .category-button {
-        font-size: 1.1rem;
-        letter-spacing: .3rem;
-        text-shadow: #060b39;
-
-    }
-
     .container-category-buttons {
         margin-top: 1rem;
         background: linear-gradient(180deg, #fcf9f9dc 0%, #fcf9f9e3 20%, #ffffff9e 100%);
@@ -277,10 +274,13 @@ button[value="klassiskt"] {
         justify-content: center;
 
     }
+    .category-button {
+        font-size: 1.1rem;
+        letter-spacing: .3rem;
+        text-shadow: #060b39;
 
-    .container-category {
-        grid-template-rows: 30% 70%;
     }
+
 
 }
 </style>

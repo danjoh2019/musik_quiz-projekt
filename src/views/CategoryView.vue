@@ -64,8 +64,9 @@ button {
 
 }
 
-button[value="pop"],
 button[value="elektroniskt"],
+
+button[value="pop"],
 button[value="hiphop"] {
     background: linear-gradient(180deg, #F8C8C8 0%, #FFADAD 100%);
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
@@ -73,6 +74,7 @@ button[value="hiphop"] {
 }
 
 button[value="dansband"],
+
 button[value="60/70-tal"],
 button[value="country"] {
 
@@ -80,6 +82,7 @@ button[value="country"] {
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
 
 }
+
 
 button[value="folkmusik"],
 button[value="soul/r&b"] {
@@ -89,13 +92,14 @@ button[value="soul/r&b"] {
 
 }
 
-button[value="klassiskt"],
-button[value="jazz"] {
+button[value="jazz"],
+button[value="klassiskt"] {
     background: linear-gradient(180deg, #FEA418 0%, #FF9921 100%);
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
 
 
 }
+
 
 .header-img img {
     width: 170rem;
@@ -117,11 +121,45 @@ button[value="jazz"] {
     }
 
     .category-button {
-       
+
         flex-grow: 1;
         padding: 4rem;
         border-radius: 1rem;
         margin: 1rem;
+    }
+
+    button[value="jazz"],
+    button[value="pop"],
+    button[value="hiphop"] {
+        background: linear-gradient(180deg, #F8C8C8 0%, #FFADAD 100%);
+        box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+
+    }
+
+    button[value="folkmusik"],
+    button[value="60/70-tal"],
+    button[value="country"] {
+
+        background: linear-gradient(180deg, #4E70D3 0%, #2431A4 100%);
+        box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+
+    }
+
+    button[value="dansband"],
+
+    button[value="soul/r&b"] {
+        background: linear-gradient(180deg, #EB4242 0%, #CC0327 100%);
+        box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+
+
+    }
+
+    button[value="elektroniskt"],
+    button[value="klassiskt"] {
+        background: linear-gradient(180deg, #FEA418 0%, #FF9921 100%);
+        box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+
+
     }
 }
 
@@ -143,8 +181,8 @@ button[value="jazz"] {
         opacity: 100%;
         z-index: -2;
         left: -8rem;
-        top: -3rem;
-        margin-bottom: -5rem;
+        top: -5rem;
+       
 
     }
 
@@ -159,8 +197,8 @@ button[value="jazz"] {
         justify-items: stretch;
         gap: 1rem;
         padding: 0, 2rem, 0, 2rem;
-      
-        
+
+
 
     }
 
@@ -178,10 +216,12 @@ button[value="jazz"] {
 
 @media screen and (min-width: 992px) {
 
-    .container-category-buttons {
 
-        
+    .header-img img {
+        top: -4rem;
+        margin-bottom: -2rem;
 
     }
+
 }
 </style>

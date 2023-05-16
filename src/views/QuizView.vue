@@ -43,6 +43,7 @@
             <div v-if="showScore">
                 <div v-if="finished" id="result">
                     You got {{ correctAnswer }} / 10 songs right!
+                    {{ message  }}
                 </div>
             </div>
             <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
@@ -100,7 +101,8 @@ export default {
             wrongAnswer: 0,
             totalGuesses: 0,
             finished: false,
-            showScore: false
+            showScore: false,
+            message: ""
         }
     },
 
@@ -178,10 +180,16 @@ export default {
                 /* this.loading = true;  */
                 this.showScore = true;
                 this.finished = true;
-            }
-            updateResults(this.guesses);
-        }
 
+                updateResults(this.guesses);
+                this.scoreMessage(this.correctAnswer)
+            }
+        },
+        scoreMessage(correctAnswer) {
+            if (correctAnswer > 2) {
+                this.message = 'WOW DU FICK MER ÄN 2 POÄNG'
+            }
+        }
     },
 
     /**
@@ -210,15 +218,18 @@ export default {
     align-items: center;
     width: 100%;
 }
+
 body {
     background-color: #202628;
 }
+
 .loader-circle-7 {
     position: relative;
     width: 70px;
     height: 70px;
     display: inline-block;
 }
+
 .loader-circle-7:before,
 .loader-circle-7:after {
     content: "";
@@ -233,22 +244,27 @@ body {
     top: 0;
     left: 0;
 }
+
 .loader-circle-7:before {
     animation: loader-circle-7-scale 1s linear 0s infinite;
 }
+
 .loader-circle-7:after {
     opacity: 0;
     animation: loader-circle-7-scale 1s linear 0.5s infinite;
 }
+
 @keyframes loader-circle-7-scale {
     0% {
         transform: scale(0);
         opacity: 0;
     }
+
     50% {
         transform: scale(0.7);
         opacity: 1;
     }
+
     100% {
         transform: scale(1);
         opacity: 0;
@@ -400,6 +416,5 @@ h1 {
         padding: 1rem;
         font-size: 1.5rem;
     }
-}
-</style>
+}</style>
 

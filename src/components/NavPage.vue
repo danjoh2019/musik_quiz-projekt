@@ -14,7 +14,6 @@ import { RouterLink } from 'vue-router'
 
       <RouterLink to="/">Start</RouterLink>
       <RouterLink to="/category"> Quiz</RouterLink>
-      <!-- <RouterLink to="/About"> Om Oss</RouterLink> -->
 
       <a class="button" href="#popup1">Om oss</a>
 
@@ -23,39 +22,34 @@ import { RouterLink } from 'vue-router'
           <h2> Om oss </h2>
           <a class="close" href="#">&times;</a>
           <div class="content">
-          <p>
-            Welcome to our music quiz app, where you can test your music expertise and patience
-            as you quess your way to the top. How many answers will you get right? <br>
-            May the odds ever be in you favour!
-          </p>
-
-          <p>
-            This app was made by Daniel, Tilda, David and Christopher as a schoolproject. We decided to make a music app
-            beacuse
-            it sounded like a splendid idea. The app pulls data from the Sveriges Radio API, which means that you'll have
-            access to a large amount of information
-            about songs that have been played on the radio. This data is displayed in the app to help you test your music
-            knowledge.
-            As a starting point the app shows which 5 songs that were played the most from
-            three different time periods. More information will be added in the future!
-
-          </p>
-        </div>
+            <p>
+              Välkomna till vårt musikquiz!
+            </p>
+            <p>
+              Det är ett quiz där du kan sätta dina musikaliska kunskaper på prov.
+            </p>
+            <p>
+              På startsidan visar vi vilka låtar som är de mest spelade låtarna det senaste dygnet på Sveriges Radios
+              samtliga kanaler
+              samt vilka låtar som spelades mest denna dag för fem och tio år sedan.
+              I quiz-delen så hämtar vi vår data från spellistor från program som spelar den typ av musik som matchar
+              quiz-rubriken.
+            </p>
+            <p>
+              Projektet är skapat av Christopher, Daniel, David och Tilda som ett skolprojekt i kursen Javautvecklare hos
+              Yrgo.
+              Uppgiften var att skapa en webapplikation från ett av några förutbestämda API:n.
+              Vår app hämtar sin data från Sveriges Radios öppna API.
+            </p>
+          </div>
         </div>
       </div>
-
-
 
     </div>
   </div>
 </template>
 
 <style scoped>
-body {
-  color: white;
-
-}
-
 .nav {
   display: flex;
   list-style-type: none;
@@ -102,6 +96,7 @@ a:hover {
   visibility: hidden;
   opacity: 0;
 }
+
 .overlay:target {
   visibility: visible;
   opacity: 1;
@@ -111,30 +106,33 @@ a:hover {
   margin: 70px auto;
   padding: 20px;
   background: #fff;
-  border-radius: 5px;
-  width: 30%;
+  border-radius: .5rem;
+  width: 90%;
   position: relative;
-  transition: all 5s ease-in-out;
+  text-transform: none;
+  opacity: 80%;
 }
 
 .popup h2 {
   margin-top: 0;
   color: #333;
-  font-family: Tahoma, Arial, sans-serif;
 }
+
 .popup .close {
   position: absolute;
-  top: 20px;
-  right: 30px;
+  top: .1rem;
+  right: 1rem;
   transition: all 200ms;
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: bold;
   text-decoration: none;
   color: #333;
 }
+
 .popup .close:hover {
   color: #06D85F;
 }
+
 .popup .content {
   max-height: 30%;
   overflow: auto;
@@ -196,12 +194,18 @@ a:hover {
     background-color: #111;
   }*/
 
-  .box{
-    width: 70%;
-  }
-  .popup{
+  .box {
     width: 70%;
   }
 
-}
-</style>
+  .popup {
+    width: 80%;
+  }
+
+  @media screen and (min-width: 760px) {
+    .popup {
+      width: 60%;
+    }
+  }
+
+}</style>

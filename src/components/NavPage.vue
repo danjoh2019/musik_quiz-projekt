@@ -10,8 +10,9 @@ import { RouterLink } from 'vue-router'
         <div class="hamburger-middle"></div>
         <div class="hamburger-bottom"></div>
       </div>
-
-
+      
+      
+      <div class="header-logo"><img src="../assets/img/logo-color.jpg" width="50" height="50" alt="musicquiz logo"></div>
       <RouterLink to="/">Start</RouterLink>
       <RouterLink to="/category"> Quiz</RouterLink>
 
@@ -50,6 +51,14 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
+
+/* .header-logo {
+  left: 0%;
+}
+.header-logo img {
+  margin-left: 0%;
+  left: 30%;
+} */
 .nav {
   display: flex;
   list-style-type: none;

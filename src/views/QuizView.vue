@@ -42,8 +42,10 @@
 
             <div v-if="showScore">
                 <div v-if="finished" id="result">
-                    You got {{ correctAnswer }} / 10 songs right!
-                    {{ message }}
+                    Du fick {{ correctAnswer }} / 10 låtar rätt! <br>
+                    {{ message }} <br>
+                    <button @click="playAgain">Spela igen!</button>
+                    <button @click="chooseCategory">Välj ny kategori</button>
                 </div>
             </div>
             <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
@@ -107,6 +109,25 @@ export default {
     },
 
     methods: {
+
+        playAgain() {
+            this.finished = false;
+            this.showScore = false;
+            this.correctAnswer = 0;
+            this.wrongAnswer = 0;
+            this.totalGuesses = 0;
+            this.guesses = 0;
+            this.question = [];
+            this.alternatives = [];
+            this.songs = [];
+
+            this.displayQuestions(this.songs);
+        },
+
+        chooseCategory() {
+
+            this.$router.push('/category');
+        },
 
         async getAllSongs(id, dateString) {
             try {
@@ -186,16 +207,18 @@ export default {
             }
         },
         scoreMessage(correctAnswer) {
-            if (correctAnswer <= 3) {
-                this.message = 'Oj, det gick inte så bra för dig...'
+            if (correctAnswer <= 1) {
+                this.message = 'Pinsamt...'
             }
-            else if (correctAnswer > 3 && correctAnswer <= 6) {
-                this.message = 'Hmm, det kunde ha gått bättre'
+            else if (correctAnswer >= 2 && correctAnswer <= 6) {
+                this.message = 'Bättre kan du...'
+            }
+            else if (correctAnswer >= 7 && correctAnswer <= 9) {
+                this.message = 'Sedär, inte dåligt alls...'
             }
             else {
-                this.message = 'Bra jobbat!'
+                this.message = 'Du är King/Queen of Quiz!!!'
             }
-            console.log(this.message)
         }
     },
 

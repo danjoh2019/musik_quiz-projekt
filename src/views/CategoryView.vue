@@ -49,8 +49,8 @@ button {
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
-    margin-top: 17rem;
-    background: linear-gradient(180deg, #fcf9f901 0%, #e8f4fae3 20%, #d4e0fb9e 100%);
+    margin-top: 15rem;
+    background: linear-gradient(180deg, #fcf9f901 0%, #e8f4fae3 20%, #fffffff0 100%);
     width: 100%;
     padding: 2rem;
     border-radius: 2rem;
@@ -274,14 +274,13 @@ button[value="klassiskt"] {
         margin-top: 1rem;
         background: linear-gradient(180deg, #fcf9f9dc 0%, #fcf9f9e3 20%, #ffffff9e 100%);
         grid-template-columns: 20% 20% 20% 20%;
-        justify-content: space-evenly;
+        justify-content: center;
 
     }
 
     .container-category {
         grid-template-rows: 30% 70%;
     }
-
 
 }
 </style>

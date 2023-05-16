@@ -43,7 +43,7 @@
             <div v-if="showScore">
                 <div v-if="finished" id="result">
                     You got {{ correctAnswer }} / 10 songs right!
-                    {{ message  }}
+                    {{ message }}
                 </div>
             </div>
             <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
@@ -186,9 +186,16 @@ export default {
             }
         },
         scoreMessage(correctAnswer) {
-            if (correctAnswer > 2) {
-                this.message = 'WOW DU FICK MER ÄN 2 POÄNG'
+            if (correctAnswer <= 3) {
+                this.message = 'Oj, det gick inte så bra för dig...'
             }
+            else if (correctAnswer > 3 && correctAnswer <= 6) {
+                this.message = 'Hmm, det kunde ha gått bättre'
+            }
+            else {
+                this.message = 'Bra jobbat!'
+            }
+            console.log(this.message)
         }
     },
 
@@ -428,5 +435,6 @@ h1 {
         font-size: 1.6rem;
         height: 7rem;
     }
-}</style>
+}
+</style>
 

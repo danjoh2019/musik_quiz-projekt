@@ -3,7 +3,9 @@
     <div class="container-category">
         <div class="header-category">
             <!--<h1>Quiz</h1>-->
-            <div class="header-img"><img src="../assets/img/dancing.jpg" alt="illustration of people dancing"></div>
+            <div class="header-img">
+                <img src="../assets/img/dancing.jpg" alt="illustration of people dancing" />
+            </div>
         </div>
         <div class="container-category-buttons">
             <button v-for="category in categories" :key="category.id" :value="category.genre" :id="category.id"
@@ -23,73 +25,49 @@ function selectCategory(id, categoryString) {
 }
 </script>
 <style scoped>
+/* ---------------- FOR SMALLEST SCREEN --------------*/
 .container-category {
-    align-items: center;
     font-family: 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-transform: uppercase;
     text-align: center;
 }
+.header-category {
+    overflow: hidden;
+}
+.header-img img {
+    width: 390%;
+    position: fixed;
+    z-index: -2;
+    left: -80rem;
+    top: 4rem;
 
-.container-category-buttons {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: .5rem;
 }
 
 
+.container-category-buttons {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    margin-top: 15rem;
+    background: linear-gradient(180deg, #fcf9f901 0%, #e8f4fae3 20%, #fffffff0 100%);
+    width: 100%;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
 .category-button {
-    flex-grow: 1;
-    flex-basis: auto;
-    max-width: 5rem;
-    width: auto;
-    max-height: 5rem;
-    height: auto;
-    padding: 5rem;
+
+    padding: 3rem;
     border-radius: 1rem;
-    margin: 0.5rem;
+    margin: 1rem;
     border: none;
     font-family: 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: .8rem;
+    font-size: 1rem;
+    font-weight: normal;
     letter-spacing: 0.1rem;
-    background: linear-gradient(180deg, #4E70D3 0%, #2431A4 100%);
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
     text-transform: uppercase;
     color: white;
-
-}
-
-button[value="pop"],
-button[value="elektroniskt"],
-button[value="hiphop"] {
-    background: linear-gradient(180deg, #F8C8C8 0%, #FFADAD 100%);
-    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-    border-radius: 10px;
-}
-
-button[value="dansband"],
-button[value="60s/70s"] {
-
-    background: linear-gradient(180deg, #4E70D3 0%, #2431A4 100%);
-    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-
-}
-
-button[value="folkmusik"],
-button[value="soul/r&b"] {
-    background: linear-gradient(180deg, #EB4242 0%, #CC0327 100%);
-    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-    border-radius: 10px;
-
-}
-
-button[value="klassiskt"],
-button[value="jazz"] {
-    background: linear-gradient(180deg, #FEA418 0%, #FF9921 100%);
-    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-    border-radius: 10px;
-
 }
 
 button {
@@ -99,166 +77,210 @@ button {
 
 }
 
-.header-img img {
-    width: 170rem;
-    position: fixed;
-    opacity: 50%;
-    z-index: -2;
-    left: -87rem;
-    top: -1rem;
+/* -------- BUTTONS ----------*/
+
+button[value="elektroniskt"],
+button[value="pop"],
+button[value="hiphop"] {
+    background: linear-gradient(180deg, #f8c8c8f6 0%, #FFADAD 100%);
+    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+
 }
 
 
-@media screen and (min-width: 481px) {
-   /* h1 {
-        position: absolute;
-        color: #EB4242 ;
-        font-size: 8rem;
-        padding: 1rem;
-        border-radius: 2rem;
-        background: linear-gradient(180deg, #f8c8c883 0%, #ffadad8b 100%);
+button[value="dansband"],
+button[value="60/70-tal"],
+button[value="country"] {
+
+    background: linear-gradient(180deg, #4e6fd3ed 0%, #2431A4 100%);
+    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+
+}
+
+
+button[value="folkmusik"],
+button[value="soul/r&b"] {
+    background: linear-gradient(180deg, #eb4242f3 0%, #CC0327 100%);
+    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+
+
+}
+
+button[value="jazz"],
+button[value="klassiskt"] {
+    background: linear-gradient(180deg, #fea618ec 0%, #FF9921 100%);
+    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+
+
+}
+
+/* -------- BUTTONS END----------*/
+
+
+
+/* ---------------- FOR SMALL SCREEN --------------*/
+
+@media screen and (min-width: 576px) {
+
+    .header-img img {
+        width: 300%;
+        position: fixed;
+        opacity: 110%;
+        z-index: -2;
+        left: -92rem;
+        top: 2rem;
+
     }
-*/
+    .container-category-buttons {
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        justify-items: stretch;
+
+    }
+
     .category-button {
 
-        animation: ease-in bounceScroll 2s;
-        font-weight: bold;
+        flex-grow: 1;
+        padding: 4rem;
+        border-radius: 1rem;
+        margin: 1rem;
     }
 
-    .container-category {
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-areas:
-            "header header header header"
-            "main main main main"
-            "footer footer footer footer";
+    /* --------------- BUTTONS BIGGER SCREEN -------------*/
 
-    }
-
-    .header-category {
-        grid-area: header;
-        overflow: hidden;
-        border: none;
-    }
-
-    .container-category-buttons {
-        grid-area: main;
-        display: flex;
-        grid-template-columns: repeat(4, 1fr);
-        justify-items: stretch;
-        gap: .2rem;
-        padding-top: .2rem;
-
-
-    }
-
-    button:hover {
-        position: relative;
-        bottom: -.2rem;
-        right: -.2rem;
-        color: white;
-
-    }
-
-
+    button[value="jazz"],
     button[value="pop"],
-    button[value="folkmusik"],
-    button[value="60s/70s"] {
-
-        background: rgba(253, 145, 145, 0.7);
+    button[value="hiphop"] {
+        background: linear-gradient(180deg, #F8C8C8 0%, #FFADAD 100%);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-        border-radius: 10px;
 
     }
 
-    button[value="elektroniskt"] {
+    button[value="jazz"]:hover,
+    button[value="pop"]:hover,
+    button[value="hiphop"]:hover {
+        background: linear-gradient(180deg, #f8c8c87f 0%, rgba(255, 173, 173, 0.886) 100%);
+        box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+    }
+
+    button[value="folkmusik"],
+    button[value="60/70-tal"],
+    button[value="country"] {
 
         background: linear-gradient(180deg, #4E70D3 0%, #2431A4 100%);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-        border-radius: 10px;
 
     }
 
-    button[value="elektroniskt"],
-    button[value="soul/r&b"] {
-        background: linear-gradient(180deg, rgba(235, 66, 66, 0.9) 0%, rgba(204, 3, 39, 0.9) 100%);
-        box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-        border-radius: 10px;
+    button[value="folkmusik"]:hover,
+    button[value="60/70-tal"]:hover,
+    button[value="country"]:hover {
+        background: linear-gradient(180deg, #4e6fd38b 0%, rgba(36, 49, 164, 0.927) 100%);
+
     }
 
     button[value="dansband"],
-    button[value="klassiskt"] {
-        background: linear-gradient(180deg, rgba(254, 164, 24, 0.9) 0%, rgba(255, 153, 33, 0.9) 100%);
+    button[value="soul/r&b"] {
+        background: linear-gradient(180deg, #EB4242 0%, #CC0327 100%);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-        border-radius: 10px;
     }
 
-
-    .header-img img {
-
-        position: relative;
-        opacity: 100%;
-        width: 220%;
-        left: -10rem;
-        margin-bottom: -5.2rem;
-        z-index: -2;
-        /*animation: ease-in fade-in 1s;*/
+    button[value="dansband"]:hover,
+    button[value="soul/r&b"]:hover {
+        background: linear-gradient(180deg, #eb424256 0%, #cc0328de 100%);
     }
 
-    @keyframes fade-in {
-        0% {
+    button[value="elektroniskt"],
+    button[value="klassiskt"] {
+        background: linear-gradient(180deg, #FEA418 0%, #FF9921 100%);
+        box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
 
-            opacity: 0;
-        }
-
-        50% {
-
-            opacity: 50%;
-        }
-
-        100% {
-            opacity: 100%;
-        }
     }
+
+    button[value="elektroniskt"]:hover,
+    button[value="klassiskt"]:hover {
+        background: linear-gradient(180deg, #fea61875 0%, #FF9921 100%);
+    }
+
+    /* --------------- BUTTONS BIGGER SCREEN END -------------*/
 
 }
 
-@media screen and (min-width: 769px) {
+/* ---------------- MEDIUM --------------*/
+
+@media screen and (min-width: 768px) {
+    .container-category {
+        display: grid;
+        grid-template-rows: 20% 70% 10%;
+        align-items: center;
+        text-transform: uppercase;
+        text-align: center;
 
 
-    .category-button {
-        max-width: 12rem;
-        width: auto;
-        max-height: 10rem;
-        height: auto;
     }
 
     .header-img img {
+        max-width: 130%;
+        position: fixed;
+        opacity: 100%;
         z-index: -2;
-        margin: 0rem;
-        margin-bottom: -6rem;
+        left: -8rem;
+        top: 5rem;
+
     }
 
-    @media screen and (min-width: 1025px) {
-        .header-img img {
-            width: 120%;
-            z-index: -2;
-            margin: 0rem;
-            margin-bottom: -12rem;
-            top: -6rem;
-        }
+    .container-category-buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: stretch;
+        gap: 1rem;
+        padding: 2rem;
+        z-index: 2;
 
-        /*.category-button {
-        max-width: 18rem;
-        width: auto;
-        max-height: 13rem;
-        height: auto;
-    }*/
-        .container-category-buttons {
-            padding-top: 1rem;
-            margin-top: 1rem;
-        }
     }
 
-}</style>
+    .category-button {
+        flex-grow: 1;
+        padding: 4rem;
+        border-radius: 1rem;
+        margin: 0.5rem;
+    }
+
+
+
+}
+
+/* ---------------- LARGE --------------*/
+
+@media screen and (min-width: 992px) {
+
+    .container-category {
+        grid-template-rows: 30% 70%;
+    }
+
+    .header-img img {
+        top: 0rem;
+        max-width: 100%;
+        position: relative;
+        opacity: 100%;
+        z-index: -2;
+        left: 0rem;
+    }
+
+    .container-category-buttons {
+        margin-top: 1rem;
+        background: linear-gradient(180deg, #fcf9f9dc 0%, #fcf9f9e3 20%, #ffffff9e 100%);
+        grid-template-columns: 20% 20% 20% 20%;
+        justify-content: center;
+
+    }
+    .category-button {
+        font-size: 1.1rem;
+        letter-spacing: .3rem;
+        text-shadow: #060b39;
+
+    }
+
+
+}
+</style>

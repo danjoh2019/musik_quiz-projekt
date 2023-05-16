@@ -111,10 +111,10 @@ a:hover {
   margin: 70px auto;
   padding: 20px;
   background: #fff;
-  border-radius: 5px;
-  width: 30%;
+  border-radius: .5rem;
+  width: 90%;
   position: relative;
-  transition: all 5s ease-in-out;
+  text-transform: none;
 }
 
 .popup h2 {
@@ -200,7 +200,13 @@ a:hover {
     width: 70%;
   }
   .popup{
-    width: 70%;
+    width: 80%;
+  }
+
+  @media screen and (min-width: 760px) {
+    .popup {
+      width: 60%;
+    }
   }
 
 }

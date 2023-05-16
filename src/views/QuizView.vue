@@ -201,10 +201,9 @@ export default {
                 /* this.loading = true;  */
                 this.showScore = true;
                 this.finished = true;
-
-                updateResults(this.guesses);
                 this.scoreMessage(this.correctAnswer)
             }
+            updateResults(this.guesses);
         },
         scoreMessage(correctAnswer) {
             if (correctAnswer <= 1) {

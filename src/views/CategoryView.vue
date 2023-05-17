@@ -49,7 +49,7 @@ function selectCategory(id, categoryString) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    background: linear-gradient(180deg, #fcf9f914 0%,#fcf9f9e9 10%, #f0f6f9 35%, #fffffff0 100%);
+    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9ef 15%, #fffffff0 100%);
 
 }
 
@@ -59,10 +59,10 @@ function selectCategory(id, categoryString) {
     border-radius: 1.5rem;
     margin: .5rem;
     border: none;
-    font-family: 'Adventuro','Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Adventuro', 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 1rem;
-    font-weight:medium;
-    letter-spacing: 0.18rem;
+    font-weight: normal;
+    letter-spacing: 0.14rem;
     box-shadow: 3px 3px 8px rgba(57, 56, 56, 0.5);
     text-transform: uppercase;
     color: rgb(248, 248, 250);
@@ -80,7 +80,7 @@ button {
 button[value="elektroniskt"],
 button[value="pop"],
 button[value="hiphop"] {
-    background: linear-gradient(180deg, #f8c8c8 0%, #FFB6C9 100%);
+    background: linear-gradient(180deg, #f8c8c8 0%, #FFADAD 100%);
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
 
 }
@@ -269,7 +269,7 @@ button[value="klassiskt"] {
     }
 
     .category-button {
-        font-size: 1rem;
+        font-size: 1.1rem;
         letter-spacing: .3rem;
         text-shadow: #060b39;
 

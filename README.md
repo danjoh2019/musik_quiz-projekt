@@ -28,6 +28,12 @@ npm run dev
 npm run build
 ```
 
+### Run System Tests with [Cypress](https://www.cypress.io/)
+
+```sh
+npm run test:e2e:dev
+```
+
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh

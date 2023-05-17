@@ -17,7 +17,7 @@
                         <div id="progress">
                             <div class="score correct"> {{ guesses[0] }}</div>
                             <div class="score wrong">{{ guesses[1] }} </div>
-                            <div class="score total"></div>
+                            <div class="score total">{{ totalGuesses }}</div>
                         </div>
                     </div>
                 </div>

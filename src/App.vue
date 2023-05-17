@@ -11,11 +11,10 @@ import FooterPage from './components/FooterPage.vue'
         <div class="nav-header">
           <NavPage />
         </div>
-        <RouterView />
-
       </div>
-
-      <div class="main"></div>
+      <div class="main"> 
+        <RouterView />
+      </div>
       <div class="footer">
         <FooterPage />
       </div>
@@ -27,15 +26,23 @@ import FooterPage from './components/FooterPage.vue'
 .nav-header {
   display: none;
 }
+.footer {
+  position: sticky;
+  top:auto;
+  bottom: 0;
+  
+}
 
 
 @media screen and (min-width: 768px) {
   .footer {
     display: none;
+    
   }
 
   .nav-header {
     display: contents;
+    position: fixed;
   }
 }
 </style>

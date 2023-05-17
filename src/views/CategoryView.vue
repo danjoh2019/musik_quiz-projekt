@@ -41,7 +41,7 @@ function selectCategory(id, categoryString) {
     position: fixed;
     z-index: -1;
     right: 16rem;
-    top: 15rem;
+    top: 11rem;
     
 }
 

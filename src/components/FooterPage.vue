@@ -3,7 +3,6 @@
         <div class="nav-footer">
             <RouterLink to="/">Start</RouterLink>
             <RouterLink to="/category"> Quiz</RouterLink>
-            <RouterLink to="/About"> Om Oss</RouterLink>
         </div>
     </div>
 </template>
@@ -34,10 +33,5 @@
   a:hover {
     color: rgba(235, 66, 66, 0.9);
   }
-  
- 
-  
-  @media screen and (min-width: 560px) {
-  
-  }
+
   </style>

@@ -1,14 +1,5 @@
-<style>
-.frame {
-    color: black;
-    background-color: white;
-    padding: 1.2rem;
-}
-
-</style>
-
 # Music quiz app
-<div class="frame">
+
 This is a web app created for a school project.
 
 On the start page, we show which songs are the most played songs in the last 24 hours on Sveriges Radios all channels as well as which songs were played the most on this day five and ten years ago.
@@ -19,7 +10,6 @@ The project was created by Christopher, Daniel, David and Tilda as a school proj
 
 The task was to create a web application from one of some predetermined APIs.
 Our app gets its data from [Sveriges Radio's open API](https://sverigesradio.se/oppetapi).
-</div>
 
 ## Recommended IDE Setup
 
@@ -51,12 +41,6 @@ npm run build
 
 ```sh
 npm run test:e2e:dev
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
 ```
 
 ### Lint with [ESLint](https://eslint.org/)

@@ -1,6 +1,25 @@
-# vue-project
+<style>
+.frame {
+    color: black;
+    background-color: white;
+    padding: 1.2rem;
+}
 
-This template should help get you started developing with Vue 3 in Vite.
+</style>
+
+# Music quiz app
+<div class="frame">
+This is a web app created for a school project.
+
+On the start page, we show which songs are the most played songs in the last 24 hours on Sveriges Radios all channels as well as which songs were played the most on this day five and ten years ago.
+
+In the quiz part, we get our data from playlists from programs that play the type of music that matches the quiz heading.
+
+The project was created by Christopher, Daniel, David and Tilda as a school project in the Java developer course at [Yrgo](https://www.yrgo.se).
+
+The task was to create a web application from one of some predetermined APIs.
+Our app gets its data from [Sveriges Radio's open API](https://sverigesradio.se/oppetapi).
+</div>
 
 ## Recommended IDE Setup
 

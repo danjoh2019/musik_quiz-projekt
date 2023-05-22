@@ -29,6 +29,7 @@
   grid-template-rows: 1fr;
   grid-template-areas: "header" "content" "footer";
   row-gap: 2rem;
+  
 }
 
 .header {
@@ -41,4 +42,7 @@
 
 .footer {
   grid-area: "footer";
+}
+body{
+  margin: 0;
 }

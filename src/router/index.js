@@ -21,7 +21,9 @@ const router = createRouter({
             name: 'quiz',
             component: QuizView,
         },   
-    ]
+    ],
+    
+    
 })
 
 export default router

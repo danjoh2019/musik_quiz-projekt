@@ -1,7 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import NavPage from './components/NavPage.vue'
-import FooterPage from './components/FooterPage.vue'
+/* import FooterPage from './components/FooterPage.vue'  */
 </script>
 
 <template>
@@ -11,13 +11,13 @@ import FooterPage from './components/FooterPage.vue'
         <div class="nav-header">
           <NavPage />
         </div>
-        <RouterView />
-
       </div>
-
-      <div class="main"></div>
+      <div class="main">
+        <RouterView />
+      </div>
       <div class="footer">
-        <FooterPage />
+        <!--    <FooterPage />  -->
+
       </div>
 
     </div>
@@ -25,17 +25,30 @@ import FooterPage from './components/FooterPage.vue'
 </template>
 <style scoped>
 .nav-header {
-  display: none;
+  /* display: none;*/
+  position: fixed;
+  bottom: 0;
+  top: auto;
+  width: 100%;
+
 }
 
+/*.footer {
+  position: sticky;
+  top:auto;
+  bottom: 0;
+  
+} */
 
 @media screen and (min-width: 768px) {
   .footer {
     display: none;
+
   }
 
   .nav-header {
     display: contents;
+    position: fixed;
   }
 }
 </style>

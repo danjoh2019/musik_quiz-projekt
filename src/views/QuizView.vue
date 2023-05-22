@@ -42,8 +42,10 @@
                 <div v-if="finished" id="result">
                     Du fick {{ correctAnswer }} / 10 låtar rätt! <br>
                     {{ message }} <br>
-                    <button @click="playAgain">Spela igen!</button>
-                    <button @click="chooseCategory">Välj ny kategori</button>
+                    <button class="gameDone playAgain" @click="playAgain">Spela igen</button>
+
+                    <button class="gameDone chooseCategory" @click="chooseCategory">Välj ny kategori</button>
+
                 </div>
             </div>
         </div>
@@ -197,10 +199,10 @@ export default {
                 this.message = 'Pinsamt...'
             }
             else if (correctAnswer >= 2 && correctAnswer <= 6) {
-                this.message = 'Bättre kan du...'
+                this.message = 'kan du...'
             }
             else if (correctAnswer >= 7 && correctAnswer <= 9) {
-                this.message = 'Sedär, inte dåligt alls...'
+                this.message = 'Sådär, inte dåligt alls...'
             }
             else {
                 this.message = 'Du är King/Queen of Quiz!!!'
@@ -225,6 +227,42 @@ export default {
 </script>
   
 <style scoped>
+.gameDone {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.playAgain {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+.playAgain:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.chooseCategory {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+}
+
+.chooseCategory:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
 .center-body {
     display: flex;
     justify-content: center;
@@ -408,10 +446,12 @@ h1 {
         grid-template-columns: auto auto;
         grid-template-rows: auto auto;
     }
+
     .question-container {
         font-size: 1.5rem;
         height: 20rem;
     }
+
     .options-container {
         font-size: 1.5rem;
         height: 7rem;
@@ -426,6 +466,5 @@ h1 {
         font-size: 1.6rem;
         height: 7rem;
     }
-}
-</style>
+}</style>
 

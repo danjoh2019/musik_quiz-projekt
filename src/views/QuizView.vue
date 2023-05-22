@@ -21,14 +21,11 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="question-container">
                     <div v-for="question of question" :key="question.title" class="question">
                         <p>{{ question.title }}</p>
                     </div>
                 </div>
-
                 <div class="options">
                     <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
                         @click="isClicked(song.artist, $event)">
@@ -38,8 +35,6 @@
                     </div>
                 </div>
             </div>
-            <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
-
             <div v-if="showScore">
                 <div v-if="finished" id="result">
                     Du fick {{ correctAnswer }} / 10 låtar rätt! <br>
@@ -48,21 +43,15 @@
                     <button @click="chooseCategory">Välj ny kategori</button>
                 </div>
             </div>
-            <!-- ---------------- SCORE COUNTER FIRST DRAFT ---------------- -->
         </div>
-
     </div>
 </template>
   
 <script>
-
 import { getQuizQuestions } from '../data/getQuiz.js'
 import { generateTimespan, getFour, shuffleArray } from '../utils/misc.js'
-
 import categories from '../data/categories.json'
 
-
-// ---------------- SCORE COUNTER FIRST DRAFT
 
 function updateResults(res) {
     let results = res
@@ -83,8 +72,6 @@ function updateResults(res) {
     document.querySelector('.total').style.width = total * 10 + '%'
 
 }
-
-// ---------------- SCORE COUNTER FIRST DRAFT
 
 export default {
     name: 'QuizView',
@@ -109,25 +96,6 @@ export default {
     },
 
     methods: {
-
-        playAgain() {
-            this.finished = false;
-            this.showScore = false;
-            this.correctAnswer = 0;
-            this.wrongAnswer = 0;
-            this.totalGuesses = 0;
-            this.guesses = 0;
-            this.question = [];
-            this.alternatives = [];
-            this.songs = [];
-
-            this.displayQuestions(this.songs);
-        },
-
-        chooseCategory() {
-
-            this.$router.push('/category');
-        },
 
         async getAllSongs(id, dateString) {
             try {
@@ -177,9 +145,8 @@ export default {
                 this.correctAnswer++
                 this.guesses[0]++
                 optionsContainer.classList.replace('options-container', 'correct-container')
-
-
-            } else {
+            } 
+            else {
                 optionsContainer.classList.replace('options-container', 'incorrect-container')
                 this.guesses[1]++
             }
@@ -198,13 +165,31 @@ export default {
             this.guesses[2]--;
 
             if (this.totalGuesses === 10) {
-                /* this.loading = true;  */
                 this.showScore = true;
                 this.finished = true;
                 this.scoreMessage(this.correctAnswer)
             }
             updateResults(this.guesses);
         },
+
+        playAgain() {
+            this.finished = false;
+            this.showScore = false;
+            this.correctAnswer = 0;
+            this.wrongAnswer = 0;
+            this.totalGuesses = 0;
+            this.guesses = 0;
+            this.question = [];
+            this.alternatives = [];
+            this.songs = [];
+
+            this.displayQuestions(this.songs);
+        },
+
+        chooseCategory() {
+            this.$router.push('/category');
+        },
+
         scoreMessage(correctAnswer) {
             if (correctAnswer <= 1) {
                 this.message = 'Pinsamt...'
@@ -220,13 +205,12 @@ export default {
             }
         }
     },
-
     /**
      * We get the name of the genre through our route (we send it as a query from CategoryView)
      * Find the matching object from the categories import (which is a json-file)
      * From the json file we get: id, genre (name), timspan (months) We generate a timespan string with generateTimeSpan
      * which gives us a url that sets enddate to yesterday and startdate x months back
-     * Call method getSong to gett all Song from that genre and timeperiod
+     * Call method getSong to get all songs from that genre and timeperiod
      * */
 
     mounted() {
@@ -234,8 +218,6 @@ export default {
         this.category = categories.find(el => el.genre === this.genre)
         const dateString = generateTimespan(this.category.timespan)
         this.getAllSongs(this.category.id, dateString)
-
-        /* document.activeElement.blur() */
     }
 }
 </script>

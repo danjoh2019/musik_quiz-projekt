@@ -42,6 +42,7 @@ export default {
 
 <template>
     <div class="container-toplists">
+        <div class="border"></div>
         <div class="songsFromYears">
             Mest spelade låtarna
         </div>
@@ -60,13 +61,19 @@ export default {
 </template>
 
 <style scoped>
+.border {
+    background:  #5775CD;
+    padding: .8rem;
+}
 .songsFromYears {
     font-family: Adventuro, Montserrat, Arial, Helvetica, sans-serif;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     color: rgb(236, 82, 115);
     text-transform: uppercase;
     text-align: center;
     padding: 2.2rem;
+    padding-bottom: 2rem;
+    padding-top: 3rem;
 }
 
 .historyfive {
@@ -77,14 +84,14 @@ export default {
     gap: 1.2rem;
     margin: 1rem;
     letter-spacing: .06rem;
+    
 }
 
 .historyfive ul span {
     font-weight: bold;
     color: #EB4242;
-    ;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: .9rem;
     padding-bottom: .8rem;
     font-family: Adventuro, Arial, Helvetica, sans-serif;
     letter-spacing: .1rem;
@@ -95,10 +102,14 @@ export default {
     list-style-type: none;
     margin: 0;
     padding: 2rem;
-    font-size: .65rem;
+    font-size: .75rem;
     text-align: center;
     background: #f9cad5;
     color: #EB4242;
+    box-shadow: 1px 1px 2px rgba(124, 116, 116, 0.5);
+}
+.historyfive ul > *{
+    padding-top: .2rem;
 }
 
 @media screen and (min-width: 576px) {

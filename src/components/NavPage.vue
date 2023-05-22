@@ -124,7 +124,7 @@ a {
 
 @media screen and (min-width: 560px) {
   .nav {
-    background: #f9cad5;;
+    background: #f9cad5;
   }
 
   a {

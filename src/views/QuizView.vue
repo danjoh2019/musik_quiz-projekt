@@ -119,9 +119,9 @@ export default {
                 this.alternatives = getFour(songs)
                 this.question.unshift(this.alternatives[0])
                 shuffleArray(this.alternatives)
-            } catch (e) {
-                console.log(e)
-                this.message = e.message
+            } catch (error) {
+                console.log(error)
+                this.message = error.message
             }
         },
 
@@ -133,7 +133,6 @@ export default {
          * @param artist the artist linked to the option that is clicked
          * */
         isClicked(artist, event) {
-
             const optionsContainer = event.target.closest('.options-container')
             this.songs.forEach((song) => {
                 for (const element of this.alternatives) {

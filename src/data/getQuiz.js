@@ -21,14 +21,11 @@ function removeDuplicates(songs) {
 async function getGenre(id, dateString) {
   const endpoint = `/playlists/getplaylistbyprogramid?id=${id}${dateString}&format=json`
   const response = await getJson(endpoint)
-  if (response === null) {
-    throw new Error("Inga låtar hittades")
-  }
+
   return response.song
 }
 
 async function getQuizQuestions(id, dateString) {
-
   let response = await getGenre(id, dateString)
   const quizList = removeDuplicates(response)
   if (response.length === 0) {

@@ -1,52 +1,35 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import NavPage from './components/NavPage.vue'
-/* import FooterPage from './components/FooterPage.vue'  */
+
 </script>
 
 <template>
   <main>
     <div class="wrapper">
       <div class="header">
-        <div class="nav-header">
-          <NavPage />
-        </div>
+        <NavPage />
       </div>
       <div class="main">
         <RouterView />
       </div>
       <div class="footer">
-        <!--    <FooterPage />  -->
-
       </div>
-
     </div>
+
   </main>
 </template>
 <style scoped>
-.nav-header {
-  /* display: none;*/
+.header {
   position: fixed;
   bottom: 0;
   top: auto;
   width: 100%;
-
 }
 
-/*.footer {
-  position: sticky;
-  top:auto;
-  bottom: 0;
-  
-} */
+@media screen and (min-width: 560px) {
 
-@media screen and (min-width: 768px) {
-  .footer {
-    display: none;
-
-  }
-
-  .nav-header {
+  .header {
     display: contents;
     position: fixed;
   }

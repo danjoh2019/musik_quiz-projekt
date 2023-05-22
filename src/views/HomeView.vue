@@ -16,7 +16,6 @@ import TopLists from '../components/TopLists.vue';
       </div>
       <div class="footer">
 
-        2023
       </div>
     </div>
 
@@ -24,11 +23,9 @@ import TopLists from '../components/TopLists.vue';
 </template>
 
 <style>
-#title {
-  color: red;
-  font-family: "Montserrat", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  text-align: center;
-  font-size: 30px;
+.wrapper {
+ text-align: center;
+ 
 }
 </style>
 

@@ -51,7 +51,6 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
-
 /* .header-logo {
   left: 0%;
 }
@@ -64,15 +63,12 @@ import { RouterLink } from 'vue-router'
   list-style-type: none;
   justify-content: center;
   width: 100%;
+  position: sticky;
   padding: 1rem;
-  background: #ffc5d4;
   font-family: "Montserrat", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-transform: uppercase;
   text-decoration: none;
-}
-
-.nav {
-  position: sticky;
+  background: #5775CD;
 }
 
 a {
@@ -81,17 +77,11 @@ a {
   color: #303BA1;
   font-size: .8rem;
   margin: .9rem;
-
-
 }
 
 a:hover {
   color: rgba(235, 66, 66, 0.9);
 }
-
-/*.nav a:last-child{
-  margin-left: auto;
-}*/
 
 /* POPUP */
 .overlay {
@@ -150,58 +140,13 @@ a:hover {
 /* POPUP */
 
 @media screen and (min-width: 560px) {
-
-  /*
-  .hamburger-top,
-  .hamburger-middle,
-  .hamburger-bottom {
-    width: 1.2rem;
-    height: .2rem;
-    margin-bottom: .2rem;
-    border-radius: 1rem;
-    background-color: white;
-  }
-  */
-  .hamburger-bottom {
-    margin-bottom: 0rem;
-
+  .nav {
+    background: lightpink;
   }
 
   a {
     font-weight: bold;
   }
-
-
-  /*
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-
-  li {
-    float: left;
-    border-right: 1px solid #bbb;
-  }
-
-  li:last-child {
-    border-right: none;
-  }
-
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-
-  li a:hover:not(.active) {
-    background-color: #111;
-  }*/
 
   .box {
     width: 70%;

@@ -5,14 +5,7 @@ import { RouterLink } from 'vue-router'
 <template>
   <div>
     <div class="nav">
-      <div class="hamburger-icon">
-        <div class="hamburger-top"></div>
-        <div class="hamburger-middle"></div>
-        <div class="hamburger-bottom"></div>
-      </div>
-      
-      
-      <div class="header-logo"><img src="../assets/img/logo-color.jpg" width="50" height="50" alt="musicquiz logo"></div>
+      <div class="header-logo"><img src="../assets/img/logo-color.jpg" width="27" height="30" alt="musicquiz logo"></div>
       <RouterLink to="/">Start</RouterLink>
       <RouterLink to="/category"> Quiz</RouterLink>
 
@@ -51,13 +44,16 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
-/* .header-logo {
-  left: 0%;
+.header-logo {
+  position: relative;
 }
+
 .header-logo img {
-  margin-left: 0%;
-  left: 30%;
-} */
+  top: 0.4rem;
+  position: inherit;
+
+}
+
 .nav {
   display: flex;
   list-style-type: none;
@@ -74,14 +70,11 @@ import { RouterLink } from 'vue-router'
 a {
   display: flex;
   text-decoration: none;
-  color: #303BA1;
+  color: #e6e8f8;
   font-size: .8rem;
   margin: .9rem;
 }
 
-a:hover {
-  color: rgba(235, 66, 66, 0.9);
-}
 
 /* POPUP */
 .overlay {
@@ -110,6 +103,7 @@ a:hover {
   position: relative;
   text-transform: none;
   opacity: 80%;
+  font-size: .85rem;
 }
 
 .popup h2 {
@@ -159,6 +153,11 @@ a:hover {
   @media screen and (min-width: 760px) {
     .popup {
       width: 60%;
+      font-size: 1rem;
+    }
+
+    a:hover {
+      color: rgba(235, 66, 66, 0.9);
     }
   }
 

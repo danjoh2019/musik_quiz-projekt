@@ -64,15 +64,12 @@ function updateResults(res) {
     if (correct >= 1) {
         document.querySelector('.correct').style.display = "block"
         document.querySelector('.correct').style.width = correct * 10 + '%'
-
     }
     if (wrong >= 1) {
         document.querySelector('.wrong').style.display = "block"
         document.querySelector('.wrong').style.width = wrong * 10 + '%'
     }
-
     document.querySelector('.total').style.width = total * 10 + '%'
-
 }
 
 export default {
@@ -98,18 +95,15 @@ export default {
     },
 
     methods: {
-
         async getAllSongs(id, dateString) {
             try {
                 this.songs = await getQuizQuestions(id, dateString)
                 this.loading = false
                 this.displayQuestions(this.songs)
             }
-            catch (e) {
-                console.log(e)
-                this.message = e.message
+            catch (error) {
+                this.message = error.message
             }
-
         },
 
         /**
@@ -120,7 +114,6 @@ export default {
          * Then shuffles alternatives so that correct answer isnät always thr first option
          * @param songs the full list of songs in the choosen category
          * **/
-
         displayQuestions(songs) {
             try {
                 this.alternatives = getFour(songs)
@@ -130,7 +123,6 @@ export default {
                 console.log(e)
                 this.message = e.message
             }
-
         },
 
         /**
@@ -140,7 +132,6 @@ export default {
          * When an alternative is clicked, generate four new song from songlist
          * @param artist the artist linked to the option that is clicked
          * */
-
         isClicked(artist, event) {
 
             const optionsContainer = event.target.closest('.options-container')
@@ -229,10 +220,6 @@ export default {
         this.category = categories.find(el => el.genre === this.genre)
         const dateString = generateTimespan(this.category.timespan)
         this.getAllSongs(this.category.id, dateString)
-
-
-
-
     }
 }
 </script>

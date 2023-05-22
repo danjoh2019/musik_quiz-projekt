@@ -120,6 +120,7 @@ export default {
                 this.question.unshift(this.alternatives[0])
                 shuffleArray(this.alternatives)
             } catch (error) {
+                this.loading = true
                 console.log(error)
                 this.message = error.message
             }
@@ -352,13 +353,9 @@ h1 {
     text-align: center;
 }
 
-/* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
-
 #result {
     font-size: 3rem;
 }
-
-#scorecount {}
 
 #scorecount p {
     font-size: larger;
@@ -398,7 +395,6 @@ h1 {
 
 .total {
     border-radius: .5rem;
-    background-color: #ffffff;
     opacity: 0.8;
     background-color: white;
     background-position: 7px 0, 7px 0, 0 0, 0 0;
@@ -406,26 +402,16 @@ h1 {
     background-repeat: repeat;
 }
 
-/* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
-
 @media screen and (min-width: 800px) {
-
     .options {
         display: grid;
         grid-template-columns: auto auto;
         grid-template-rows: auto auto;
-
     }
-
     .question-container {
         font-size: 1.5rem;
         height: 20rem;
     }
-
-    .question {
-        /* padding-top: 6rem; */
-    }
-
     .options-container {
         font-size: 1.5rem;
         height: 7rem;

@@ -38,7 +38,6 @@ import { RouterLink } from 'vue-router'
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -47,20 +46,17 @@ import { RouterLink } from 'vue-router'
 .header-logo {
   position: relative;
 }
-
 .header-logo img {
   top: 0.4rem;
   position: inherit;
-
 }
 
 .nav {
   display: flex;
   list-style-type: none;
   justify-content: center;
-  width: 100%;
   position: sticky;
-  padding: 1rem;
+  padding: .45rem;
   font-family: "Montserrat", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-transform: uppercase;
   text-decoration: none;
@@ -70,20 +66,18 @@ import { RouterLink } from 'vue-router'
 a {
   display: flex;
   text-decoration: none;
-  color: #e6e8f8;
+  color: #ffffff;
   font-size: .8rem;
   margin: .9rem;
 }
 
-
-/* POPUP */
 .overlay {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(20, 39, 77, 0.7);
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
@@ -93,7 +87,6 @@ a {
   visibility: visible;
   opacity: 1;
 }
-
 .popup {
   margin: 70px auto;
   padding: 20px;
@@ -105,12 +98,11 @@ a {
   opacity: 80%;
   font-size: .85rem;
 }
-
 .popup h2 {
   margin-top: 0;
   color: #333;
+  text-transform: uppercase;
 }
-
 .popup .close {
   position: absolute;
   top: .1rem;
@@ -123,29 +115,21 @@ a {
 }
 
 .popup .close:hover {
-  color: #06D85F;
+  color: #0665d8;
 }
-
 .popup .content {
   max-height: 30%;
   overflow: auto;
 }
 
-/* POPUP */
-
 @media screen and (min-width: 560px) {
   .nav {
-    background: lightpink;
+    background: #f9cad5;;
   }
 
   a {
     font-weight: bold;
   }
-
-  .box {
-    width: 70%;
-  }
-
   .popup {
     width: 80%;
   }

@@ -5,8 +5,8 @@ function removeDuplicates(songs) {
 
   for (let song of songs) {
     const songObj = {
-      title: song.title,
-      artist: song.artist
+      artist: song.artist,
+      title: song.title
     }
     array.push(songObj)
   }

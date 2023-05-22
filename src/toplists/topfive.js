@@ -30,7 +30,7 @@ async function getAllSongsFromYear(id, year) {
 
     return await getJson(`/playlists/getplaylistbychannelid?id=${id}&startdatetime=${fromDateString}&enddatetime=${toDateString}&format=json&size=600`)
 }
-    
+
 async function getTopFiveFromYear(year) {
     const allChannels = await getAllChannelIds()
     const allSongs = []
@@ -38,18 +38,14 @@ async function getTopFiveFromYear(year) {
     for (let id of allChannels) {
         allSongs.push(await getAllSongsFromYear(id, year))
     }
-
     const result = countOccurances(allSongs)
-
     return getTopSongs(result)
 }
 
 function getTopSongs(input) {
     const songArray = []
-
     for (const name in input) {
-        
-        songArray.push({ name: name, count: input[name]})
+        songArray.push({ name: name, count: input[name] })
     }
 
     songArray.sort((o1, o2) => o2.count - o1.count)

@@ -28,8 +28,6 @@
   display: grid;
   grid-template-rows: 1fr;
   grid-template-areas: "header" "content" "footer";
-  row-gap: 2rem;
-  
 }
 
 .header {

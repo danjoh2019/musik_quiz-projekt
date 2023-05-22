@@ -3,14 +3,11 @@ const BASE_URL = "https://api.sr.se/api/v2";
 let allIds = []
 
 async function getJson(urlString) {
-
     const response = await fetch(`${BASE_URL}${urlString}`)
 
     if (!response.ok) {
-        // Fixa bättre felhantering
-        throw new Error("Error message")
+        throw new Error("Något gick fel när låtarna hämtades, försök igen")
     }
-
     const json = await response.json()
 
     return json

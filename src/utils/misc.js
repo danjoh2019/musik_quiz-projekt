@@ -42,7 +42,7 @@ function getRandomElementsFromArray(array, count) {
       }
   }
 
-  throw new Error("could not find enough unique")
+  throw new Error("Inga låtar kunde hittas")
 }
 
 function shuffleArray(array) {

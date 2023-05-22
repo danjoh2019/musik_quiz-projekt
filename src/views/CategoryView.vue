@@ -30,7 +30,6 @@ function selectCategory(id, categoryString) {
     text-align: center;
     display: grid;
     grid-template-rows: 8rem 1fr;
-
 }
 .header-img img {
     width: 100%;

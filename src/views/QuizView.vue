@@ -6,6 +6,9 @@
             <div class="center-body">
                 <div class="loader-circle-7"></div>
             </div>
+            <div class="error-container">
+                {{ message }}
+            </div>
         </div>
         <div v-if="!loading">
             <div v-if="!this.showScore">
@@ -52,7 +55,6 @@ import { getQuizQuestions } from '../data/getQuiz.js'
 import { generateTimespan, getFour, shuffleArray } from '../utils/misc.js'
 import categories from '../data/categories.json'
 
-
 function updateResults(res) {
     let results = res
     let correct = results[0]
@@ -91,7 +93,7 @@ export default {
             totalGuesses: 0,
             finished: false,
             showScore: false,
-            message: ""
+            message: "",
         }
     },
 
@@ -100,11 +102,14 @@ export default {
         async getAllSongs(id, dateString) {
             try {
                 this.songs = await getQuizQuestions(id, dateString)
-            } catch (err) {
-                console.log('error')
+                this.loading = false
+                this.displayQuestions(this.songs)
             }
-            this.loading = false
-            this.displayQuestions(this.songs)
+            catch (e) {
+                console.log(e)
+                this.message = e.message
+            }
+
         },
 
         /**
@@ -117,9 +122,15 @@ export default {
          * **/
 
         displayQuestions(songs) {
-            this.alternatives = getFour(songs)
-            this.question.unshift(this.alternatives[0])
-            shuffleArray(this.alternatives)
+            try {
+                this.alternatives = getFour(songs)
+                this.question.unshift(this.alternatives[0])
+                shuffleArray(this.alternatives)
+            } catch (e) {
+                console.log(e)
+                this.message = e.message
+            }
+
         },
 
         /**
@@ -145,7 +156,7 @@ export default {
                 this.correctAnswer++
                 this.guesses[0]++
                 optionsContainer.classList.replace('options-container', 'correct-container')
-            } 
+            }
             else {
                 optionsContainer.classList.replace('options-container', 'incorrect-container')
                 this.guesses[1]++
@@ -218,6 +229,10 @@ export default {
         this.category = categories.find(el => el.genre === this.genre)
         const dateString = generateTimespan(this.category.timespan)
         this.getAllSongs(this.category.id, dateString)
+
+
+
+
     }
 }
 </script>

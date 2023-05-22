@@ -10,9 +10,7 @@ describe('First system test', () => {
 
     cy.contains('pop').click()
 
-    cy.wait(6000)
-
-    cy.get('.loader-circle-7').should('not.exist')
+    cy.get('.loader-circle-7', { timeout: 15000 }).should('not.exist')
 
     cy.get('#progress>div:nth-child(3)').invoke('text').then(parseFloat).then((($div) => {
       const val = $div

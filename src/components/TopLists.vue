@@ -8,7 +8,7 @@ const STORAGE_FIVEYEARS = 'storage-fiveYearsAgo';
 const STORAGE_TODAY = 'storage-today';
 
 export default {
-    components:{
+    components: {
         HeaderImg,
     },
 
@@ -46,11 +46,12 @@ export default {
 
 <template>
     <div class="container-toplists">
-        <HeaderImg/>
+        <HeaderImg />
+        <div class="songsFromYears">
+            Mest spelade låtarna
+        </div>
         <div class="container-mobview">
-            <div class="songsFromYears">
-                Mest spelade låtarna
-            </div>
+
             <div class="mobilePopup">
                 <a class="button" href="#popupToday">Senaste dygnet</a>
                 <div id="popupToday" class="overlay">
@@ -107,6 +108,7 @@ export default {
                     </ul>
                 </div>
             </div>
+            <div class="border"></div>
         </div>
 
     </div>
@@ -127,25 +129,24 @@ export default {
 }
 
 .container-toplists {
-    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9ef 15%, #fffffff0 100%);
+    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9c8 15%, #fffffff0 100%);
 }
 
 .button {
     background-color: #eb5656;
     align-items: center;
     padding: 3rem;
-    border-radius: .7rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    border-radius: .4rem;
     color: white;
     box-shadow: 1px 2px 2px rgba(57, 56, 56, 0.5);
+    margin: 1rem 2rem 1rem 2rem;
 }
 
 a {
     display: flex;
     text-decoration: none;
     color: white;
-    font-size: .7rem;
+    font-size: .8rem;
     margin: .9rem;
     font-family: 'Montserrat', 'Adventuro', Arial, Helvetica, sans-serif;
     text-transform: uppercase;
@@ -179,7 +180,6 @@ a {
     position: relative;
     text-transform: none;
     opacity: 100%;
-    font-size: .85rem;
     box-shadow: 1px 1px 4px rgba(78, 6, 24, 0.154);
 }
 
@@ -213,17 +213,16 @@ a {
 
 .songsFromYears {
     font-family: Adventuro, Montserrat, Arial, Helvetica, sans-serif;
-    font-size: 1.8rem;
     color: #4160bd;
     text-transform: uppercase;
     text-align: center;
-    padding: 2.2rem;
+    padding: 2.1rem;
     letter-spacing: 0.1rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding-top: 3rem;
-    font-size: 1.5rem;
-    background-color: #ffffffad;
+    font-size: 1.4rem;
+    background: rgba(255, 255, 255, 0.948);
+    border: 1px solid #4160bd;
+    margin: 2rem 2rem 1rem 2rem;
+
 }
 
 .historyfive {
@@ -231,10 +230,9 @@ a {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
-    gap: 1.2rem;
+    gap: 1.1rem;
     letter-spacing: .05rem;
     padding: 1rem;
-
 }
 
 .historyfive ul span {
@@ -249,7 +247,7 @@ a {
 }
 
 .historyfive ul {
-    border-radius: .5rem;
+    border-radius: .4rem;
     list-style-type: none;
     margin: 0;
     padding: 2rem;
@@ -258,7 +256,7 @@ a {
     background: #f9cad5;
     padding: .5rem;
     text-align: left;
-    font-size: .75rem;
+    font-size: .8rem;
     color: #EB4242;
 }
 
@@ -271,6 +269,14 @@ a {
 }
 
 @media screen and (min-width: 576px) {
+    .songsFromYears {
+        margin: 3rem 7rem 1rem 7rem;
+    }
+
+    .container-toplists {
+        background: linear-gradient(180deg, #fcf9f900 0%, #f0f6f98b 55%, #ffffff 100%);
+    }
+
     .desktop {
         display: contents;
     }
@@ -279,71 +285,81 @@ a {
         display: none;
     }
 
-    .content {
-        display: grid;
-        grid-template-rows: repeat(3, 1fr);
-        justify-content: center;
-    }
-
 
     .historyfive ul {
-        font-size: .9rem;
+        font-size: .75rem;
         color: white;
         padding-top: 3rem;
         padding-bottom: 3rem;
         padding-left: 1rem;
-        padding-right: 1rem;
-        width: auto;
+       
         margin-left: 2rem;
         margin-right: 2rem;
-        background: #454FAB;
+        background: #4955c0fe;
         text-align: center;
+        border: 1px solid white;
     }
 
     #today span,
     #tenYears span,
     #fiveYears span {
-        color: #fac8d3;
-        font-size: 1.5rem;
+        color: #ffd4dd;
+        font-size: 1rem;
+    }
+
+    .historyfive {
+        margin: 1rem 5rem 4rem 5em;
     }
 
 }
 
 @media screen and (min-width: 768px) {
+    .border{
+        background-color: #ffd4dde5;
+        padding: 1.5rem;
+        bottom: 0;
+        top: auto;
+        width: 100%;
+        position:relative;
+    }
     .songsFromYears {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
+        margin: 4rem 9rem 1rem 9rem;
     }
 
     .historyfive ul {
-        font-size: .9rem;
-        margin-left: 0rem;
-        margin-right: 0rem;
+        font-size: .8rem;
+        margin: 0rem;
+    }
+    .historyfive{
+        margin: 0 5rem 0.5rem 5rem;
     }
 }
 
 @media screen and (min-width: 992px) {
     .content {
-        padding: 3rem;
-    }
-
-    .container-toplists {
-        display: grid;
-        grid-template-rows: 10rem 1fr;
+        overflow: hidden;
     }
 
     .historyfive ul {
-        font-size: .9rem;
+        font-size: .8rem;
     }
 
     .historyfive {
         display: flex;
         flex-direction: row;
-        flex-basis: 1;
-        grid-gap: 2rem;
+        grid-gap: 1rem;
+        margin: 5rem 5rem 3rem 5rem;
+
     }
 
     .songsFromYears {
-        margin: 0rem;
-        padding-top: 0rem;
+        margin: 8rem 20rem 1rem 20rem;
+        padding: 3rem;
+        font-size: 1.5rem;
     }
-}</style>
+    .container-toplists {
+        background: linear-gradient(180deg, #fcf9f900 10%, #f0f6f965 75%, #ffffff 100%);
+    }
+}
+</style>

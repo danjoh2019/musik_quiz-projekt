@@ -22,6 +22,7 @@
     z-index: -1;
     left: -18rem;
     top: 10rem; 
+    overflow:hidden;
 }
 @media screen and (min-width: 576px) {
     .border {
@@ -46,7 +47,11 @@
 
 @media screen and (min-width: 992px) {
     .header-img img {
-        margin-bottom: -4.5rem;
+        width:85%;
+        transform: scale(1);
+        left:6rem;
+        top: 3.5rem;
+        position: fixed;
     }
 
 }

@@ -145,18 +145,17 @@ a {
     }
   }
   @media screen and (min-width: 992px) {
+
     .nav {
-      padding: 1rem;
+      padding: .7rem;
     
     }
     a{
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
     .header-logo img {
-      top: 0.7rem;
-      left: 2rem;
       top: 1.5rem;
-      position:fixed;
+      position:sticky;
     }
   }
 

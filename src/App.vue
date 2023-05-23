@@ -33,4 +33,11 @@ import NavPage from './components/NavPage.vue'
     position: fixed;
   }
 }
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 992px) {
+
+
+}
 </style>

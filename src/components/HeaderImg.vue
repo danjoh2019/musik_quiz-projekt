@@ -3,11 +3,13 @@
         <div class="border"></div>
         <div class="header-img">
             <img src="../assets/img/dancing.jpg" alt="illustration of people dancing" />
+            <div class="box"></div>
         </div>
     </div>
 </template>
 
 <style scoped>
+
 .border{
     background-color:  #5775CD;
     padding: 1rem;
@@ -29,6 +31,7 @@
     }
 }
 @media screen and (min-width: 576px){
+
     .border{
         display: none;
     }

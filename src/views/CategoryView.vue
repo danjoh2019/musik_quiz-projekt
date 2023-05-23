@@ -2,6 +2,7 @@
 <template>
     <div class="container-category">
         <div class="header-category">
+            <div class="border"></div>
             <div class="header-img">
                 <img src="../assets/img/dancing.jpg" alt="illustration of people dancing" />
             </div>
@@ -25,12 +26,19 @@ function selectCategory(id, categoryString) {
 </script>
 
 <style scoped>
+.border {
+    background-color: #5775CD;
+    padding: 1rem;
+    opacity: 80%;
+}
+
 .container-category {
     text-transform: uppercase;
     text-align: center;
     display: grid;
     grid-template-rows: 8rem 1fr;
 }
+
 .header-img img {
     width: 100%;
     transform: scale(3.5);
@@ -39,12 +47,14 @@ function selectCategory(id, categoryString) {
     right: 16rem;
     top: 11rem;
 }
+
 .container-category-buttons {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9ef 15%, #fffffff0 100%);
 }
+
 .category-button {
     width: 10rem;
     padding: 3rem;
@@ -93,16 +103,22 @@ button[value="klassiskt"] {
 }
 
 @media screen and (min-width: 576px) {
+    .border {
+        display: none;
+    }
+
     .header-img img {
         transform: scale(2);
         right: 20rem;
         top: 13rem;
     }
+
     .container-category-buttons {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         justify-items: center;
     }
+
     .category-button {
         width: 12rem;
         flex-grow: 1;
@@ -174,12 +190,14 @@ button[value="klassiskt"] {
         text-align: center;
         overflow: hidden;
     }
+
     .header-img img {
         transform: scale(1.5);
         position: relative;
         right: 0rem;
         top: 5rem;
     }
+
     .category-button {
         flex-grow: 1;
         padding: 4rem;
@@ -192,11 +210,13 @@ button[value="klassiskt"] {
     .container-category {
         grid-template-rows: 30% 70%;
     }
+
     .header-img img {
         transform: scale(.95);
         top: 2rem;
         max-width: 100%;
     }
+
     .container-category-buttons {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -205,10 +225,10 @@ button[value="klassiskt"] {
         padding: 2rem;
         background: linear-gradient(180deg, #fcf9f9 0%, #fcf9f9e3 20%, #ffffff9e 100%);
     }
+
     .category-button {
         font-size: 1.1rem;
         letter-spacing: .3rem;
         text-shadow: #060b39;
     }
-}
-</style>
+}</style>

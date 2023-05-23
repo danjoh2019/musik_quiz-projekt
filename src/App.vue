@@ -1,7 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import NavPage from './components/NavPage.vue'
-
 </script>
 
 <template>
@@ -16,9 +15,9 @@ import NavPage from './components/NavPage.vue'
       <div class="footer">
       </div>
     </div>
-
   </main>
 </template>
+
 <style scoped>
 .header {
   position: fixed;

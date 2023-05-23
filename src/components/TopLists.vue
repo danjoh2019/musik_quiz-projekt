@@ -248,16 +248,16 @@ a {
     color: #EB4242;
 }
 .historyfive ul >:nth-of-type(1){
-    padding-top: 1rem;
+    padding-top: .2rem;
 }
 .historyfive ul > *{
-    margin: .4rem;
+    margin: .3rem;
 }
 
 @media screen and (min-width: 576px) {
     .desktop {
         display: contents;
-       viewport-fit: auto;
+        
     }
 
     .mobilePopup {
@@ -276,13 +276,17 @@ a {
         padding-left: 1rem;
         padding-right: 1rem;
         width: auto;
+        margin-left: 2rem;
+        margin-right: 2rem;
         background: #454FAB;
+        text-align: center;
     }
     #today span ,
     #tenYears span,
     #fiveYears span
     {
-        color: #FFADC2;
+        color: #fac8d3;
+
     }
   
 
@@ -302,6 +306,7 @@ a {
     }
     .songsFromYears{
         padding-bottom: .5rem;
+        top: -10rem;
     }
 }
 
@@ -314,7 +319,9 @@ a {
     }
 
     .historyfive ul {
-        padding: 2rem;
-        font-size: .8rem;
+       
+        font-size: .75rem;
+        margin-left: 0rem;
+        margin-right: 0rem;
     }
 }</style>

@@ -1,12 +1,17 @@
 <script>
 import { getTopFiveFromYear } from "../toplists/topfive.js"
 import { subtractYears } from "../utils/misc.js"
+import HeaderImg from '../components/HeaderImg.vue';
 
 const STORAGE_TENYEARS = 'storage-tenYearsAgo';
 const STORAGE_FIVEYEARS = 'storage-fiveYearsAgo';
 const STORAGE_TODAY = 'storage-today';
 
 export default {
+    components:{
+        HeaderImg,
+    },
+
     data() {
         return {
             tenYearsAgo: [],
@@ -41,7 +46,7 @@ export default {
 
 <template>
     <div class="container-toplists">
-
+        <HeaderImg/>
         <div class="container-mobview">
             <div class="songsFromYears">
                 Mest spelade låtarna
@@ -118,11 +123,11 @@ export default {
 
 .container-mobview {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
 }
 
 .container-toplists {
-    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9a0 15%, #fffffff0 100%);
+    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9ef 15%, #fffffff0 100%);
 }
 
 .button {
@@ -216,6 +221,9 @@ a {
     letter-spacing: 0.1rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    padding-top: 3rem;
+    font-size: 1.5rem;
+    background-color: #ffffffad;
 }
 
 .historyfive {
@@ -228,6 +236,7 @@ a {
     padding: 1rem;
 
 }
+
 .historyfive ul span {
     font-weight: bold;
     color: #EB4242;
@@ -256,6 +265,7 @@ a {
 .historyfive ul>:nth-of-type(1) {
     padding-top: .2rem;
 }
+
 .historyfive ul>* {
     margin: .3rem;
 }
@@ -268,6 +278,13 @@ a {
     .mobilePopup {
         display: none;
     }
+
+    .content {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        justify-content: center;
+    }
+
 
     .historyfive ul {
         font-size: .9rem;
@@ -290,38 +307,43 @@ a {
         font-size: 1.5rem;
     }
 
-    .historyfive ul:nth-of-type(3) {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .historyfive ul:nth-of-type(2) {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    .historyfive ul:nth-of-type(1) {
-        grid-column: 3;
-        grid-row: 1;
-    }
-
-    .songsFromYears {
-        padding-bottom: 1rem;
-        top: -8rem;
-        font-size: 2.2rem;
-    }
 }
 
 @media screen and (min-width: 768px) {
-    .historyfive {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        padding: 1.7rem;
+    .songsFromYears {
+        font-size: 2.5rem;
     }
+
     .historyfive ul {
-        font-size: .75rem;
+        font-size: .9rem;
         margin-left: 0rem;
         margin-right: 0rem;
     }
 }
-</style>
+
+@media screen and (min-width: 992px) {
+    .content {
+        padding: 3rem;
+    }
+
+    .container-toplists {
+        display: grid;
+        grid-template-rows: 10rem 1fr;
+    }
+
+    .historyfive ul {
+        font-size: .9rem;
+    }
+
+    .historyfive {
+        display: flex;
+        flex-direction: row;
+        flex-basis: 1;
+        grid-gap: 2rem;
+    }
+
+    .songsFromYears {
+        margin: 0rem;
+        padding-top: 0rem;
+    }
+}</style>

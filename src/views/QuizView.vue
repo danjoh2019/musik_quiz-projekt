@@ -7,6 +7,9 @@
                 <div class="center-body">
                     <div class="loader-circle-7"></div>
                 </div>
+                <div class="error-container">
+                    {{ message }}
+                </div>
             </div>
             <div v-if="!loading">
                 <div v-if="!this.showScore">
@@ -38,7 +41,7 @@
                 </div>
                 <div v-if="showScore">
                     <div v-if="finished" id="result">
-                        Du fick {{ correctAnswer }} / 10 låtar rätt! <br>
+                        Du fick {{ correctAnswer }} av 10 låtar rätt! <br>
                         {{ message }} <br>
                         <button @click="playAgain">Spela igen!</button>
                         <button @click="chooseCategory">Välj ny kategori</button>
@@ -102,11 +105,12 @@ export default {
         async getAllSongs(id, dateString) {
             try {
                 this.songs = await getQuizQuestions(id, dateString)
+                this.loading = false
+                this.displayQuestions(this.songs)
             } catch (err) {
-                console.log('error')
+                this.loading = true
+                this.message = err.message
             }
-            this.loading = false
-            this.displayQuestions(this.songs)
         },
 
         /**
@@ -119,9 +123,15 @@ export default {
          * **/
 
         displayQuestions(songs) {
-            this.alternatives = getFour(songs)
-            this.question.unshift(this.alternatives[0])
-            shuffleArray(this.alternatives)
+            try {
+                this.alternatives = getFour(songs)
+                this.question.unshift(this.alternatives[0])
+                shuffleArray(this.alternatives)
+            } catch (error) {
+                this.loading = true
+                console.log(error)
+                this.message = error.message
+            }
         },
 
         /**

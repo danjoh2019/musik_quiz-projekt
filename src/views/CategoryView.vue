@@ -3,9 +3,10 @@
     <div class="container-category">
         <div class="header-category">
             <div class="border"></div>
-            <div class="header-img">
+            <!-- <div class="header-img">
                 <img src="../assets/img/dancing.jpg" alt="illustration of people dancing" />
-            </div>
+            </div> -->
+            <HeaderImg/>
         </div>
         <div class="container-category-buttons">
             <button v-for="category in categories" :key="category.id" :value="category.genre" :id="category.id"
@@ -19,6 +20,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import categories from '../data/categories.json'
+import HeaderImg from '../components/HeaderImg.vue';
 const router = useRouter()
 function selectCategory(id, categoryString) {
     router.push({ name: 'quiz', params: { id: id }, query: { genre: categoryString } })
@@ -26,37 +28,22 @@ function selectCategory(id, categoryString) {
 </script>
 
 <style scoped>
-.border {
-    background-color: #5775CD;
-    padding: 1rem;
-    opacity: 80%;
-}
-
 .container-category {
     text-transform: uppercase;
     text-align: center;
     display: grid;
     grid-template-rows: 8rem 1fr;
+    margin: auto;
 }
-
-.header-img img {
-    width: 100%;
-    transform: scale(3.5);
-    position: fixed;
-    z-index: -1;
-    right: 16rem;
-    top: 11rem;
-}
-
 .container-category-buttons {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(12rem, 20rem));
     justify-items: center;
     background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9ef 15%, #fffffff0 100%);
 }
-
 .category-button {
-    width: 10rem;
+    width: 75%;
+    min-width: 10rem;
     padding: 3rem;
     border-radius: 1.5rem;
     margin: .5rem;
@@ -105,12 +92,6 @@ button[value="klassiskt"] {
 @media screen and (min-width: 576px) {
     .border {
         display: none;
-    }
-
-    .header-img img {
-        transform: scale(2);
-        right: 20rem;
-        top: 13rem;
     }
 
     .container-category-buttons {
@@ -191,13 +172,6 @@ button[value="klassiskt"] {
         overflow: hidden;
     }
 
-    .header-img img {
-        transform: scale(1.5);
-        position: relative;
-        right: 0rem;
-        top: 5rem;
-    }
-
     .category-button {
         flex-grow: 1;
         padding: 4rem;
@@ -209,12 +183,6 @@ button[value="klassiskt"] {
 @media screen and (min-width: 992px) {
     .container-category {
         grid-template-rows: 30% 70%;
-    }
-
-    .header-img img {
-        transform: scale(.95);
-        top: 2rem;
-        max-width: 100%;
     }
 
     .container-category-buttons {

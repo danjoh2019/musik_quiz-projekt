@@ -9,45 +9,44 @@
 </template>
 
 <style scoped>
-
-.border{
-    background-color:  #5775CD;
-    padding: 1rem;
+.border {
+    background-color: #5775CD;
+    padding: 1.5rem;
     opacity: 70%;
 }
-.header-img img {
-        display: none;
-}
-@media screen and (min-width: 768px) {
-    .header-img img {
-        display: block;
-        z-index: -2;
-        width: 90%;
-        position: relative;
-        top: -3rem;
-    }
-    .border{
-        display: none;
-    }
-}
-@media screen and (min-width: 576px){
 
-    .border{
+.header-img img {
+    width: 100%;
+    transform: scale(2.5);
+    position: fixed;
+    z-index: -1;
+    left: -18rem;
+    top: 10rem; 
+}
+@media screen and (min-width: 576px) {
+    .border {
         display: none;
     }
     .header-img img {
         width: 100%;
-        top: 0rem;
-        
+        top: 15rem;
+        left: -27rem;
+    }
+}
+@media screen and (min-width: 768px) {
+    .header-img img {
+        width: 90%;
+        top: 15rem;
+    }
+
+    .border {
+        display: none;
     }
 }
 
 @media screen and (min-width: 992px) {
     .header-img img {
-        top: -4rem;
         margin-bottom: -4.5rem;
-        
     }
-   
 }
 </style>

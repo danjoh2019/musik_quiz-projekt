@@ -41,46 +41,48 @@ export default {
 
 <template>
     <div class="container-toplists">
-        <div class="header-top"></div>
-        <div class="songsFromYears">
-            Mest spelade låtarna
-        </div>
-        <div class="mobilePopup">
-            <a class="button" href="#popupToday">Senaste dygnet</a>
-            <div id="popupToday" class="overlay">
-                <div class="popup">
-                    <a class="close" href="#">&times;</a>
-                    <div class="content">
-                        <div class="historyfive">
-                            <ul id="today"><span>Senaste dygnet</span>
-                                <li v-for="song of today" :key="song.name">{{ song.name }}</li>
-                            </ul>
+
+        <div class="container-mobview">
+            <div class="songsFromYears">
+                Mest spelade låtarna
+            </div>
+            <div class="mobilePopup">
+                <a class="button" href="#popupToday">Senaste dygnet</a>
+                <div id="popupToday" class="overlay">
+                    <div class="popup">
+                        <a class="close" href="#">&times;</a>
+                        <div class="content">
+                            <div class="historyfive">
+                                <ul id="today"><span>Senaste dygnet</span>
+                                    <li v-for="song of today" :key="song.name">{{ song.name }}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <a class="button" href="#popupFiveYears">Fem år sedan</a>
-            <div id="popupFiveYears" class="overlay">
-                <div class="popup">
-                    <a class="close" href="#">&times;</a>
-                    <div class="content">
-                        <div class="historyfive">
-                            <ul id="fiveYears"><span>Fem år sedan</span>
-                                <li v-for="song of fiveYearsAgo" :key="song.name">{{ song.name }}</li>
-                            </ul>
+                <a class="button" href="#popupFiveYears">Fem år sedan</a>
+                <div id="popupFiveYears" class="overlay">
+                    <div class="popup">
+                        <a class="close" href="#">&times;</a>
+                        <div class="content">
+                            <div class="historyfive">
+                                <ul id="fiveYears"><span>Fem år sedan</span>
+                                    <li v-for="song of fiveYearsAgo" :key="song.name">{{ song.name }}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <a class="button" href="#popupTenYears">Tio år sedan</a>
-            <div id="popupTenYears" class="overlay">
-                <div class="popup">
-                    <a class="close" href="#">&times;</a>
-                    <div class="content">
-                        <div class="historyfive">
-                            <ul id="tenYears"><span>Tio år sedan</span>
-                                <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
-                            </ul>
+                <a class="button" href="#popupTenYears">Tio år sedan</a>
+                <div id="popupTenYears" class="overlay">
+                    <div class="popup">
+                        <a class="close" href="#">&times;</a>
+                        <div class="content">
+                            <div class="historyfive">
+                                <ul id="tenYears"><span>Tio år sedan</span>
+                                    <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -101,6 +103,7 @@ export default {
                 </div>
             </div>
         </div>
+
     </div>
 </template>
 
@@ -113,18 +116,23 @@ export default {
     display: none;
 }
 
-.container-toplists{
-    background:  white;
+.container-mobview {
+    display: flex;
+    flex-direction: column;  
+}
+
+.container-toplists {
+    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9a0 15%, #fffffff0 100%);
 }
 
 .button {
-    background-color:  #eb5656;
+    background-color: #eb5656;
     align-items: center;
     padding: 3rem;
     border-radius: .7rem;
     margin-left: 2rem;
     margin-right: 2rem;
-    color:  white;
+    color: white;
     box-shadow: 1px 2px 2px rgba(57, 56, 56, 0.5);
 }
 
@@ -168,7 +176,6 @@ a {
     opacity: 100%;
     font-size: .85rem;
     box-shadow: 1px 1px 4px rgba(78, 6, 24, 0.154);
-
 }
 
 .popup h2 {
@@ -219,9 +226,8 @@ a {
     gap: 1.2rem;
     letter-spacing: .05rem;
     padding: 1rem;
-    
-}
 
+}
 .historyfive ul span {
     font-weight: bold;
     color: #EB4242;
@@ -243,33 +249,28 @@ a {
     background: #f9cad5;
     padding: .5rem;
     text-align: left;
-    background: white;
     font-size: .75rem;
     color: #EB4242;
 }
-.historyfive ul >:nth-of-type(1){
+
+.historyfive ul>:nth-of-type(1) {
     padding-top: .2rem;
 }
-.historyfive ul > *{
+.historyfive ul>* {
     margin: .3rem;
 }
 
 @media screen and (min-width: 576px) {
     .desktop {
         display: contents;
-        
     }
 
     .mobilePopup {
         display: none;
     }
 
-    .historyfive ul span {
-        color: white;
-    }
-
     .historyfive ul {
-        font-size: .8rem;
+        font-size: .9rem;
         color: white;
         padding-top: 3rem;
         padding-bottom: 3rem;
@@ -281,14 +282,13 @@ a {
         background: #454FAB;
         text-align: center;
     }
-    #today span ,
-    #tenYears span,
-    #fiveYears span
-    {
-        color: #fac8d3;
 
+    #today span,
+    #tenYears span,
+    #fiveYears span {
+        color: #fac8d3;
+        font-size: 1.5rem;
     }
-  
 
     .historyfive ul:nth-of-type(3) {
         grid-column: 1;
@@ -304,24 +304,24 @@ a {
         grid-column: 3;
         grid-row: 1;
     }
-    .songsFromYears{
-        padding-bottom: .5rem;
-        top: -10rem;
+
+    .songsFromYears {
+        padding-bottom: 1rem;
+        top: -8rem;
+        font-size: 2.2rem;
     }
 }
 
 @media screen and (min-width: 768px) {
-
     .historyfive {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         padding: 1.7rem;
     }
-
     .historyfive ul {
-       
         font-size: .75rem;
         margin-left: 0rem;
         margin-right: 0rem;
     }
-}</style>
+}
+</style>

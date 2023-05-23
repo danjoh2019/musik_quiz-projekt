@@ -12,8 +12,7 @@ import NavPage from './components/NavPage.vue'
       <div class="main">
         <RouterView />
       </div>
-      <div class="footer">
-      </div>
+   
     </div>
   </main>
 </template>

@@ -122,7 +122,7 @@ a {
   overflow: auto;
 }
 
-@media screen and (min-width: 560px) {
+@media screen and (min-width: 576px) {
   .nav {
     background: #f9cad5;
   }

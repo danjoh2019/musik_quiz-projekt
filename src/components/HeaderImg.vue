@@ -12,7 +12,6 @@
 .border {
     background-color: #5775CD;
     padding: 1.5rem;
-    opacity: 70%;
 }
 
 .header-img img {

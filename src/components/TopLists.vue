@@ -221,7 +221,7 @@ a {
     font-size: 1.4rem;
     background: rgba(255, 255, 255, 0.948);
     border: 1px solid #4160bd;
-    margin: 2rem 2rem 1rem 2rem;
+    margin: 5rem 2rem 3rem 2rem;
 
 }
 
@@ -292,7 +292,6 @@ a {
         padding-top: 3rem;
         padding-bottom: 3rem;
         padding-left: 1rem;
-       
         margin-left: 2rem;
         margin-right: 2rem;
         background: #4955c0fe;
@@ -308,7 +307,7 @@ a {
     }
 
     .historyfive {
-        margin: 1rem 5rem 4rem 5em;
+        margin: 1rem 4rem 4rem 4em;
     }
 
 }
@@ -324,7 +323,7 @@ a {
     }
     .songsFromYears {
         font-size: 1.8rem;
-        margin: 4rem 9rem 1rem 9rem;
+        margin: 4rem 6rem 1rem 6rem;
     }
 
     .historyfive ul {

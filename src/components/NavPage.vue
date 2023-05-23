@@ -144,5 +144,20 @@ a {
       color: rgba(235, 66, 66, 0.9);
     }
   }
+  @media screen and (min-width: 992px) {
+    .nav {
+      padding: 1rem;
+    
+    }
+    a{
+      font-size: 1.2rem;
+    }
+    .header-logo img {
+      top: 0.7rem;
+      left: 2rem;
+      top: 1.5rem;
+      position:fixed;
+    }
+  }
 
 }</style>

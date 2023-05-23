@@ -2,10 +2,6 @@
 <template>
     <div class="container-category">
         <div class="header-category">
-            <div class="border"></div>
-            <!-- <div class="header-img">
-                <img src="../assets/img/dancing.jpg" alt="illustration of people dancing" />
-            </div> -->
             <HeaderImg/>
         </div>
         <div class="container-category-buttons">
@@ -33,13 +29,12 @@ function selectCategory(id, categoryString) {
     text-align: center;
     display: grid;
     grid-template-rows: 8rem 1fr;
-    margin: auto;
+    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9ef 15%, #fffffff0 100%);
 }
 .container-category-buttons {
     display: grid;
     grid-template-columns: repeat(2, minmax(12rem, 20rem));
     justify-items: center;
-    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9ef 15%, #fffffff0 100%);
 }
 .category-button {
     width: 75%;
@@ -90,14 +85,11 @@ button[value="klassiskt"] {
 }
 
 @media screen and (min-width: 576px) {
-    .border {
-        display: none;
-    }
-
     .container-category-buttons {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         justify-items: center;
+        margin: 2rem;
     }
 
     .category-button {
@@ -105,7 +97,7 @@ button[value="klassiskt"] {
         flex-grow: 1;
         padding: 4rem;
         border-radius: 1rem;
-        margin: 1rem;
+        margin: .5rem;
     }
 
     button[value="jazz"],
@@ -164,12 +156,9 @@ button[value="klassiskt"] {
 
 @media screen and (min-width: 768px) {
     .container-category {
-        display: grid;
-        grid-template-rows: 30% 70% 10%;
         align-items: center;
         text-transform: uppercase;
         text-align: center;
-        overflow: hidden;
     }
 
     .category-button {
@@ -181,17 +170,13 @@ button[value="klassiskt"] {
 }
 
 @media screen and (min-width: 992px) {
-    .container-category {
-        grid-template-rows: 30% 70%;
-    }
-
     .container-category-buttons {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         justify-items: stretch;
         gap: 1rem;
         padding: 2rem;
-        background: linear-gradient(180deg, #fcf9f9 0%, #fcf9f9e3 20%, #ffffff9e 100%);
+        margin: 7rem;
     }
 
     .category-button {
@@ -199,4 +184,5 @@ button[value="klassiskt"] {
         letter-spacing: .3rem;
         text-shadow: #060b39;
     }
-}</style>
+}
+</style>

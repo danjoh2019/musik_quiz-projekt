@@ -8,18 +8,21 @@
                     <div class="loader-circle-7"></div>
                 </div>
             </div>
-            <div v-if="!loading">
-                <div v-if="!this.showScore">
-                    <div class="songs">
-                        <div id="scorecount">
-                            <p>
-                                {{ guesses[0] }} rätt av 10
-                            </p>
-                            <div id="progress">
-                                <div class="score correct"> {{ guesses[0] }}</div>
-                                <div class="score wrong">{{ guesses[1] }} </div>
-                                <div class="score total">{{ totalGuesses }}</div>
-                            </div>
+            <div class="error-container">
+                {{ message }}
+            </div>
+        </div>
+        <div v-if="!loading">
+            <div v-if="!this.showScore">
+                <div class="songs">
+                    <div id="scorecount">
+                        <p>
+                            {{ guesses[0] }} rätt av 10
+                        </p>
+                        <div id="progress">
+                            <div class="score correct"> {{ guesses[0] }}</div>
+                            <div class="score wrong">{{ guesses[1] }} </div>
+                            <div class="score total">{{ totalGuesses }}</div>
                         </div>
                     </div>
                     <div class="question-container">
@@ -36,13 +39,14 @@
                         </div>
                     </div>
                 </div>
-                <div v-if="showScore">
-                    <div v-if="finished" id="result">
-                        Du fick {{ correctAnswer }} / 10 låtar rätt! <br>
-                        {{ message }} <br>
-                        <button @click="playAgain">Spela igen!</button>
-                        <button @click="chooseCategory">Välj ny kategori</button>
-                    </div>
+            </div>
+            <div v-if="showScore">
+                <div v-if="finished" id="result">
+                    Du fick {{ correctAnswer }} / 10 låtar rätt! <br>
+                    {{ message }} <br>
+                    <button class="gameDone playAgain" @click="playAgain">Spela igen</button>
+
+                    <button class="gameDone chooseCategory" @click="chooseCategory">Välj ny kategori</button>
                 </div>
             </div>
         </div>
@@ -54,7 +58,6 @@ import { getQuizQuestions } from '../data/getQuiz.js'
 import { generateTimespan, getFour, shuffleArray } from '../utils/misc.js'
 import categories from '../data/categories.json'
 
-
 function updateResults(res) {
     let results = res
     let correct = results[0]
@@ -64,15 +67,12 @@ function updateResults(res) {
     if (correct >= 1) {
         document.querySelector('.correct').style.display = "block"
         document.querySelector('.correct').style.width = correct * 10 + '%'
-
     }
     if (wrong >= 1) {
         document.querySelector('.wrong').style.display = "block"
         document.querySelector('.wrong').style.width = wrong * 10 + '%'
     }
-
     document.querySelector('.total').style.width = total * 10 + '%'
-
 }
 
 export default {
@@ -93,20 +93,20 @@ export default {
             totalGuesses: 0,
             finished: false,
             showScore: false,
-            message: ""
+            message: "",
         }
     },
 
     methods: {
-
         async getAllSongs(id, dateString) {
             try {
                 this.songs = await getQuizQuestions(id, dateString)
-            } catch (err) {
-                console.log('error')
+                this.loading = false
+                this.displayQuestions(this.songs)
             }
-            this.loading = false
-            this.displayQuestions(this.songs)
+            catch (error) {
+                this.message = error.message
+            }
         },
 
         /**
@@ -117,11 +117,16 @@ export default {
          * Then shuffles alternatives so that correct answer isnät always thr first option
          * @param songs the full list of songs in the choosen category
          * **/
-
         displayQuestions(songs) {
-            this.alternatives = getFour(songs)
-            this.question.unshift(this.alternatives[0])
-            shuffleArray(this.alternatives)
+            try {
+                this.alternatives = getFour(songs)
+                this.question.unshift(this.alternatives[0])
+                shuffleArray(this.alternatives)
+            } catch (error) {
+                this.loading = true
+                console.log(error)
+                this.message = error.message
+            }
         },
 
         /**
@@ -131,9 +136,7 @@ export default {
          * When an alternative is clicked, generate four new song from songlist
          * @param artist the artist linked to the option that is clicked
          * */
-
         isClicked(artist, event) {
-
             const optionsContainer = event.target.closest('.options-container')
             this.songs.forEach((song) => {
                 for (const element of this.alternatives) {
@@ -197,10 +200,10 @@ export default {
                 this.message = 'Pinsamt...'
             }
             else if (correctAnswer >= 2 && correctAnswer <= 6) {
-                this.message = 'Bättre kan du...'
+                this.message = 'kan du...'
             }
             else if (correctAnswer >= 7 && correctAnswer <= 9) {
-                this.message = 'Sedär, inte dåligt alls...'
+                this.message = 'Sådär, inte dåligt alls...'
             }
             else {
                 this.message = 'Du är King/Queen of Quiz!!!'
@@ -229,6 +232,43 @@ export default {
     display: flex;
     justify-content: center;
 }
+
+.gameDone {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.playAgain {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+.playAgain:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.chooseCategory {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+}
+
+.chooseCategory:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
 .center-body {
     display: flex;
     justify-content: center;
@@ -407,7 +447,6 @@ h1 {
 }
 
 @media screen and (min-width: 800px) {
-
     .quiz-container {
         width: 70%
     }
@@ -420,10 +459,6 @@ h1 {
     .question-container {
         font-size: 1.5rem;
         height: 20rem;
-    }
-
-    .question {
-        /* padding-top: 6rem; */
     }
 
     .options-container {
@@ -440,6 +475,5 @@ h1 {
         font-size: 1.6rem;
         height: 7rem;
     }
-}
-</style>
+}</style>
 

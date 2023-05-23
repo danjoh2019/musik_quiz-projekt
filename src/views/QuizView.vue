@@ -1,10 +1,12 @@
 
 <template>
-    <div class="quiz-container">
-        <h1>{{ genre }}</h1>
-        <div v-if="loading">
-            <div class="center-body">
-                <div class="loader-circle-7"></div>
+    <div class="wrapper">
+        <div class="quiz-container">
+            <h1>{{ genre }}</h1>
+            <div v-if="loading">
+                <div class="center-body">
+                    <div class="loader-circle-7"></div>
+                </div>
             </div>
             <div class="error-container">
                 {{ message }}
@@ -23,17 +25,17 @@
                             <div class="score total">{{ totalGuesses }}</div>
                         </div>
                     </div>
-                </div>
-                <div class="question-container">
-                    <div v-for="question of question" :key="question.title" class="question">
-                        <p>{{ question.title }}</p>
+                    <div class="question-container">
+                        <div v-for="question of question" :key="question.title" class="question">
+                            <p>{{ question.title }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="options">
-                    <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
-                        @click="isClicked(song.artist, $event)">
-                        <div class="options-container">
-                            <p>{{ song.artist }}</p>
+                    <div class="options">
+                        <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
+                            @click="isClicked(song.artist, $event)">
+                            <div class="options-container">
+                                <p>{{ song.artist }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,7 +47,6 @@
                     <button class="gameDone playAgain" @click="playAgain">Spela igen</button>
 
                     <button class="gameDone chooseCategory" @click="chooseCategory">Välj ny kategori</button>
-
                 </div>
             </div>
         </div>
@@ -227,6 +228,11 @@ export default {
 </script>
   
 <style scoped>
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .gameDone {
     background-color: #4CAF50;
     border: none;
@@ -332,6 +338,7 @@ body {
     gap: 1.5rem;
     grid-template-columns: auto;
     grid-template-rows: repeat(2fr, 2fr);*/
+    width: 90%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -434,13 +441,15 @@ h1 {
 .total {
     border-radius: .5rem;
     opacity: 0.8;
-    background-color: white;
     background-position: 7px 0, 7px 0, 0 0, 0 0;
     background-size: 7px 7px;
     background-repeat: repeat;
 }
 
 @media screen and (min-width: 800px) {
+    .quiz-container {
+        width: 70%
+    }
     .options {
         display: grid;
         grid-template-columns: auto auto;

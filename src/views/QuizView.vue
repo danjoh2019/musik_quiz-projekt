@@ -1,46 +1,48 @@
 
 <template>
-    <div class="quiz-container">
-        <h1>{{ genre }}</h1>
-        <div v-if="loading">
-            <div class="center-body">
-                <div class="loader-circle-7"></div>
+    <div class="wrapper">
+        <div class="quiz-container">
+            <h1>{{ genre }}</h1>
+            <div v-if="loading">
+                <div class="center-body">
+                    <div class="loader-circle-7"></div>
+                </div>
             </div>
-        </div>
-        <div v-if="!loading">
-            <div v-if="!this.showScore">
-                <div class="songs">
-                    <div id="scorecount">
-                        <p>
-                            {{ guesses[0] }} rätt av 10
-                        </p>
-                        <div id="progress">
-                            <div class="score correct"> {{ guesses[0] }}</div>
-                            <div class="score wrong">{{ guesses[1] }} </div>
-                            <div class="score total">{{ totalGuesses }}</div>
+            <div v-if="!loading">
+                <div v-if="!this.showScore">
+                    <div class="songs">
+                        <div id="scorecount">
+                            <p>
+                                {{ guesses[0] }} rätt av 10
+                            </p>
+                            <div id="progress">
+                                <div class="score correct"> {{ guesses[0] }}</div>
+                                <div class="score wrong">{{ guesses[1] }} </div>
+                                <div class="score total">{{ totalGuesses }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question-container">
+                        <div v-for="question of question" :key="question.title" class="question">
+                            <p>{{ question.title }}</p>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
+                            @click="isClicked(song.artist, $event)">
+                            <div class="options-container">
+                                <p>{{ song.artist }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="question-container">
-                    <div v-for="question of question" :key="question.title" class="question">
-                        <p>{{ question.title }}</p>
+                <div v-if="showScore">
+                    <div v-if="finished" id="result">
+                        Du fick {{ correctAnswer }} / 10 låtar rätt! <br>
+                        {{ message }} <br>
+                        <button @click="playAgain">Spela igen!</button>
+                        <button @click="chooseCategory">Välj ny kategori</button>
                     </div>
-                </div>
-                <div class="options">
-                    <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
-                        @click="isClicked(song.artist, $event)">
-                        <div class="options-container">
-                            <p>{{ song.artist }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div v-if="showScore">
-                <div v-if="finished" id="result">
-                    Du fick {{ correctAnswer }} / 10 låtar rätt! <br>
-                    {{ message }} <br>
-                    <button @click="playAgain">Spela igen!</button>
-                    <button @click="chooseCategory">Välj ny kategori</button>
                 </div>
             </div>
         </div>
@@ -145,7 +147,7 @@ export default {
                 this.correctAnswer++
                 this.guesses[0]++
                 optionsContainer.classList.replace('options-container', 'correct-container')
-            } 
+            }
             else {
                 optionsContainer.classList.replace('options-container', 'incorrect-container')
                 this.guesses[1]++
@@ -223,6 +225,10 @@ export default {
 </script>
   
 <style scoped>
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
 .center-body {
     display: flex;
     justify-content: center;
@@ -292,6 +298,7 @@ body {
     gap: 1.5rem;
     grid-template-columns: auto;
     grid-template-rows: repeat(2fr, 2fr);*/
+    width: 90%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -351,13 +358,9 @@ h1 {
     text-align: center;
 }
 
-/* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
-
 #result {
     font-size: 3rem;
 }
-
-#scorecount {}
 
 #scorecount p {
     font-size: larger;
@@ -397,23 +400,21 @@ h1 {
 
 .total {
     border-radius: .5rem;
-    background-color: #ffffff;
     opacity: 0.8;
-    background-color: white;
     background-position: 7px 0, 7px 0, 0 0, 0 0;
     background-size: 7px 7px;
     background-repeat: repeat;
 }
 
-/* ---------------- SCORE COUNTER FIRST DRAFT ---------------- */
-
 @media screen and (min-width: 800px) {
 
+    .quiz-container {
+        width: 70%
+    }
     .options {
         display: grid;
         grid-template-columns: auto auto;
         grid-template-rows: auto auto;
-
     }
 
     .question-container {

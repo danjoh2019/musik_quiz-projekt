@@ -342,12 +342,12 @@ a {
 
     .historyfive ul {
         font-size: .8rem;
+      
     }
 
     .historyfive {
-        display: flex;
-        flex-direction: row;
-        grid-gap: 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         margin: 5rem 5rem 3rem 5rem;
 
     }

@@ -7,7 +7,6 @@ const STORAGE_FIVEYEARS = 'storage-fiveYearsAgo';
 const STORAGE_TODAY = 'storage-today';
 
 export default {
-
     data() {
         return {
             tenYearsAgo: [],
@@ -42,20 +41,65 @@ export default {
 
 <template>
     <div class="container-toplists">
-        <div class="border"></div>
+        <div class="header-top"></div>
         <div class="songsFromYears">
             Mest spelade låtarna
         </div>
-        <div class="historyfive">
-            <ul id="tenYears"><span>Tio år sedan</span>
-                <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
-            </ul>
-            <ul id="fiveYears"><span>Fem år sedan</span>
-                <li v-for="song of fiveYearsAgo" :key="song.name">{{ song.name }}</li>
-            </ul>
-            <ul id="today"><span>Senaste dygnet</span>
-                <li v-for="song of today" :key="song.name">{{ song.name }}</li>
-            </ul>
+        <div class="mobilePopup">
+            <a class="button" href="#popupToday">Senaste dygnet</a>
+            <div id="popupToday" class="overlay">
+                <div class="popup">
+                    <a class="close" href="#">&times;</a>
+                    <div class="content">
+                        <div class="historyfive">
+                            <ul id="today"><span>Senaste dygnet</span>
+                                <li v-for="song of today" :key="song.name">{{ song.name }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="button" href="#popupFiveYears">Fem år sedan</a>
+            <div id="popupFiveYears" class="overlay">
+                <div class="popup">
+                    <a class="close" href="#">&times;</a>
+                    <div class="content">
+                        <div class="historyfive">
+                            <ul id="fiveYears"><span>Fem år sedan</span>
+                                <li v-for="song of fiveYearsAgo" :key="song.name">{{ song.name }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="button" href="#popupTenYears">Tio år sedan</a>
+            <div id="popupTenYears" class="overlay">
+                <div class="popup">
+                    <a class="close" href="#">&times;</a>
+                    <div class="content">
+                        <div class="historyfive">
+                            <ul id="tenYears"><span>Tio år sedan</span>
+                                <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="desktop">
+            <div class="content">
+                <div class="historyfive">
+                    <ul id="tenYears"><span>Tio år sedan</span>
+                        <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
+                    </ul>
+                    <ul id="fiveYears"><span>Fem år sedan</span>
+                        <li v-for="song of fiveYearsAgo" :key="song.name">{{ song.name }}</li>
+                    </ul>
+                    <ul id="today"><span>Senaste dygnet</span>
+                        <li v-for="song of today" :key="song.name">{{ song.name }}</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -65,15 +109,106 @@ export default {
     background:  #5775CD;
     padding: .8rem;
 }
+.desktop {
+    display: none;
+}
+
+.container-toplists{
+    background:  white;
+}
+
+.button {
+    background-color:  #eb5656;
+    align-items: center;
+    padding: 3rem;
+    border-radius: .7rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    color:  white;
+    box-shadow: 1px 2px 2px rgba(57, 56, 56, 0.5);
+}
+
+a {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    font-size: .7rem;
+    margin: .9rem;
+    font-family: 'Montserrat', 'Adventuro', Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    flex-direction: column;
+    letter-spacing: .1rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(247, 163, 181, 0.867);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 180px auto;
+    padding: 5px;
+    background: #fff;
+    border-radius: .5rem;
+    width: 90%;
+    position: relative;
+    text-transform: none;
+    opacity: 100%;
+    font-size: .85rem;
+    box-shadow: 1px 1px 4px rgba(78, 6, 24, 0.154);
+
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #eb5656;
+    text-transform: uppercase;
+    font-family: 'Adventuro', Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.popup .close {
+    position: absolute;
+    top: .1rem;
+    right: 1rem;
+    transition: all 200ms;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #eb5656;
+}
+
+.popup .close:hover {
+    color: #0665d8;
+}
+
+.popup .content {
+    max-height: 40%;
+    overflow: auto;
+}
+
 .songsFromYears {
     font-family: Adventuro, Montserrat, Arial, Helvetica, sans-serif;
-    font-size: 1.4rem;
-    color: rgb(236, 82, 115);
+    font-size: 1.8rem;
+    color: #4160bd;
     text-transform: uppercase;
     text-align: center;
     padding: 2.2rem;
-    padding-bottom: 2rem;
-    padding-top: 3rem;
+    letter-spacing: 0.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .historyfive {
@@ -82,8 +217,8 @@ export default {
     flex-direction: column-reverse;
     justify-content: center;
     gap: 1.2rem;
-    margin: 1rem;
-    letter-spacing: .06rem;
+    letter-spacing: .05rem;
+    padding: 1rem;
     
 }
 
@@ -91,61 +226,82 @@ export default {
     font-weight: bold;
     color: #EB4242;
     text-transform: uppercase;
+    font-size: 1rem;
     font-size: .9rem;
     padding-bottom: .8rem;
     font-family: Adventuro, Arial, Helvetica, sans-serif;
-    letter-spacing: .1rem;
+    letter-spacing: .15rem;
 }
 
 .historyfive ul {
-    border-radius: 1rem;
+    border-radius: .5rem;
     list-style-type: none;
     margin: 0;
     padding: 2rem;
     font-size: .75rem;
     text-align: center;
     background: #f9cad5;
+    padding: .5rem;
+    text-align: left;
+    background: white;
+    font-size: .75rem;
     color: #EB4242;
-    box-shadow: 1px 1px 2px rgba(124, 116, 116, 0.5);
+}
+.historyfive ul >:nth-of-type(1){
+    padding-top: 1rem;
 }
 .historyfive ul > *{
-    padding-top: .2rem;
+    margin: .4rem;
 }
 
 @media screen and (min-width: 576px) {
+    .desktop {
+        display: contents;
+       viewport-fit: auto;
+    }
+
+    .mobilePopup {
+        display: none;
+    }
+
     .historyfive ul span {
         color: white;
     }
 
     .historyfive ul {
-        font-size: .7rem;
+        font-size: .8rem;
         color: white;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: auto;
+        background: #454FAB;
     }
-
-    #tenYears span {
-        color: #EB4242;
+    #today span ,
+    #tenYears span,
+    #fiveYears span
+    {
+        color: #FFADC2;
     }
-
-    #today span {
-        color:#FFADC2;
-    }
+  
 
     .historyfive ul:nth-of-type(3) {
-        background: #454FAB;
         grid-column: 1;
         grid-row: 1;
     }
 
     .historyfive ul:nth-of-type(2) {
-        background: #EB4242;
         grid-column: 2;
         grid-row: 1;
     }
 
     .historyfive ul:nth-of-type(1) {
-        background: #FFADC2;
         grid-column: 3;
         grid-row: 1;
+    }
+    .songsFromYears{
+        padding-bottom: .5rem;
     }
 }
 
@@ -161,5 +317,4 @@ export default {
         padding: 2rem;
         font-size: .8rem;
     }
-}
-</style>
+}</style>

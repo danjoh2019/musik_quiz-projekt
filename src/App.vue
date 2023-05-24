@@ -25,6 +25,7 @@ import NavPage from './components/NavPage.vue'
   bottom: 0;
   top: auto;
   width: 100%;
+  z-index: 3;
 }
 
 @media screen and (min-width: 560px) {

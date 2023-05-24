@@ -66,11 +66,10 @@ import { RouterLink } from 'vue-router'
 a {
   display: flex;
   text-decoration: none;
-  color: #ffffff;
+  color: white;
   font-size: .8rem;
   margin: .9rem;
 }
-
 .overlay {
   position: fixed;
   top: 0;
@@ -125,6 +124,7 @@ a {
 @media screen and (min-width: 560px) {
   .nav {
     background: #f9cad5;
+    opacity: 90%;
   }
 
   a {
@@ -144,5 +144,5 @@ a {
       color: rgba(235, 66, 66, 0.9);
     }
   }
-
-}</style>
+}
+</style>

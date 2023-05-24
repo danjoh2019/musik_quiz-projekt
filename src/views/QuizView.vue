@@ -28,17 +28,18 @@
                                 <div class="score total">{{ totalGuesses }}</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="question-container">
-                        <div v-for="question of question" :key="question.title" class="question">
-                            <p>{{ question.title }}</p>
+
+                        <div class="question-container">
+                            <div v-for="question of question" :key="question.title" class="question">
+                                <p>{{ question.title }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="options">
-                        <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
-                            @click="isClicked(song.artist, $event)">
-                            <div class="options-container">
-                                <p>{{ song.artist }}</p>
+                        <div class="options">
+                            <div v-for="song in alternatives" :key="song.artist + song.title" :song="alternatives"
+                                @click="isClicked(song.artist, $event)">
+                                <div class="options-container">
+                                    <p>{{ song.artist }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -247,7 +248,7 @@ export default {
 }
 
 .header {
-    margin: 0 0 1.5rem 0;
+   
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -258,12 +259,11 @@ export default {
 }
 
 .center-body {
-
     justify-content: center;
     align-items: center;
-    margin: 0 3rem 0 3rem;
-
+    margin: 0 1rem 2rem 1rem;
 }
+
 
 body {
     background-color: white;
@@ -318,21 +318,23 @@ body {
 }
 
 .quiz-container {
-    display: grid;
+    display: flex;
     font-family: Montserrat, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    grid-template-rows: repeat(1, 1fr);
+    flex-direction: column;
+    gap: 1rem;
 }
+
 
 .question-container {
     display: flex;
     font-size: 1.1rem;
     font-weight: bold;
-    height: 8rem;
+    height: 12rem;
     margin: 1rem;
     border-radius: .6rem;
     background: linear-gradient(180deg, #454FAB 0%, #3A44A8 59.37%, #2431A4 100%);
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-    padding: 0 2rem 0;
+    padding: 1rem 2rem 0;
     align-items: center;
     justify-content: center;
     color: #FFB6C9;
@@ -344,7 +346,7 @@ body {
 .incorrect-container {
     display: flex;
     font-weight: medium;
-    font-size: 1rem;
+    font-size: .9rem;
     margin: .8rem;
     border-radius: .6rem;
     background: linear-gradient(180deg, rgba(255, 145, 145, 0.7) 0%, rgba(255, 173, 194, 0.7) 100%);
@@ -392,12 +394,13 @@ h1 {
     display: flex;
     flex-flow: row no-wrap;
     text-align: center;
-    height: 1rem;
+    max-height: 2rem;
+    min-height: 1rem;
     border: .1rem solid rgb(238, 239, 239);
     border-radius: .3rem;
     overflow: hidden;
     background-color: #ffadc1b9;
-    margin: 0 1rem 0 1rem;
+    margin: 1rem 1rem 0 1rem;
 }
 
 .score {

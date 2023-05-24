@@ -28,6 +28,7 @@
   display: grid;
   grid-template-rows: 1fr;
   grid-template-areas: "header" "content" "footer";
+  margin: 0;
 }
 
 .header {

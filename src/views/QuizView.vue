@@ -1,23 +1,27 @@
 
 <template>
-    <div class="wrapper">
-        <div class="quiz-container">
+    <div class="quiz-container">
+        <div class="header">
+            <p>
+                Rätt: {{ guesses[0] }}
+            </p>
             <h1>{{ genre }}</h1>
+
+            <p>{{ totalGuesses }}/10</p>
+        </div>
+        <div class="center-body">
             <div v-if="loading">
-                <div class="center-body">
-                    <div class="loader-circle-7"></div>
-                </div>
-                <div class="error-container">
-                    {{ message }}
-                </div>
+
+                <div class="loader-circle-7"></div>
+            </div>
+            <div class="error-container">
+                {{ message }}
+
             </div>
             <div v-if="!loading">
                 <div v-if="!this.showScore">
                     <div class="songs">
                         <div id="scorecount">
-                            <p>
-                                {{ guesses[0] }} rätt av 10
-                            </p>
                             <div id="progress">
                                 <div class="score correct"> {{ guesses[0] }}</div>
                                 <div class="score wrong">{{ guesses[1] }} </div>
@@ -39,13 +43,13 @@
                         </div>
                     </div>
                 </div>
-                <div v-if="showScore">
-                    <div v-if="finished" id="result">
-                        Du fick {{ correctAnswer }} av 10 låtar rätt! <br>
-                        {{ message }} <br>
-                        <button @click="playAgain">Spela igen!</button>
-                        <button @click="chooseCategory">Välj ny kategori</button>
-                    </div>
+            </div>
+            <div v-if="showScore">
+                <div v-if="finished" id="result">
+                    Du fick {{ correctAnswer }} av 10 låtar rätt! <br>
+                    {{ message }} <br>
+                    <button @click="playAgain">Spela igen!</button>
+                    <button @click="chooseCategory">Välj ny kategori</button>
                 </div>
             </div>
         </div>
@@ -56,7 +60,6 @@
 import { getQuizQuestions } from '../data/getQuiz.js'
 import { generateTimespan, getFour, shuffleArray } from '../utils/misc.js'
 import categories from '../data/categories.json'
-
 
 function updateResults(res) {
     let results = res
@@ -235,20 +238,35 @@ export default {
 </script>
   
 <style scoped>
-.wrapper {
+.header h1 {
+    font-family: Adventuro, Arial, Helvetica, sans-serif;
+    color: #FEA418;
+    font-size: 1.4rem;
+    margin-right: 2.5rem;
+
+}
+
+.header {
+    margin: 0 0 1.5rem 0;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    padding: .2rem;
+    background: #303BA1E5;
 }
 
 .center-body {
-    display: flex;
+
     justify-content: center;
     align-items: center;
-    width: 100%;
+    margin: 0 3rem 0 3rem;
+
 }
 
 body {
-    background-color: #202628;
+    background-color: white;
 }
 
 .loader-circle-7 {
@@ -300,74 +318,74 @@ body {
 }
 
 .quiz-container {
-    width: 90%;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: grid;
+    font-family: Montserrat, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    grid-template-rows: repeat(1, 1fr);
 }
 
 .question-container {
     display: flex;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    height: 5rem;
+    height: 8rem;
     margin: 1rem;
-    border-radius: 1rem;
-    background: hotpink;
+    border-radius: .6rem;
+    background: linear-gradient(180deg, #454FAB 0%, #3A44A8 59.37%, #2431A4 100%);
+    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
     padding: 0 2rem 0;
     align-items: center;
     justify-content: center;
+    color: #FFB6C9;
+    margin-bottom: 2rem;
 }
 
-.options-container {
+.options-container,
+.correct-container,
+.incorrect-container {
     display: flex;
-    font-size: 1.1rem;
+    font-weight: medium;
+    font-size: 1rem;
     margin: .8rem;
-    border-radius: 1rem;
-    background: lightblue;
+    border-radius: .6rem;
+    background: linear-gradient(180deg, rgba(255, 145, 145, 0.7) 0%, rgba(255, 173, 194, 0.7) 100%);
     text-transform: none;
     height: 4rem;
     padding: 0 2rem 0;
     align-items: center;
     justify-content: center;
+    color: rgb(242, 52, 52);
 }
 
 .correct-container {
-    background: rgb(70, 231, 70);
-    padding: 1rem;
-    font-size: 1.2rem;
-    margin: 1rem;
-    border-radius: 1rem;
-    text-transform: none;
-    text-align: center;
+    background: #FEA418;
+    color: white;
 }
 
 .incorrect-container {
-    background: rgb(253, 72, 72);
-    padding: .5rem;
-    font-size: 1.2rem;
-    margin: .5rem;
-    border-radius: 1rem;
-    text-transform: none;
-    text-align: center;
+    background: #E71212;
+    color: white;
 }
 
 .options-container:hover {
-    background: rgb(86, 172, 200);
+    background: rgb(87, 127, 219);
 }
 
 h1 {
-    color: lightblue;
+
     text-transform: uppercase;
     text-align: center;
 }
 
 #result {
-    font-size: 3rem;
+    font-size: 2rem;
+
 }
 
-#scorecount p {
-    font-size: larger;
+.header p {
+    font-size: .9rem;
     text-align: center;
     align-items: center;
+    color: white;
 }
 
 #progress {
@@ -375,29 +393,31 @@ h1 {
     flex-flow: row no-wrap;
     text-align: center;
     height: 1rem;
-    border: .1rem solid lightblue;
-    border-radius: .5rem;
+    border: .1rem solid rgb(238, 239, 239);
+    border-radius: .3rem;
     overflow: hidden;
+    background-color: #ffadc1b9;
+    margin: 0 1rem 0 1rem;
 }
 
 .score {
     width: 33%;
     font-size: 0px;
-    color: white;
-    border-right: 1px white solid;
+    color: #FFADC2;
+    border-right: none;
     transition: 1s width;
 }
 
 .correct {
     display: none;
-    /* border-radius: .1rem; */
-    background-color: rgb(70, 231, 70);
+    background-color: #FEA418;
+
 }
 
 .wrong {
     display: none;
-    /* border-radius: .1rem; */
     background-color: rgb(253, 72, 72);
+
 }
 
 .total {
@@ -408,16 +428,26 @@ h1 {
     background-repeat: repeat;
 }
 
-@media screen and (min-width: 800px) {
-
-    .quiz-container {
-        width: 70%
+@media screen and (min-width: 560px) {
+    .header {
+        background-color: white;
+        padding: 0;
+        margin: 0;
     }
 
-    .options {
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: auto auto;
+    .header p {
+        color: #4E70D3;
+
+    }
+
+    .quiz-container {
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .center-body {
+        margin: 1rem 10rem 0 10rem;
     }
 
     .question-container {
@@ -425,23 +455,21 @@ h1 {
         height: 20rem;
     }
 
-    .question {
-        /* padding-top: 6rem; */
+    .options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
     }
 
-    .options-container {
-        font-size: 1.5rem;
-        height: 7rem;
-    }
-
-    .incorrect-container {
-        font-size: 1.6rem;
-        height: 7rem;
-    }
-
+    .options-container,
+    .incorrect-container,
     .correct-container {
-        font-size: 1.6rem;
-        height: 7rem;
+        font-size: auto;
+        height: 5rem;
+    }
+
+    #progress {
+        height: 1.5rem;
     }
 }
 </style>

@@ -11,12 +11,10 @@
         </div>
         <div class="center-body">
             <div v-if="loading">
-
                 <div class="loader-circle-7"></div>
             </div>
             <div class="error-container">
                 {{ message }}
-
             </div>
             <div v-if="!loading">
                 <div v-if="!this.showScore">
@@ -248,7 +246,7 @@ export default {
 }
 
 .header {
-   
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -259,14 +257,10 @@ export default {
 }
 
 .center-body {
-    justify-content: center;
-    align-items: center;
-    margin: 0 1rem 2rem 1rem;
-}
-
-
-body {
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    text-align: center;
 }
 
 .loader-circle-7 {
@@ -286,7 +280,7 @@ body {
     border-radius: 50%;
     width: 70px;
     height: 70px;
-    border-color: #bbb;
+    border-color: #303BA1E5;
     top: 0;
     left: 0;
 }
@@ -318,11 +312,9 @@ body {
 }
 
 .quiz-container {
-    display: flex;
     font-family: Montserrat, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    flex-direction: column;
-    gap: 1rem;
 }
+
 .question-container {
     display: flex;
     font-size: 1.1rem;
@@ -343,20 +335,21 @@ body {
 .correct-container,
 .incorrect-container {
     display: flex;
-    font-weight: medium;
     font-size: .9rem;
     margin: .8rem;
     border-radius: .6rem;
     text-transform: none;
     height: 4rem;
-    padding: 0 2rem 0;
+    padding: 2rem;
     align-items: center;
     justify-content: center;
 }
-.options-container{
+
+.options-container {
     background: linear-gradient(180deg, rgba(255, 145, 145, 0.7) 0%, rgba(255, 173, 194, 0.7) 100%);
     color: rgb(242, 52, 52);
 }
+
 .correct-container {
     background: #FEA418;
     color: white;
@@ -367,19 +360,13 @@ body {
     color: white;
 }
 
-/*.options-container:hover {
-    background: rgb(87, 127, 219);
-}*/
-
 h1 {
-
     text-transform: uppercase;
     text-align: center;
 }
 
 #result {
     font-size: 2rem;
-
 }
 
 .header p {
@@ -448,13 +435,16 @@ h1 {
 }
 
 @media screen and (min-width: 800px) {
+    .header {
+        margin:0 8rem 0 8rem ;
+    }
     .center-body {
-        margin: 1rem 10rem 0 10rem;
+        margin: 1rem 15rem 0 15rem;
     }
 
     .question-container {
         font-size: 1.5rem;
-        height: 20rem;
+        height: 18rem;
     }
 
     .options {
@@ -466,7 +456,6 @@ h1 {
     .options-container,
     .incorrect-container,
     .correct-container {
-        font-size: auto;
         height: 5rem;
     }
 

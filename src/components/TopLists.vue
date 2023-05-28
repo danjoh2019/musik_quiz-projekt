@@ -116,9 +116,10 @@ export default {
 
 <style scoped>
 .border {
-    background:  #5775CD;
+    background: #5775CD;
     padding: .8rem;
 }
+
 .desktop {
     display: none;
 }
@@ -126,11 +127,11 @@ export default {
 .container-mobview {
     display: flex;
     flex-direction: column;
+    padding-bottom: 11rem;
 }
 
 .container-toplists {
     background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9c8 15%, #fffffff0 100%);
-    padding-bottom: 11rem;
 }
 
 .button {
@@ -267,19 +268,22 @@ a {
 }
 
 @media screen and (min-width: 576px) {
+
+    .content {
+        padding-bottom: 7rem;
+        background: linear-gradient(180deg, #fcf9f900 15%, #f0f6f9a1 45%, #ffffff 100%);
+    }
+
     .songsFromYears {
         margin: 3rem 7rem 1rem 7rem;
     }
 
-    .container-toplists {
-        background: linear-gradient(180deg, #fcf9f900 0%, #f0f6f98b 55%, #ffffff 100%);
-    }
 
     .desktop {
         display: contents;
     }
 
-    .mobilePopup {
+    .container-mobview {
         display: none;
     }
 
@@ -311,14 +315,15 @@ a {
 }
 
 @media screen and (min-width: 768px) {
-    .border{
+    .border {
         background-color: #ffd4dde5;
         padding: 1.5rem;
         bottom: 0;
         top: auto;
         width: 100%;
-        position:relative;
+        position: relative;
     }
+
     .songsFromYears {
         font-size: 1.8rem;
         margin: 4rem 6rem 1rem 6rem;
@@ -328,7 +333,8 @@ a {
         font-size: .8rem;
         margin: 0rem;
     }
-    .historyfive{
+
+    .historyfive {
         margin: 0 5rem 0.5rem 5rem;
     }
 }
@@ -336,11 +342,12 @@ a {
 @media screen and (min-width: 992px) {
     .content {
         overflow: hidden;
+        background: linear-gradient(180deg, #fcf9f900 15%, #ffffff 50%, #ffffff 100%);
     }
 
     .historyfive ul {
         font-size: .8rem;
-      
+
     }
 
     .historyfive {
@@ -349,14 +356,11 @@ a {
         margin: 5rem 5rem 3rem 5rem;
 
     }
-    
+
     .songsFromYears {
         margin: 8rem 20rem 1rem 20rem;
         padding: 3rem;
         font-size: 1.5rem;
-    }
-    .container-toplists {
-        background: linear-gradient(180deg, #fcf9f900 10%, #f0f6f965 75%, #ffffff 100%);
     }
 }
 </style>

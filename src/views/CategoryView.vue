@@ -29,7 +29,7 @@ function selectCategory(id, categoryString) {
     text-align: center;
     display: grid;
     grid-template-rows: 8rem 1fr;
-    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9ef 15%, #fffffff0 100%);
+    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f932 15%, #fffffff0 100%);
 }
 .container-category-buttons {
     display: grid;
@@ -86,17 +86,14 @@ button[value="klassiskt"] {
 
 @media screen and (min-width: 576px) {
     .container-category-buttons {
-   
-        justify-items: center;
-        margin: 2rem;
+        display: grid;
+        grid-template-columns: repeat(3, 12rem);
+        justify-content: center;
     }
 
     .category-button {
-        width: 12rem;
         flex-grow: 1;
-        padding: 4rem;
         border-radius: 1rem;
-        margin: .5rem;
     }
 
     button[value="jazz"],
@@ -154,34 +151,25 @@ button[value="klassiskt"] {
 }
 
 @media screen and (min-width: 768px) {
-    .container-category {
-        align-items: center;
-        text-transform: uppercase;
-        text-align: center;
-    }
-
-    .category-button {
-        flex-grow: 1;
-        padding: 4rem;
-        border-radius: 1rem;
-        margin: 0.5rem;
-    }
 }
 
 @media screen and (min-width: 992px) {
     .container-category-buttons {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        justify-items: stretch;
         gap: 1rem;
         padding: 2rem;
-        margin: 7rem;
+        margin:7rem;
+        
     }
 
     .category-button {
         font-size: 1.1rem;
         letter-spacing: .3rem;
         text-shadow: #060b39;
+    }
+    .container-category {
+        background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f900 15%, #fffffff0 100%);
     }
 }
 </style>

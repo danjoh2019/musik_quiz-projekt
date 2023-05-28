@@ -3,7 +3,6 @@
         <div class="border"></div>
         <div class="header-img">
             <img src="../assets/img/dancing.jpg" alt="illustration of people dancing" />
-            <div class="box"></div>
         </div>
     </div>
 </template>
@@ -15,30 +14,15 @@
 }
 
 .header-img img {
-    width: 100%;
-    transform: scale(2.5);
+    width: 150rem;
     position: fixed;
     z-index: -1;
-    left: -18rem;
-    top: 10rem; 
-    overflow:hidden;
+    left: -80rem;
+    top: 2rem;
+    overflow: hidden;
 }
-@media screen and (min-width: 576px) {
-    .border {
-        display: none;
-    }
-    .header-img img {
-        width: 100%;
-        top: 15rem;
-        left: -27rem;
-    }
-}
-@media screen and (min-width: 768px) {
-    .header-img img {
-        width: 90%;
-        top: 15rem;
-    }
 
+@media screen and (min-width: 576px) {
     .border {
         display: none;
     }
@@ -46,11 +30,11 @@
 
 @media screen and (min-width: 992px) {
     .header-img img {
-        width:85%;
-        transform: scale(1);
-        left:6rem;
+        /*width: 85%;*/
+        width: 110rem;
+        left: -10rem;
         top: 3.5rem;
-        position: fixed;
+        
     }
 
 }

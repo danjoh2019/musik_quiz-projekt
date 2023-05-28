@@ -260,7 +260,7 @@ export default {
 .center-body {
     display: flex;
     flex-direction: column;
-    margin: 2rem;
+    margin: 1rem;
     text-align: center;
 }
 
@@ -375,7 +375,7 @@ h1 {
 }
 
 button {
-    background: linear-gradient(180deg, #4e6fd3 0%, #2431A4 100%);
+    background: #4e6fd3;
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
     width: 12rem;
     padding: 1rem;
@@ -456,7 +456,7 @@ button {
     }
 
     .quiz-container {
-        margin-top: 2rem;
+        margin: 1rem;
     }
 }
 
@@ -466,7 +466,7 @@ button {
     }
 
     .center-body {
-        margin: 1rem 15rem 0 15rem;
+        margin: 1rem 10rem 0 10rem;
     }
 
     .question-container {

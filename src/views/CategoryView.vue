@@ -24,12 +24,13 @@ function selectCategory(id, categoryString) {
 </script>
 
 <style scoped>
+
 .container-category {
     text-transform: uppercase;
     text-align: center;
     display: grid;
-    grid-template-rows: 8rem 1fr;
-    background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f932 15%, #fffffff0 100%);
+    grid-template-rows: 6rem 1fr;
+    background: linear-gradient(180deg, #fcf9f900 15%, #f0f6f9a1 45%, #ffffff 100%);
 }
 .container-category-buttons {
     display: grid;
@@ -92,7 +93,6 @@ button[value="klassiskt"] {
     }
 
     .category-button {
-        flex-grow: 1;
         border-radius: 1rem;
     }
 
@@ -139,7 +139,7 @@ button[value="klassiskt"] {
 
     button[value="elektroniskt"],
     button[value="klassiskt"] {
-        background: linear-gradient(180deg, #FEA418 0%, #ff9721df 100%);
+        background: linear-gradient(180deg, #FEA418 0%, #ff9721 100%);
         box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
     }
 
@@ -157,16 +157,15 @@ button[value="klassiskt"] {
         gap: 1rem;
         padding: 2rem;
         margin:7rem;
-        
     }
-
     .category-button {
         font-size: 1.1rem;
         letter-spacing: .3rem;
         text-shadow: #060b39;
     }
-    .container-category {
-        background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f900 15%, #fffffff0 100%);
+    .container-category{
+        grid-template-rows: 1fr;
+        background: linear-gradient(180deg, #fcf9f900 15%, #ffffff 50%, #ffffff 100%);
     }
 }
 </style>

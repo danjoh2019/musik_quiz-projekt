@@ -27,23 +27,24 @@ function selectCategory(id, categoryString) {
 .container-category {
     text-transform: uppercase;
     text-align: center;
+    display: grid;
+    grid-template-rows: 8rem 1fr;
     background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9ef 15%, #fffffff0 100%);
 }
 .container-category-buttons {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 2rem 1rem 1rem 1rem;
+    grid-template-columns: repeat(2, minmax(12rem, 20rem));
     justify-items: center;
 }
 .category-button {
     width: 75%;
     min-width: 10rem;
-    padding: 2.5rem;
-    border-radius: 1rem;
+    padding: 3rem;
+    border-radius: 1.5rem;
     margin: .5rem;
     border: none;
     font-family: 'Adventuro', 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: .9rem;
+    font-size: 1rem;
     font-weight: normal;
     letter-spacing: 0.14rem;
     box-shadow: 3px 3px 8px rgba(57, 56, 56, 0.5);
@@ -157,32 +158,27 @@ button[value="klassiskt"] {
         align-items: center;
         text-transform: uppercase;
         text-align: center;
-        background: linear-gradient(180deg, #fcf9f900 0%, #ffffff34 40%, #ffffff 100%);
     }
 
     .category-button {
         flex-grow: 1;
+        padding: 4rem;
         border-radius: 1rem;
         margin: 0.5rem;
-    }
-    .container-category-buttons{
-       
-        border-radius: 5px;
     }
 }
 
 @media screen and (min-width: 992px) {
-    .container-category {
-        display: grid;
-        grid-template-columns:20% 60% 20%;
-    }
     .container-category-buttons {
-      
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: stretch;
+        gap: 1rem;
+        padding: 2rem;
+        margin: 7rem;
     }
 
     .category-button {
-       
-        height: auto;
         font-size: 1.1rem;
         letter-spacing: .3rem;
         text-shadow: #060b39;

@@ -250,13 +250,10 @@ a {
     border-radius: .4rem;
     list-style-type: none;
     margin: 0;
-    padding: 2rem;
-    font-size: .75rem;
+    font-size: .9rem;
     text-align: center;
-    background: #f9cad5;
+    background: #faf6f7;
     padding: .5rem;
-    text-align: left;
-    font-size: .8rem;
     color: #EB4242;
 }
 

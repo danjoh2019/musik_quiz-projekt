@@ -130,6 +130,7 @@ export default {
 
 .container-toplists {
     background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9c8 15%, #fffffff0 100%);
+    padding-bottom: 11rem;
 }
 
 .button {

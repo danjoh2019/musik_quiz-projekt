@@ -36,6 +36,7 @@ function selectCategory(id, categoryString) {
     display: grid;
     grid-template-columns: repeat(2, minmax(12rem, 20rem));
     justify-items: center;
+    padding-bottom: 7rem;
 }
 .category-button {
     width: 75%;
@@ -90,6 +91,7 @@ button[value="klassiskt"] {
         display: grid;
         grid-template-columns: repeat(3, 12rem);
         justify-content: center;
+        
     }
 
     .category-button {
@@ -160,8 +162,6 @@ button[value="klassiskt"] {
     }
     .category-button {
         font-size: 1.1rem;
-        letter-spacing: .3rem;
-        text-shadow: #060b39;
     }
     .container-category{
         grid-template-rows: 1fr;

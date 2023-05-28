@@ -85,8 +85,7 @@ button[value="klassiskt"] {
 
 @media screen and (min-width: 576px) {
     .container-category-buttons {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+   
         justify-items: center;
         margin: 2rem;
     }
@@ -175,17 +174,14 @@ button[value="klassiskt"] {
 @media screen and (min-width: 992px) {
     .container-category {
         display: grid;
-       grid-template-columns:20% 60% 20%;
+        grid-template-columns:20% 60% 20%;
     }
     .container-category-buttons {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 1fr;
-        justify-items: center;
+      
     }
 
     .category-button {
-        max-width: 12rem;
+       
         height: auto;
         font-size: 1.1rem;
         letter-spacing: .3rem;

@@ -46,7 +46,6 @@ export default {
 
 <template>
     <div class="container-toplists">
-        <div class="border"></div>
         <HeaderImg />
         <div class="songsFromYears">
             Mest spelade låtarna
@@ -110,7 +109,7 @@ export default {
 
 .historyfive ul span {
     font-weight: bold;
-    color: #EB4242;
+    color: #4160bd;
     text-transform: uppercase;
     font-size: 1rem;
     font-size: .9rem;
@@ -125,9 +124,10 @@ export default {
     margin: 0;
     font-size: .9rem;
     text-align: center;
-    background: #faf6f7;
+    background: white;
+    border: 1px solid #4160bd;
     padding: .5rem;
-    color: #EB4242;
+    color: #4160bd;
 }
 
 .historyfive ul>:nth-of-type(1) {

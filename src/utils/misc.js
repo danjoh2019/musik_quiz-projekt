@@ -1,7 +1,14 @@
-function generateUrl(genre, date) {
+function generateUrl(date) {
   return `/playlists/getplaylistbychannelid?id=164${date}&format=json&size=600`
 }
-
+/**
+ * returns a string with startdate and enddate
+ * the string is used when collecting data from a specific period of time
+ * between today and x months back
+ * 
+ * @param months - a number that represent months
+ * @returns returns a string containt a stardate and enddate
+ */
 function generateTimespan(months) {
   const today = new Date()
   const yesterday = new Date(today)
@@ -13,6 +20,12 @@ function generateTimespan(months) {
 
   return `&startdatetime=${startString}&enddatetime=${todayString}`
 }
+/**
+ * subtracts the current year with x years and returns the result
+ * 
+ * @param  years - a number that represents amount of years
+ * @returns a year ex: 2007
+ */
 
 function subtractYears(years) {
   const today = new Date()

@@ -19,7 +19,7 @@
 
             </div>
             <div v-if="!loading">
-                <div v-if="!this.showScore">
+                <div v-if="!this.finished">
                     <div class="songs">
                         <div id="scorecount">
                             <div id="progress">
@@ -45,13 +45,11 @@
                     </div>
                 </div>
             </div>
-            <div v-if="showScore">
-                <div v-if="finished" id="result">
-                    <p>Du fick {{ correctAnswer }} av 10 låtar rätt! <br>
+            <div v-if="finished" id="result">
+                <p>Du fick {{ correctAnswer }} av 10 låtar rätt! <br>
                     {{ message }} <br></p>
-                    <button @click="playAgain">Spela igen!</button>
-                    <button @click="chooseCategory">Välj ny kategori</button>
-                </div>
+                <button @click="playAgain">Spela igen!</button>
+                <button @click="chooseCategory">Välj ny kategori</button>
             </div>
         </div>
     </div>
@@ -99,7 +97,6 @@ export default {
             wrongAnswer: 0,
             totalGuesses: 0,
             finished: false,
-            showScore: false,
             message: "",
             errorMessage: ""
         }
@@ -123,7 +120,7 @@ export default {
          * Called when mounted and everytime player clicks on option
          * Calls method getForur to generate 4 new songs to alternatives list
          * takes song [0] and adds it to question list (This gives us the song title in the questionbox)
-         * Then shuffles alternatives so that correct answer isnät always thr first option
+         * Then shuffles alternatives so that correct answer isn't always the first option
          * @param songs the full list of songs in the choosen category
          * **/
 
@@ -144,7 +141,9 @@ export default {
          * Remove already displayed questions and alternatives
          * compare player choice and correct answer to see if it's a match
          * When an alternative is clicked, generate four new song from songlist
+         * updates result, when player has answered 10 questions the page shows the result by setting this.finished = true
          * @param artist the artist linked to the option that is clicked
+         * @param event an event to get information about which optionscontainer isClicked
          * */
 
         isClicked(artist, event) {
@@ -182,7 +181,6 @@ export default {
             this.guesses[2]--;
 
             if (this.totalGuesses === 10) {
-                this.showScore = true;
                 this.finished = true;
                 this.scoreMessage(this.correctAnswer)
             }
@@ -191,11 +189,10 @@ export default {
 
         playAgain() {
             this.finished = false;
-            this.showScore = false;
             this.correctAnswer = 0;
             this.wrongAnswer = 0;
             this.totalGuesses = 0;
-            this.guesses = [0,0,10];
+            this.guesses = [0, 0, 10];
             this.question = [];
             this.alternatives = [];
 
@@ -248,7 +245,7 @@ export default {
 }
 
 .header {
-   
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -324,6 +321,7 @@ body {
     flex-direction: column;
     gap: 1rem;
 }
+
 .question-container {
     display: flex;
     font-size: 1.1rem;
@@ -354,10 +352,12 @@ body {
     align-items: center;
     justify-content: center;
 }
-.options-container{
+
+.options-container {
     background: linear-gradient(180deg, rgba(255, 145, 145, 0.7) 0%, rgba(255, 173, 194, 0.7) 100%);
     color: rgb(242, 52, 52);
 }
+
 .correct-container {
     background: #FEA418;
     color: white;
@@ -382,7 +382,8 @@ h1 {
     font-size: 1.75rem;
 
 }
-#result :first-child{
+
+#result :first-child {
     margin: 2rem;
 }
 
@@ -433,6 +434,7 @@ h1 {
     background-size: 7px 7px;
     background-repeat: repeat;
 }
+
 button {
     background: #4e6fd3;
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
@@ -452,8 +454,9 @@ button {
     button {
         margin: 1rem;
         padding: 1rem;
-       
+
     }
+
     .header {
         background-color: white;
         padding: 0;
@@ -500,6 +503,5 @@ button {
     #progress {
         height: 1.5rem;
     }
-}
-</style>
+}</style>
 

@@ -5,6 +5,7 @@
             <HeaderImg />
         </div>
         <div class="container-category-buttons">
+            <!-- Generate a button for each category in categories.json -->
             <button v-for="category in categories" :key="category.id" :value="category.genre" :id="category.id"
                 @click="selectCategory(category.id, category.genre)" class="category-button">
                 <p>{{ category.genre }}</p>

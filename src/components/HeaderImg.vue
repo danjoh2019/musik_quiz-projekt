@@ -12,7 +12,6 @@
   * Component with an image which gives it the same size and position on the pages that it's used
   */
 .border {
-  
     background-color: #5775CD;
     padding: 1.5rem;
 }
@@ -43,6 +42,3 @@
 
 }
 </style>
-
-<script setup>
-</script>

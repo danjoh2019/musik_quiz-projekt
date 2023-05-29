@@ -188,7 +188,7 @@ export default {
             }
             updateProgressbar(this.guesses);
         },
-        
+
         playAgain() {
             this.finished = false;
             this.wrongAnswer = 0;
@@ -244,7 +244,6 @@ export default {
     color: #FEA418;
     font-size: 1.4rem;
     margin-right: 2.5rem;
-
 }
 
 .header {
@@ -264,10 +263,6 @@ export default {
     text-align: center;
 }
 
-
-body {
-    background-color: white;
-}
 
 .loader-circle-7 {
     position: relative;
@@ -319,18 +314,18 @@ body {
 
 .quiz-container {
     font-family: Montserrat, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
 }
 
 .question-container {
     display: flex;
     font-size: 1.1rem;
     font-weight: bold;
-    height: 12rem;
     margin: 1rem;
     border-radius: .6rem;
     background: linear-gradient(180deg, #454FAB 0%, #3A44A8 59.37%, #2431A4 100%);
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-    padding: 1rem 2rem 0;
+    height: 15rem;
     align-items: center;
     justify-content: center;
     color: #FFB6C9;
@@ -341,14 +336,11 @@ body {
 .correct-container,
 .incorrect-container {
     display: flex;
-    font-weight: medium;
     font-size: .9rem;
     margin: .8rem;
     border-radius: .6rem;
     text-transform: none;
-    height: 4rem;
-    padding: 0 2rem 0;
-    align-items: center;
+    padding: 1.2rem;
     justify-content: center;
 }
 
@@ -368,7 +360,6 @@ body {
 }
 
 h1 {
-
     text-transform: uppercase;
     text-align: center;
 }
@@ -392,9 +383,7 @@ h1 {
 #progress {
     display: flex;
     flex-flow: row no-wrap;
-    text-align: center;
-    max-height: 2rem;
-    min-height: 1rem;
+    height: 1.5rem;
     border: .1rem solid rgb(238, 239, 239);
     border-radius: .3rem;
     overflow: hidden;
@@ -422,14 +411,6 @@ h1 {
 
 }
 
-.total {
-    border-radius: .5rem;
-    opacity: 0.8;
-    background-position: 7px 0, 7px 0, 0 0, 0 0;
-    background-size: 7px 7px;
-    background-repeat: repeat;
-}
-
 button {
     background: #4e6fd3;
     box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
@@ -444,21 +425,23 @@ button {
     text-transform: uppercase;
     color: rgb(248, 248, 250);
 }
+
 @media screen and (max-height: 740px) {
-    .question-container{
+    .question-container {
         font-size: .9rem;
         height: 9rem;
     }
-    .options-container{
+
+    .options-container {
         font-size: .75rem;
     }
 }
 
 @media screen and (min-width: 560px) {
+
     button {
         margin: 1rem;
         padding: 1rem;
-
     }
 
     .header {
@@ -477,15 +460,7 @@ button {
     }
 }
 
-@media screen and (min-width: 800px) {
-    .header {
-        margin: 0 8rem 0 8rem;
-    }
-
-    .center-body {
-        margin: 1rem 10rem 0 10rem;
-    }
-
+@media screen and (min-width: 769px) {
     .question-container {
         font-size: 1.5rem;
         height: 20rem;
@@ -507,5 +482,18 @@ button {
     #progress {
         height: 1.5rem;
     }
-}</style>
+}
+
+@media screen and (min-width: 1025px) {
+    .header {
+        margin: 0 8rem 0 8rem;
+    }
+
+    .center-body {
+        margin: 1rem 10rem 0 10rem;
+    }
+
+
+}
+</style>
 

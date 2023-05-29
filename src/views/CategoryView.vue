@@ -2,7 +2,7 @@
 <template>
     <div class="container-category">
         <div class="header-category">
-            <HeaderImg/>
+            <HeaderImg />
         </div>
         <div class="container-category-buttons">
             <button v-for="category in categories" :key="category.id" :value="category.genre" :id="category.id"
@@ -18,13 +18,20 @@ import { useRouter } from 'vue-router'
 import categories from '../data/categories.json'
 import HeaderImg from '../components/HeaderImg.vue';
 const router = useRouter()
+/**
+ * when a category is selected (by pressing a button) the router navigates to the quizView
+ * the path is set to id/quiz/genre example: "2697/quiz?genre=pop" where 2697 is the id and genre is "pop"
+ * and the data from that genre/category is collected
+ * 
+ * @param id - the id of the selected category (a number)
+ * @param categoryString - a string with the selected category name
+*/
 function selectCategory(id, categoryString) {
     router.push({ name: 'quiz', params: { id: id }, query: { genre: categoryString } })
 }
 </script>
 
 <style scoped>
-
 .container-category {
     text-transform: uppercase;
     text-align: center;
@@ -32,12 +39,14 @@ function selectCategory(id, categoryString) {
     grid-template-rows: 6rem 1fr;
     background: linear-gradient(180deg, #fcf9f900 15%, #f0f6f9a1 45%, #ffffff 100%);
 }
+
 .container-category-buttons {
     display: grid;
     grid-template-columns: repeat(2, minmax(12rem, 20rem));
     justify-items: center;
     padding-bottom: 7rem;
 }
+
 .category-button {
     width: 75%;
     min-width: 10rem;
@@ -91,7 +100,7 @@ button[value="klassiskt"] {
         display: grid;
         grid-template-columns: repeat(3, 12rem);
         justify-content: center;
-        
+
     }
 
     .category-button {
@@ -158,14 +167,15 @@ button[value="klassiskt"] {
         grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
         padding: 2rem;
-        margin:7rem;
+        margin: 7rem;
     }
+
     .category-button {
         font-size: 1.1rem;
     }
-    .container-category{
+
+    .container-category {
         grid-template-rows: 1fr;
         background: linear-gradient(180deg, #fcf9f900 15%, #ffffff 50%, #ffffff 100%);
     }
-}
-</style>
+}</style>

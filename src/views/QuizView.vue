@@ -15,7 +15,7 @@
                 <div class="loader-circle-7"></div>
             </div>
             <div class="error-container">
-                {{ message }}
+                {{ errorMessage }}
 
             </div>
             <div v-if="!loading">
@@ -47,8 +47,8 @@
             </div>
             <div v-if="showScore">
                 <div v-if="finished" id="result">
-                    Du fick {{ correctAnswer }} av 10 låtar rätt! <br>
-                    {{ message }} <br>
+                    <p>Du fick {{ correctAnswer }} av 10 låtar rätt! <br>
+                    {{ message }} <br></p>
                     <button @click="playAgain">Spela igen!</button>
                     <button @click="chooseCategory">Välj ny kategori</button>
                 </div>
@@ -100,7 +100,8 @@ export default {
             totalGuesses: 0,
             finished: false,
             showScore: false,
-            message: ""
+            message: "",
+            errorMessage: ""
         }
     },
 
@@ -113,7 +114,7 @@ export default {
                 this.displayQuestions(this.songs)
             } catch (err) {
                 this.loading = true
-                this.message = err.message
+                this.errorMessage = err.message
             }
         },
 
@@ -134,7 +135,7 @@ export default {
             } catch (error) {
                 this.loading = true
                 console.log(error)
-                this.message = error.message
+                this.errorMessage = error.message
             }
         },
 
@@ -258,9 +259,10 @@ export default {
 }
 
 .center-body {
-    justify-content: center;
-    align-items: center;
-    margin: 0 1rem 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    text-align: center;
 }
 
 
@@ -285,7 +287,7 @@ body {
     border-radius: 50%;
     width: 70px;
     height: 70px;
-    border-color: #bbb;
+    border-color: #303BA1E5;
     top: 0;
     left: 0;
 }
@@ -377,8 +379,11 @@ h1 {
 }
 
 #result {
-    font-size: 2rem;
+    font-size: 1.75rem;
 
+}
+#result :first-child{
+    margin: 2rem;
 }
 
 .header p {
@@ -428,8 +433,27 @@ h1 {
     background-size: 7px 7px;
     background-repeat: repeat;
 }
+button {
+    background: #4e6fd3;
+    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
+    width: 12rem;
+    padding: 1rem;
+    border-radius: .5rem;
+    margin: .5rem;
+    border: none;
+    font-family: 'Adventuro', 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: .8rem;
+    letter-spacing: 0.14rem;
+    text-transform: uppercase;
+    color: rgb(248, 248, 250);
+}
 
 @media screen and (min-width: 560px) {
+    button {
+        margin: 1rem;
+        padding: 1rem;
+       
+    }
     .header {
         background-color: white;
         padding: 0;
@@ -442,11 +466,15 @@ h1 {
     }
 
     .quiz-container {
-        margin-top: 2rem;
+        margin: 1rem;
     }
 }
 
 @media screen and (min-width: 800px) {
+    .header {
+        margin: 0 8rem 0 8rem;
+    }
+
     .center-body {
         margin: 1rem 10rem 0 10rem;
     }

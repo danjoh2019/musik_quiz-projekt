@@ -11,10 +11,12 @@
         </div>
         <div class="center-body">
             <div v-if="loading">
+
                 <div class="loader-circle-7"></div>
             </div>
             <div class="error-container">
-                {{ errorMessage }}
+                {{ message }}
+
             </div>
             <div v-if="!loading">
                 <div v-if="!this.showScore">
@@ -45,10 +47,10 @@
             </div>
             <div v-if="showScore">
                 <div v-if="finished" id="result">
-                    <p>Du fick {{ correctAnswer }} av 10 låtar rätt! <br>
-                    {{ message }} <br></p>
-                    <button @click="playAgain">Spela igen</button>
-                    <button @click="chooseCategory">Välj kategori</button>
+                    Du fick {{ correctAnswer }} av 10 låtar rätt! <br>
+                    {{ message }} <br>
+                    <button @click="playAgain">Spela igen!</button>
+                    <button @click="chooseCategory">Välj ny kategori</button>
                 </div>
             </div>
         </div>
@@ -98,8 +100,7 @@ export default {
             totalGuesses: 0,
             finished: false,
             showScore: false,
-            message: "",
-            errorMessage: ""
+            message: ""
         }
     },
 
@@ -112,7 +113,7 @@ export default {
                 this.displayQuestions(this.songs)
             } catch (err) {
                 this.loading = true
-                this.errorMessage = err.message
+                this.message = err.message
             }
         },
 
@@ -133,7 +134,7 @@ export default {
             } catch (error) {
                 this.loading = true
                 console.log(error)
-                this.errorMessage = error.message
+                this.message = error.message
             }
         },
 
@@ -193,10 +194,9 @@ export default {
             this.correctAnswer = 0;
             this.wrongAnswer = 0;
             this.totalGuesses = 0;
-            this.guesses = 0;
+            this.guesses = [0,0,10];
             this.question = [];
             this.alternatives = [];
-            this.songs = [];
 
             this.displayQuestions(this.songs);
         },
@@ -247,7 +247,7 @@ export default {
 }
 
 .header {
-
+   
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -258,10 +258,14 @@ export default {
 }
 
 .center-body {
-    display: flex;
-    flex-direction: column;
-    margin: 1rem;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem 2rem 1rem;
+}
+
+
+body {
+    background-color: white;
 }
 
 .loader-circle-7 {
@@ -281,7 +285,7 @@ export default {
     border-radius: 50%;
     width: 70px;
     height: 70px;
-    border-color: #303BA1E5;
+    border-color: #bbb;
     top: 0;
     left: 0;
 }
@@ -313,9 +317,11 @@ export default {
 }
 
 .quiz-container {
+    display: flex;
     font-family: Montserrat, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    flex-direction: column;
+    gap: 1rem;
 }
-
 .question-container {
     display: flex;
     font-size: 1.1rem;
@@ -336,21 +342,20 @@ export default {
 .correct-container,
 .incorrect-container {
     display: flex;
+    font-weight: medium;
     font-size: .9rem;
     margin: .8rem;
     border-radius: .6rem;
     text-transform: none;
     height: 4rem;
-    padding: 2rem;
+    padding: 0 2rem 0;
     align-items: center;
     justify-content: center;
 }
-
-.options-container {
+.options-container{
     background: linear-gradient(180deg, rgba(255, 145, 145, 0.7) 0%, rgba(255, 173, 194, 0.7) 100%);
     color: rgb(242, 52, 52);
 }
-
 .correct-container {
     background: #FEA418;
     color: white;
@@ -361,32 +366,19 @@ export default {
     color: white;
 }
 
+/*.options-container:hover {
+    background: rgb(87, 127, 219);
+}*/
+
 h1 {
+
     text-transform: uppercase;
     text-align: center;
 }
 
 #result {
-    font-size: 1.75rem;
-   
-}
-#result :first-child{
-    margin: 2rem;
-}
+    font-size: 2rem;
 
-button {
-    background: #4e6fd3;
-    box-shadow: 2px 2px 8px rgba(57, 56, 56, 0.5);
-    width: 12rem;
-    padding: 1rem;
-    border-radius: .5rem;
-    margin: .5rem;
-    border: none;
-    font-family: 'Adventuro', 'Montserrat', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: .8rem;
-    letter-spacing: 0.14rem;
-    text-transform: uppercase;
-    color: rgb(248, 248, 250);
 }
 
 .header p {
@@ -438,12 +430,6 @@ button {
 }
 
 @media screen and (min-width: 560px) {
-    button {
-        margin: 1rem;
-        padding: 1rem;
-        font-size: .9rem;
-    }
-
     .header {
         background-color: white;
         padding: 0;
@@ -456,22 +442,18 @@ button {
     }
 
     .quiz-container {
-        margin: 1rem;
+        margin-top: 2rem;
     }
 }
 
 @media screen and (min-width: 800px) {
-    .header {
-        margin: 0 8rem 0 8rem;
-    }
-
     .center-body {
         margin: 1rem 10rem 0 10rem;
     }
 
     .question-container {
         font-size: 1.5rem;
-        height: 18rem;
+        height: 20rem;
     }
 
     .options {
@@ -483,6 +465,7 @@ button {
     .options-container,
     .incorrect-container,
     .correct-container {
+        font-size: auto;
         height: 5rem;
     }
 

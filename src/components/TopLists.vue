@@ -50,67 +50,21 @@ export default {
         <div class="songsFromYears">
             Mest spelade låtarna
         </div>
-        <div class="container-mobview">
 
-            <div class="mobilePopup">
-                <a class="button" href="#popupToday">Senaste dygnet</a>
-                <div id="popupToday" class="overlay">
-                    <div class="popup">
-                        <a class="close" href="#">&times;</a>
-                        <div class="content">
-                            <div class="historyfive">
-                                <ul id="today"><span>Senaste dygnet</span>
-                                    <li v-for="song of today" :key="song.name">{{ song.name }}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="button" href="#popupFiveYears">Fem år sedan</a>
-                <div id="popupFiveYears" class="overlay">
-                    <div class="popup">
-                        <a class="close" href="#">&times;</a>
-                        <div class="content">
-                            <div class="historyfive">
-                                <ul id="fiveYears"><span>Fem år sedan</span>
-                                    <li v-for="song of fiveYearsAgo" :key="song.name">{{ song.name }}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="button" href="#popupTenYears">Tio år sedan</a>
-                <div id="popupTenYears" class="overlay">
-                    <div class="popup">
-                        <a class="close" href="#">&times;</a>
-                        <div class="content">
-                            <div class="historyfive">
-                                <ul id="tenYears"><span>Tio år sedan</span>
-                                    <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="content">
+            <div class="historyfive">
+                <ul id="tenYears"><span>Tio år sedan</span>
+                    <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
+                </ul>
+                <ul id="fiveYears"><span>Fem år sedan</span>
+                    <li v-for="song of fiveYearsAgo" :key="song.name">{{ song.name }}</li>
+                </ul>
+                <ul id="today"><span>Senaste dygnet</span>
+                    <li v-for="song of today" :key="song.name">{{ song.name }}</li>
+                </ul>
             </div>
         </div>
-        <div class="desktop">
-            <div class="content">
-                <div class="historyfive">
-                    <ul id="tenYears"><span>Tio år sedan</span>
-                        <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
-                    </ul>
-                    <ul id="fiveYears"><span>Fem år sedan</span>
-                        <li v-for="song of fiveYearsAgo" :key="song.name">{{ song.name }}</li>
-                    </ul>
-                    <ul id="today"><span>Senaste dygnet</span>
-                        <li v-for="song of today" :key="song.name">{{ song.name }}</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border"></div>
-        </div>
-
+        <div class="border"></div>
     </div>
 </template>
 
@@ -120,97 +74,13 @@ export default {
     padding: .8rem;
 }
 
-.desktop {
-    display: none;
-}
-
-.container-mobview {
+.content {
     display: flex;
     flex-direction: column;
     padding-bottom: 11rem;
 }
-
 .container-toplists {
     background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9c8 15%, #fffffff0 100%);
-}
-
-.button {
-    background-color: #eb5656;
-    align-items: center;
-    padding: 3rem;
-    border-radius: .4rem;
-    color: white;
-    box-shadow: 1px 2px 2px rgba(57, 56, 56, 0.5);
-    margin: 1rem 2rem 1rem 2rem;
-}
-
-a {
-    display: flex;
-    text-decoration: none;
-    color: white;
-    font-size: .8rem;
-    margin: .9rem;
-    font-family: 'Montserrat', 'Adventuro', Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
-    flex-direction: column;
-    letter-spacing: .1rem;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(247, 163, 181, 0.867);
-    transition: opacity 500ms;
-    visibility: hidden;
-    opacity: 0;
-}
-
-.overlay:target {
-    visibility: visible;
-    opacity: 1;
-}
-
-.popup {
-    margin: 180px auto;
-    padding: 5px;
-    background: #fff;
-    border-radius: .5rem;
-    width: 90%;
-    position: relative;
-    text-transform: none;
-    opacity: 100%;
-    box-shadow: 1px 1px 4px rgba(78, 6, 24, 0.154);
-}
-
-.popup h2 {
-    margin-top: 0;
-    color: #eb5656;
-    text-transform: uppercase;
-    font-family: 'Adventuro', Arial, Helvetica, sans-serif;
-    text-align: center;
-}
-
-.popup .close {
-    position: absolute;
-    top: .1rem;
-    right: 1rem;
-    transition: all 200ms;
-    font-size: 2rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: #eb5656;
-}
-
-.popup .close:hover {
-    color: #0665d8;
-}
-
-.popup .content {
-    max-height: 40%;
-    overflow: auto;
 }
 
 .songsFromYears {
@@ -277,16 +147,6 @@ a {
     .songsFromYears {
         margin: 3rem 7rem 1rem 7rem;
     }
-
-
-    .desktop {
-        display: contents;
-    }
-
-    .container-mobview {
-        display: none;
-    }
-
 
     .historyfive ul {
         font-size: .75rem;

@@ -30,7 +30,13 @@ async function getAllSongsFromYear(id, year) {
 
     return await getJson(`/playlists/getplaylistbychannelid?id=${id}&startdatetime=${fromDateString}&enddatetime=${toDateString}&format=json&size=600`)
 }
-
+/**
+ * returns a list of top 5 songs  and artist on all channels from a given year
+ * 
+ * 
+ * @param year and number thar represents a year
+ * @returns a list with most played songs and artist from a specific year
+ */
 async function getTopFiveFromYear(year) {
     const allChannels = await getAllChannelIds()
     const allSongs = []

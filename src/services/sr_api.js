@@ -1,7 +1,12 @@
 const BASE_URL = "https://api.sr.se/api/v2";
 
 let allIds = []
-
+/**
+ * get's the data matching the given urlString
+ * 
+ * @param urlString - a string containing endpoint from where data should be collected
+ * @returns the data collected from provided string
+ */
 async function getJson(urlString) {
     const response = await fetch(`${BASE_URL}${urlString}`)
 
@@ -12,6 +17,12 @@ async function getJson(urlString) {
 
     return json
 }
+/**
+ * Goes through all channels in endpoint "/channels?format=json&size=500"
+ * and saves the id to a list
+ * 
+ * @returns a list of all existing channel ids
+ */
 
 async function getAllChannelIds() {
     if (allIds.length > 0) {

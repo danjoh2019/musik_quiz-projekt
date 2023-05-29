@@ -21,6 +21,13 @@ function subtractYears(years) {
 
   return resultYear
 }
+/**
+ * Gets a list of songs
+ * Shuffle the list and returns 4 random songs
+ * 
+ * @param quizList list of all songs
+ * @returns a list of 4 songs
+ */
 
 function getFour(quizList) {
   return getRandomElementsFromArray(quizList, 4)
@@ -44,6 +51,11 @@ function getRandomElementsFromArray(array, count) {
 
   throw new Error("Inga låtar kunde hittas")
 }
+/**
+ * takes a list of songs and reorganize it
+ * 
+ * @param array - a list of songs
+ */
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {

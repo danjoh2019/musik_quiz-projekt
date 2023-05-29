@@ -127,7 +127,7 @@ export default {
     background: white;
     border: 1px solid #4160bd;
     padding: .5rem;
-    color: #4160bd;
+    color: #5775CD;
 }
 
 .historyfive ul>:nth-of-type(1) {

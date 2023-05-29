@@ -9,11 +9,6 @@
 
 <style scoped>
 
-.border {
-    background-color: #5775CD;
-    padding: 1.5rem;
-}
-
 .header-img img {
     width: 150rem;
     position: fixed;

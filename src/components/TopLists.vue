@@ -46,6 +46,7 @@ export default {
 
 <template>
     <div class="container-toplists">
+        <div class="border"></div>
         <HeaderImg />
         <div class="songsFromYears">
             Mest spelade låtarna
@@ -69,11 +70,11 @@ export default {
 </template>
 
 <style scoped>
-.border {
-    background: #5775CD;
-    padding: .8rem;
-}
 
+.border {
+    background-color: #5775CD;
+    padding: 1.5rem;
+}
 .content {
     display: flex;
     flex-direction: column;
@@ -93,7 +94,7 @@ export default {
     font-size: 1.4rem;
     background: rgba(255, 255, 255, 0.948);
     border: 1px solid #4160bd;
-    margin: 5rem 2rem 3rem 2rem;
+    margin: 1rem 2rem 1rem 2rem;
 
 }
 

@@ -2,9 +2,9 @@ function generateUrl(date) {
   return `/playlists/getplaylistbychannelid?id=164${date}&format=json&size=600`
 }
 /**
- * returns a string with startdate and enddate
- * the string is used when collecting data from a specific period of time
- * between today and x months back
+ * Returns a string with startdate and enddate
+ * Get's todays date and subtract the months
+ * todayString is always yesterdays date and startString is the result after subtracted months
  * 
  * @param months - a number that represent months
  * @returns returns a string containt a stardate and enddate

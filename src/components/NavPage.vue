@@ -1,5 +1,8 @@
 <script setup>
 import { RouterLink } from 'vue-router' 
+/**
+ * Component used for navigation and to read "Om Oss" which is a popup
+*/
 </script>
 
 <template>

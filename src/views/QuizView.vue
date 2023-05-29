@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div v-if="finished" id="result">
-                <p>Du fick {{ correctAnswer }} av 10 låtar rätt! <br>
+                <p>Du fick {{ guesses[0] }} av 10 låtar rätt! <br>
                     {{ message }} <br></p>
                 <button @click="playAgain">Spela igen!</button>
                 <button @click="chooseCategory">Välj ny kategori</button>
@@ -62,19 +62,30 @@ import categories from '../data/categories.json'
 /**
  * Gets called when a player clicks an option
 */
-function updateResults(res) {
+function updateProgressbar(res) {
     let results = res
     let correct = results[0]
     let wrong = results[1]
     let total = results[2]
 
+    if (correct >= 1) {
+        document.querySelector('.correct').style.display = "block"
+        document.querySelector('.correct').style.width = correct * 10 + '%'
 
+    }
+    if (wrong >= 1) {
+        document.querySelector('.wrong').style.display = "block"
+        document.querySelector('.wrong').style.width = wrong * 10 + '%'
+    }
+
+    document.querySelector('.total').style.width = total * 10 + '%'
 
 }
 
 export default {
     name: 'QuizView',
 
+    /** guesses = [0] = correct, [1] = incorrect, [2] = total guesses */
     data() {
         return {
             songs: [],
@@ -83,10 +94,7 @@ export default {
             alternatives: [],
             question: [],
             category: [],
-            today: null,
             guesses: [0, 0, 10],
-            correctAnswer: 0,
-            wrongAnswer: 0,
             totalGuesses: 0,
             finished: false,
             message: "",
@@ -153,7 +161,6 @@ export default {
             })
 
             if (artist === this.question[0].artist) {
-                this.correctAnswer++
                 this.guesses[0]++
                 optionsContainer.classList.replace('options-container', 'correct-container')
             }
@@ -177,14 +184,13 @@ export default {
 
             if (this.totalGuesses === 10) {
                 this.finished = true;
-                this.scoreMessage(this.correctAnswer)
+                this.scoreMessage(this.guesses[0])
             }
-            updateResults(this.guesses);
+            updateProgressbar(this.guesses);
         },
-
+        
         playAgain() {
             this.finished = false;
-            this.correctAnswer = 0;
             this.wrongAnswer = 0;
             this.totalGuesses = 0;
             this.guesses = [0, 0, 10];
@@ -197,7 +203,9 @@ export default {
         chooseCategory() {
             this.$router.push('/category');
         },
-
+        /**
+         * Called when totalGuesses === 10 (player has guessed on 10 songs)
+        */
         scoreMessage(correctAnswer) {
             if (correctAnswer <= 1) {
                 this.message = 'Pinsamt...'
@@ -240,7 +248,6 @@ export default {
 }
 
 .header {
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -311,10 +318,7 @@ body {
 }
 
 .quiz-container {
-    display: flex;
     font-family: Montserrat, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    flex-direction: column;
-    gap: 1rem;
 }
 
 .question-container {
@@ -362,10 +366,6 @@ body {
     background: #E71212;
     color: white;
 }
-
-/*.options-container:hover {
-    background: rgb(87, 127, 219);
-}*/
 
 h1 {
 
@@ -443,6 +443,15 @@ button {
     letter-spacing: 0.14rem;
     text-transform: uppercase;
     color: rgb(248, 248, 250);
+}
+@media screen and (max-height: 740px) {
+    .question-container{
+        font-size: .9rem;
+        height: 9rem;
+    }
+    .options-container{
+        font-size: .75rem;
+    }
 }
 
 @media screen and (min-width: 560px) {

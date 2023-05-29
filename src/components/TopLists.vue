@@ -73,15 +73,10 @@ export default {
                 </ul>
             </div>
         </div>
-        <div class="border"></div>
     </div>
 </template>
 
 <style scoped>
-.border {
-    background-color: #5775CD;
-    padding: 1.5rem;
-}
 
 .content {
     display: flex;
@@ -146,6 +141,18 @@ export default {
 
 .historyfive ul>* {
     margin: .3rem;
+}
+@media screen and (max-height: 740px) {
+    .historyfive ul{
+        font-size: .7rem;
+    }
+    .historyfive{
+        gap: .5rem;
+    }
+    .songsFromYears{
+        font-size: 1.3rem;
+        padding: .9rem;
+    }
 }
 /* If screen at least is 576px */
 @media screen and (min-width: 576px) {

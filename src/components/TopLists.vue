@@ -20,8 +20,12 @@ export default {
         }
     },
 
+    /**
+     * Getting data from sessionStorage for most popular songs on Sveriges radio last 24 hours, five years ago and ten years ago. 
+     * If data does not exist in sessionStorage than we are getting it from API
+     */
+
     async created() {
-        //getting from sessionStorage
         this.tenYearsAgo = JSON.parse(sessionStorage.getItem(STORAGE_TENYEARS) ?? JSON.stringify(this.tenYearsAgo))
         this.fiveYearsAgo = JSON.parse(sessionStorage.getItem(STORAGE_FIVEYEARS) ?? JSON.stringify(this.fiveYearsAgo))
         this.today = JSON.parse(sessionStorage.getItem(STORAGE_TODAY) ?? JSON.stringify(this.today))
@@ -35,7 +39,9 @@ export default {
             this.fiveYearsAgo = values[1]
             this.today = values[2]
 
-            //setting to sessionStorage
+            /** 
+             * Setting data from most popular songs last 24 hours, five years ago and ten years ago in to sessionStorage
+             */
             sessionStorage.setItem(STORAGE_TENYEARS, JSON.stringify(this.tenYearsAgo));
             sessionStorage.setItem(STORAGE_FIVEYEARS, JSON.stringify(this.fiveYearsAgo));
             sessionStorage.setItem(STORAGE_TODAY, JSON.stringify(this.today));
@@ -54,12 +60,15 @@ export default {
 
         <div class="content">
             <div class="historyfive">
+                <!-- Most popular songs on Sveriges radio for ten years ago -->
                 <ul id="tenYears"><span>Tio år sedan</span>
                     <li v-for="song of tenYearsAgo" :key="song.name">{{ song.name }}</li>
                 </ul>
+                <!-- Most popular songs on Sveriges radio for five years ago -->
                 <ul id="fiveYears"><span>Fem år sedan</span>
                     <li v-for="song of fiveYearsAgo" :key="song.name">{{ song.name }}</li>
                 </ul>
+                <!-- Most popular songs on Sveriges radio last 24 hours -->
                 <ul id="today"><span>Senaste dygnet</span>
                     <li v-for="song of today" :key="song.name">{{ song.name }}</li>
                 </ul>
@@ -70,16 +79,17 @@ export default {
 </template>
 
 <style scoped>
-
 .border {
     background-color: #5775CD;
     padding: 1.5rem;
 }
+
 .content {
     display: flex;
     flex-direction: column;
     padding-bottom: 11rem;
 }
+
 .container-toplists {
     background: linear-gradient(180deg, #fcf9f914 0%, #f0f6f9c8 15%, #fffffff0 100%);
 }
@@ -137,7 +147,7 @@ export default {
 .historyfive ul>* {
     margin: .3rem;
 }
-
+/* If screen at least is 576px */
 @media screen and (min-width: 576px) {
 
     .content {
@@ -174,7 +184,7 @@ export default {
     }
 
 }
-
+/* If screen at least is 768px */
 @media screen and (min-width: 768px) {
     .border {
         background-color: #ffd4dde5;
@@ -199,7 +209,7 @@ export default {
         margin: 0 5rem 0.5rem 5rem;
     }
 }
-
+/* If screen at least is 992px */
 @media screen and (min-width: 992px) {
     .content {
         overflow: hidden;

@@ -59,24 +59,16 @@
 import { getQuizQuestions } from '../data/getQuiz.js'
 import { generateTimespan, getFour, shuffleArray } from '../utils/misc.js'
 import categories from '../data/categories.json'
-
+/**
+ * Gets called when a player clicks an option
+*/
 function updateResults(res) {
     let results = res
     let correct = results[0]
     let wrong = results[1]
     let total = results[2]
 
-    if (correct >= 1) {
-        document.querySelector('.correct').style.display = "block"
-        document.querySelector('.correct').style.width = correct * 10 + '%'
 
-    }
-    if (wrong >= 1) {
-        document.querySelector('.wrong').style.display = "block"
-        document.querySelector('.wrong').style.width = wrong * 10 + '%'
-    }
-
-    document.querySelector('.total').style.width = total * 10 + '%'
 
 }
 
@@ -103,6 +95,9 @@ export default {
     },
 
     methods: {
+        /**
+         * Gets called when the page is mounted, collects all song from the selected category
+        */
 
         async getAllSongs(id, dateString) {
             try {
@@ -116,7 +111,7 @@ export default {
         },
 
         /**
-         * displayQuestions(songs)
+         * Called on mounted, isClicked and playAgain
          * Called when mounted and everytime player clicks on option
          * Calls method getForur to generate 4 new songs to alternatives list
          * takes song [0] and adds it to question list (This gives us the song title in the questionbox)
@@ -137,7 +132,7 @@ export default {
         },
 
         /**
-         * isClicked(artist, event)
+         * called when a player clicks on an option
          * Remove already displayed questions and alternatives
          * compare player choice and correct answer to see if it's a match
          * When an alternative is clicked, generate four new song from songlist

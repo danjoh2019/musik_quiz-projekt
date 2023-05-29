@@ -38,7 +38,7 @@ async function getGenre(id, dateString) {
   return response.song
 }
 /**
- * Returns a list with all songs from a specifik category (programId)
+ * Returns a list with all songs from a specific category (programId)
  * 
  * @param id - number matching programid from the API, this is connected via categories.json and categoryView
  * @param dateString - string with a date matching the string needed to get data from specific timeperiod

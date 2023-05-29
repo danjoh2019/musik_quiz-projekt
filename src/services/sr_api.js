@@ -2,7 +2,7 @@ const BASE_URL = "https://api.sr.se/api/v2";
 
 let allIds = []
 /**
- * get's the data matching the given urlString
+ * gets the data matching the given urlString
  * 
  * @param urlString - a string containing endpoint from where data should be collected
  * @returns the data collected from provided string
